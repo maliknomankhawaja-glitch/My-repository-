@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Cormorant Garamond', 'Bodoni Moda', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --color-brand-black: #0C0C0C;
+  --color-brand-charcoal: #181818;
+  --color-brand-slate: #242424;
+  --color-brand-ivory: #FAF8F5;
+  --color-brand-offwhite: #F4F1EA;
+  --color-brand-beige: #E6DFD5;
+  --color-brand-champagne: #C8A97E;
+  --color-brand-gold: #DFCCA9;
+}
+
+/* Custom luxury typography classes */
+.font-display {
+  font-family: 'Cormorant Garamond', 'Bodoni Moda', Georgia, serif;
+}
+
+.font-serif-lux {
+  font-family: 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Subtle luxury foil & textile effects */
+.bg-wool-texture {
+  background-color: #121212;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+.bg-linen-paper {
+  background-color: #FAF8F5;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 3px 3px;
+}
+
+.gold-foil-text {
+  background: linear-gradient(135deg, #F3E7D3 0%, #C8A97E 35%, #EADBCA 60%, #B69263 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-foil-border {
+  border-image: linear-gradient(135deg, #F3E7D3, #C8A97E, #EADBCA, #B69263) 1;
+}
+
+/* Smooth transitions */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}

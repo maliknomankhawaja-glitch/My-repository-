@@ -1,0 +1,6 @@
+{
+  "name": "M.N Luxury Brand Identity",
+  "description": "Complete premium brand identity, bespoke monogram, and visual system for luxury fashion house M.N.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

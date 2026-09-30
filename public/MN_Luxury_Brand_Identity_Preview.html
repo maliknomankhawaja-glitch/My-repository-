@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M.N — Maison de Haute Couture · Complete Brand & Digital Experience Manual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-black: #0C0C0C;
+      --bg-card: #141414;
+      --bg-darker: #080808;
+      --ivory: #FAF8F5;
+      --offwhite: #F4F1EA;
+      --charcoal: #1E1E1E;
+      --beige: #E6DFD5;
+      --champagne: #C8A97E;
+      --gold-light: #F5EBDC;
+      --gold-dark: #B39062;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      color: var(--offwhite);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 24px 80px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 60px 0 50px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .brand-kicker {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--ivory);
+      margin-bottom: 12px;
+    }
+
+    .hero-tagline {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--beige);
+      margin: 16px 0 8px 0;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 300;
+    }
+
+    .hero-emblem {
+      margin: 32px auto;
+      max-width: 220px;
+      padding: 28px;
+      background: #111;
+      border: 1px solid rgba(200, 169, 126, 0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+
+    /* NAVIGATION BAR INSIDE SPEC FILE */
+    .toc-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .toc-nav a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .toc-nav a:hover {
+      color: var(--champagne);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-kicker {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      font-family: monospace;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--ivory);
+      margin-bottom: 12px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 780px;
+      margin-bottom: 36px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* GRIDS */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      font-family: monospace;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 20px;
+      color: var(--ivory);
+      margin-bottom: 10px;
+    }
+
+    .card-canvas {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px 0;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 11px;
+    }
+
+    .spec-table tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .spec-table td {
+      padding: 6px 0;
+    }
+
+    .spec-table td:first-child {
+      color: rgba(255, 255, 255, 0.4);
+      width: 35%;
+    }
+
+    .spec-table td:last-child {
+      color: rgba(255, 255, 255, 0.9);
+      text-align: right;
+    }
+
+    .swatch-bar {
+      height: 50px;
+      width: 100%;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .color-name {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 17px;
+      color: var(--ivory);
+      margin-bottom: 4px;
+    }
+
+    .color-data {
+      font-family: monospace;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--champagne);
+      color: #0C0C0C;
+      padding: 12px 24px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ivory);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--champagne);
+      border: 1px solid var(--champagne);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(200, 169, 126, 0.1);
+      color: var(--ivory);
+    }
+
+    .rule-box {
+      background: rgba(200, 169, 126, 0.08);
+      border: 1px solid rgba(200, 169, 126, 0.3);
+      padding: 18px 24px;
+      margin: 24px 0;
+      font-size: 12px;
+      color: var(--ivory);
+      letter-spacing: 0.05em;
+    }
+
+    /* IMAGE GALLERIES */
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .gallery-card {
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .gallery-img {
+      height: 240px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-label {
+      padding: 12px;
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--beige);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #141414;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 0 20px 0;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        padding: 0;
+      }
+      .toc-nav, .btn {
+        display: none;
+      }
+      .card, .hero-emblem, .gallery-card {
+        border-color: #ddd;
+        background: #fafafa;
+      }
+      h1, .section-title, .card-title, .color-name {
+        color: #000;
+      }
+      .section-desc, .card-desc {
+        color: #444;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- MASTER HEADER -->
+    <header>
+      <div class="brand-kicker">Maison M.N · Sovereign Brand Architecture</div>
+      <h1>M . N</h1>
+      <div class="hero-tagline">Made for Your Moment</div>
+      <p class="subtitle">Complete Specification Manual · Brand Identity · Editorial Showroom · Luxury Shop · Product Detail Page</p>
+
+      <!-- Sovereign Monogram Artwork -->
+      <div class="hero-emblem">
+        <svg width="150" height="150" viewBox="0 0 200 200" fill="none" style="display:block; margin:0 auto;">
+          <defs>
+            <linearGradient id="specChampagne" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F5EBDC" />
+              <stop offset="50%" stop-color="#C8A97E" />
+              <stop offset="100%" stop-color="#A57F4D" />
+            </linearGradient>
+          </defs>
+          <!-- Classical M -->
+          <path d="M 32 46 H 64 V 51 H 52 V 149 H 64 V 154 H 32 V 149 H 44 V 51 H 32 V 46 Z" fill="url(#specChampagne)" />
+          <path d="M 50 46 L 89 144 H 94 L 54 46 H 50 Z" fill="url(#specChampagne)" />
+          <path d="M 88 144 L 126 46 H 132 L 94 144 H 88 Z" fill="url(#specChampagne)" />
+          <!-- Architectural N Weave -->
+          <path d="M 104 46 H 112 L 158 149 V 154 H 146 L 102 51 V 46 H 104 Z" fill="url(#specChampagne)" />
+          <path d="M 148 46 H 178 V 51 H 166 V 149 H 178 V 154 H 148 V 149 H 160 V 51 H 148 V 46 Z" fill="url(#specChampagne)" />
+          <path d="M 124 46 H 136 V 149 H 124 V 46 Z" fill="url(#specChampagne)" opacity="0.95" />
+          <!-- Sovereign Central Period -->
+          <circle cx="187" cy="151.5" r="3.5" fill="url(#specChampagne)" />
+        </svg>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:12px; margin-top:20px;">
+        <button onclick="window.print()" class="btn">Print or Save as PDF</button>
+        <a href="/" class="btn btn-secondary">Launch Live App Experience ↗</a>
+      </div>
+    </header>
+
+    <!-- IN-PAGE NAVIGATION TABLE OF CONTENTS -->
+    <nav class="toc-nav">
+      <a href="#brand-identity">01. Brand &amp; Monogram</a>
+      <span>·</span>
+      <a href="#palette-typography">02. Palette &amp; Type</a>
+      <span>·</span>
+      <a href="#showroom">03. Editorial Showroom</a>
+      <span>·</span>
+      <a href="#shop-grid">04. Luxury Shop &amp; Grid</a>
+      <span>·</span>
+      <a href="#product-pdp">05. Ultra-Premium PDP</a>
+      <span>·</span>
+      <a href="#tailoring-anatomy">06. Tailoring Anatomy</a>
+      <span>·</span>
+      <a href="#packaging-ceremony">07. Packaging Ceremony</a>
+      <span>·</span>
+      <a href="#shopping-bag-cart">08. Shopping Bag &amp; Cart</a>
+      <span>·</span>
+      <a href="#curated-wishlist">09. Curated Wishlist</a>
+      <span>·</span>
+      <a href="#checkout-confirmation">10. Checkout &amp; Order Confirmation</a>
+      <span>·</span>
+      <a href="#brand-story-craft">11. Brand Story &amp; Craftsmanship</a>
+      <span>·</span>
+      <a href="#premium-navigation">12. Navigation, Header &amp; Footer</a>
+    </nav>
+
+    <!-- MANDATORY DIRECTIVE COMPLIANCE -->
+    <div class="rule-box">
+      <strong>M.N MAISON CONSTITUTIONAL POLICY:</strong> M.N creates exclusively bespoke three-piece suits, tailored waistcoats, formal shirting, high-rise trousers, and Pakistani traditional haute couture (shalwar kameez, kurtas, formal waistcoats). <em>Strictly zero blazers and zero underwear or undergarments exist in the M.N catalogue.</em>
+    </div>
+
+    <!-- 01. BRAND IDENTITY & MONOGRAM SYSTEM -->
+    <section id="brand-identity">
+      <div class="section-kicker">Section 01 · Sovereign Identity</div>
+      <h2 class="section-title">The M.N Monogram &amp; Vector System</h2>
+      <p class="section-desc">
+        The architectural ligature fuses the letters M and N through classical Roman proportions and harmonic geometry. Rather than relying on generic stock motifs, the letterforms themselves form the sovereign hallmark of the house.
+      </p>
+
+      <div class="grid-3">
+        <!-- Monogram Champagne -->
+        <div class="card">
+          <div class="card-label">Primary Mark</div>
+          <div class="card-title">Champagne Gold Monogram</div>
+          <div class="card-canvas" style="background:#050505;">
+            <svg width="70" height="70" viewBox="0 0 200 200" fill="#C8A97E">
+              <path d="M 32 46 H 64 V 51 H 52 V 149 H 64 V 154 H 32 V 149 H 44 V 51 H 32 V 46 Z" />
+              <path d="M 50 46 L 89 144 H 94 L 54 46 H 50 Z" />
+              <path d="M 88 144 L 126 46 H 132 L 94 144 H 88 Z" />
+              <path d="M 104 46 H 112 L 158 149 V 154 H 146 L 102 51 V 46 H 104 Z" />
+              <path d="M 148 46 H 178 V 51 H 166 V 149 H 178 V 154 H 148 V 149 H 160 V 51 H 148 V 46 Z" />
+              <path d="M 124 46 H 136 V 149 H 124 V 46 Z" opacity="0.95" />
+              <circle cx="187" cy="151.5" r="3.5" />
+            </svg>
+          </div>
+          <div class="card-desc">For woven silk interior suit labels, velvet garment bags, and foil-stamped packaging.</div>
+        </div>
+
+        <!-- Noir Black Version -->
+        <div class="card">
+          <div class="card-label">High-Contrast</div>
+          <div class="card-title">Noir Black on Ivory</div>
+          <div class="card-canvas" style="background:#FAF8F5;">
+            <svg width="70" height="70" viewBox="0 0 200 200" fill="#0C0C0C">
+              <path d="M 32 46 H 64 V 51 H 52 V 149 H 64 V 154 H 32 V 149 H 44 V 51 H 32 V 46 Z" />
+              <path d="M 50 46 L 89 144 H 94 L 54 46 H 50 Z" />
+              <path d="M 88 144 L 126 46 H 132 L 94 144 H 88 Z" />
+              <path d="M 104 46 H 112 L 158 149 V 154 H 146 L 102 51 V 46 H 104 Z" />
+              <path d="M 148 46 H 178 V 51 H 166 V 149 H 178 V 154 H 148 V 149 H 160 V 51 H 148 V 46 Z" />
+              <path d="M 124 46 H 136 V 149 H 124 V 46 Z" opacity="0.95" />
+              <circle cx="187" cy="151.5" r="3.5" />
+            </svg>
+          </div>
+          <div class="card-desc">For hangtag debossing, editorial paper stationery, and clean mono printing.</div>
+        </div>
+
+        <!-- Compact Atelier Seal -->
+        <div class="card">
+          <div class="card-label">Micro-Scale</div>
+          <div class="card-title">Atelier Seal &amp; Horn Buttons</div>
+          <div class="card-canvas" style="background:#0C0C0C;">
+            <svg width="75" height="75" viewBox="0 0 240 240" fill="none">
+              <circle cx="120" cy="120" r="114" stroke="#C8A97E" stroke-width="1.2" opacity="0.8" />
+              <circle cx="120" cy="120" r="108" stroke="#C8A97E" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.5" />
+              <g transform="translate(45, 45) scale(0.75)" fill="#C8A97E">
+                <path d="M 32 50 H 64 V 54 H 52 V 146 H 64 V 150 H 32 V 146 H 44 V 54 H 32 V 50 Z" />
+                <path d="M 50 50 L 89 142 H 94 L 54 50 H 50 Z" />
+                <path d="M 88 142 L 126 50 H 132 L 94 142 H 88 Z" />
+                <path d="M 104 50 H 112 L 158 146 V 150 H 146 L 102 54 V 50 H 104 Z" />
+                <path d="M 148 50 H 178 V 54 H 166 V 146 H 178 V 150 H 148 V 146 H 160 V 54 H 148 V 50 Z" />
+                <circle cx="187" cy="148" r="3.5" />
+              </g>
+            </svg>
+          </div>
+          <div class="card-desc">Laser-etched into natural water buffalo horn buttons, cufflinks, and wax sealing.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. COLOR PALETTE & TYPOGRAPHY -->
+    <section id="palette-typography">
+      <div class="section-kicker">Section 02 · Design System</div>
+      <h2 class="section-title">Color Architecture &amp; Typography</h2>
+      <p class="section-desc">
+        A restrained, low-chroma luxury palette built on deep blacks, warm ivories, and subtle champagne gold accents.
+      </p>
+
+      <div class="grid-3">
+        <!-- Deep Black -->
+        <div class="card">
+          <div class="swatch-bar" style="background:#0C0C0C;"></div>
+          <div class="color-name">Deep Black</div>
+          <div class="color-data">HEX #0C0C0C · RGB (12, 12, 12)<br>Pantone Black 6 C · Primary Ground</div>
+        </div>
+
+        <!-- Ivory -->
+        <div class="card">
+          <div class="swatch-bar" style="background:#FAF8F5;"></div>
+          <div class="color-name">Ivory Off-White</div>
+          <div class="color-data">HEX #FAF8F5 · RGB (250, 248, 245)<br>Pantone 11-0601 TCX · Packaging &amp; Type</div>
+        </div>
+
+        <!-- Champagne Gold -->
+        <div class="card">
+          <div class="swatch-bar" style="background:#C8A97E;"></div>
+          <div class="color-name">Champagne Gold</div>
+          <div class="color-data">HEX #C8A97E · RGB (200, 169, 126)<br>Pantone 16-1325 TCX · Sovereign Accent</div>
+        </div>
+
+        <!-- Charcoal -->
+        <div class="card">
+          <div class="swatch-bar" style="background:#1E1E1E;"></div>
+          <div class="color-name">Charcoal Noir</div>
+          <div class="color-data">HEX #1E1E1E · RGB (30, 30, 30)<br>Pantone 19-4007 TCX · Flannel Suiting</div>
+        </div>
+
+        <!-- Warm Beige -->
+        <div class="card">
+          <div class="swatch-bar" style="background:#E6DFD5;"></div>
+          <div class="color-name">Warm Beige</div>
+          <div class="color-data">HEX #E6DFD5 · RGB (230, 223, 213)<br>Pantone 13-0905 TCX · Cashmere Knitwear</div>
+        </div>
+
+        <!-- Midnight Navy -->
+        <div class="card">
+          <div class="swatch-bar" style="background:#121A2A;"></div>
+          <div class="color-name">Midnight Navy</div>
+          <div class="color-data">HEX #121A2A · RGB (18, 26, 42)<br>Pantone 19-3921 TCX · Sartorial Dinner Suit</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. THE EDITORIAL FASHION SHOWROOM -->
+    <section id="showroom">
+      <div class="section-kicker">Section 03 · Editorial Experience</div>
+      <h2 class="section-title">The M.N Editorial Showroom</h2>
+      <p class="section-desc">
+        Homepage experience featuring cinematic photography, dramatic lighting, and the 4 flagship pillars of the M.N Collection: Formal, Traditional, Essentials, and Evening.
+      </p>
+
+      <div class="gallery-strip">
+        <div class="gallery-card">
+          <img src="/src/assets/images/hero_mn_editorial_models_1790693257303.jpg" alt="Hero Campaign" class="gallery-img">
+          <div class="gallery-label">Hero Campaign: Made For Your Moment</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/fashion_formal_suit_waistcoat_1790693269160.jpg" alt="Formal Suiting" class="gallery-img">
+          <div class="gallery-label">Formal: Three-Piece Midnight Navy Suit</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/fashion_traditional_shalwar_kameez_1790693280444.jpg" alt="Traditional Pakistani Couture" class="gallery-img">
+          <div class="gallery-label">Traditional: Raw Silk Shalwar Kameez</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/fashion_evening_suit_cut_1790693303536.jpg" alt="Evening Suit" class="gallery-img">
+          <div class="gallery-label">Evening: Espresso Tuxedo Dinner Suit</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. THE LUXURY SHOP & EDITORIAL GRID -->
+    <section id="shop-grid">
+      <div class="section-kicker">Section 04 · E-Commerce Architecture</div>
+      <h2 class="section-title">The M.N Luxury Shop &amp; 12-Category Grid</h2>
+      <p class="section-desc">
+        A $50,000-level bespoke e-commerce interface avoiding generic Shopify patterns. Features multi-attribute filtering (color, size, fabric, price), live hover image transitions, quick view modal, and wishlist state.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">Curated Navigation</div>
+          <div class="card-title">12 Bespoke Categories</div>
+          <p class="card-desc">
+            New Arrivals · Suits · Formal Shirts · Trousers · Waistcoats · Shalwar Kameez · Kurtas · Polo Shirts · T-Shirts · Jackets · Sweaters · Accessories.
+          </p>
+          <table class="spec-table">
+            <tr><td>Total Catalog Items</td><td>12 Master Garments</td></tr>
+            <tr><td>Price Range</td><td>$290 – $4,600</td></tr>
+            <tr><td>Excluded Garments</td><td>Zero Blazers / Zero Underwear</td></tr>
+            <tr><td>Interactions</td><td>Quick View, Hover Angles, Wishlist Drawer, Cart Drawer</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Flagship Offerings</div>
+          <div class="card-title">Suits &amp; Traditional Line</div>
+          <p class="card-desc">
+            Full floating canvas three-piece suits in Loro Piana super 160s, and Pakistani ceremonial couture crafted from 100% pure raw silk with intricate needlework along mandarin collars.
+          </p>
+          <table class="spec-table">
+            <tr><td>M.N Black Signature Suit</td><td>$4,200 (Savile Row Floating Canvas)</td></tr>
+            <tr><td>M.N Midnight Navy Suit</td><td>$4,100 (Peak Lapel 3-Piece)</td></tr>
+            <tr><td>Noir Silk Shalwar Kameez</td><td>$1,450 (Pakistani Haute Couture)</td></tr>
+            <tr><td>Imperial Ivory Kurta Set</td><td>$1,250 (Egyptian Giza Cotton)</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. ULTRA-PREMIUM PRODUCT DETAIL PAGE (PDP) -->
+    <section id="product-pdp">
+      <div class="section-kicker">Section 05 · Flagship PDP Architecture</div>
+      <h2 class="section-title">Ultra-Premium Product Detail Page</h2>
+      <p class="section-desc">
+        Engineered as an intimate digital showroom. Features an 8-angle photorealistic gallery, interactive swatch and size selectors, size guide modal, and expandable tailoring dossiers.
+      </p>
+
+      <div class="gallery-strip">
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_suit_black_signature_1790693702392.jpg" alt="Angle 1" class="gallery-img">
+          <div class="gallery-label">1. Full Front View (Canvas Drape)</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_suit_back_profile_1790694103656.jpg" alt="Angle 2" class="gallery-img">
+          <div class="gallery-label">2. Full Back View (Double Vents)</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/fashion_formal_suit_waistcoat_1790693269160.jpg" alt="Angle 3" class="gallery-img">
+          <div class="gallery-label">3. Profile Silhouette &amp; Posture</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_luxury_suit_fabric_detail_1790692683058.jpg" alt="Angle 4" class="gallery-img">
+          <div class="gallery-label">4. Close-Up Super 160s Fabric</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_formal_shirt_white_1790693673578.jpg" alt="Angle 5" class="gallery-img">
+          <div class="gallery-label">5. Collar &amp; Shirt Pairing</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_luxury_woven_tag_texture_1790692696445.jpg" alt="Angle 6" class="gallery-img">
+          <div class="gallery-label">6. Horn Buttons &amp; Cuff Slits</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_trouser_tailored_charcoal_1790693715497.jpg" alt="Angle 7" class="gallery-img">
+          <div class="gallery-label">7. Forward Pleated Trousers</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/hero_mn_editorial_models_1790693257303.jpg" alt="Angle 8" class="gallery-img">
+          <div class="gallery-label">8. Complete Outfit Styling</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. TAILORING ANATOMY: CRAFTED WITH PRECISION -->
+    <section id="tailoring-anatomy">
+      <div class="section-kicker">Section 06 · Sartorial Rigor</div>
+      <h2 class="section-title">Crafted with Precision — The 6 Anatomy Pillars</h2>
+      <p class="section-desc">
+        Every internal component is specified according to authentic bespoke tailoring standards.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-label">Pillar 01</div>
+          <div class="card-title">Clean AMF Pick Stitching</div>
+          <p class="card-desc">1.5mm pick stitching secures the floating canvas to the wool shell and creates subtle dimensional roll along the lapel edge.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 02</div>
+          <div class="card-title">Full Floating Canvas</div>
+          <p class="card-desc">Zero heat-fusing glue. Multi-layer horsehair and camel felt chest canvas hand-padded for living breathability and lifetime drape.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 03</div>
+          <div class="card-title">Genuine Buffalo Horn Buttons</div>
+          <p class="card-desc">Laser-etched with M.N monogram and hand-attached with wrapped thread shanks for functional longevity.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 04</div>
+          <div class="card-title">Savile Row Structured Silhouette</div>
+          <p class="card-desc">Lightly roped pagoda shoulders and mild chest suppression sculpt a commanding athletic posture.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 05</div>
+          <div class="card-title">Breathable Bemberg Cupro Lining</div>
+          <p class="card-desc">Pure cotton linter cupro with tone-on-tone jacquard M.N monogram prevents friction and moisture buildup.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 06</div>
+          <div class="card-title">Forward-Pleated Dress Trousers</div>
+          <p class="card-desc">Double forward pleats, solid brass side buckle adjusters, and unfinished hems for exact tailor break.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. PACKAGING CEREMONY & CONCIERGE -->
+    <section id="packaging-ceremony">
+      <div class="section-kicker">Section 07 · Presentation</div>
+      <h2 class="section-title">The M.N Packaging Ceremony &amp; Valet Delivery</h2>
+      <p class="section-desc">
+        Every garment arrives as an archival commission. Packaged in 2.5mm grayboard rigid boxes wrapped in charcoal bookcloth with champagne gold foil stamping.
+      </p>
+
+      <div class="grid-2">
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_packaging_unboxing_suite_1790694123903.jpg" alt="Packaging Suite" class="gallery-img" style="height:320px;">
+          <div class="gallery-label">M.N Archival Rigid Garment Box with Wax Seal</div>
+        </div>
+        <div class="gallery-card">
+          <img src="/src/assets/images/mn_luxury_packaging_showcase_1790692669800.jpg" alt="Shopping Bag" class="gallery-img" style="height:320px;">
+          <div class="gallery-label">Ivory Textured Ribbed Shopping Tote with Grosgrain Ribbon</div>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top:32px;">
+        <strong>CONCIERGE DELIVERY STANDARD:</strong> Complimentary insured courier worldwide via DHL Express Valet. Tamper-proof security foil seal. Real-time SMS flight telemetry. 14-day private return policy with complimentary courier pickup.
+      </div>
+    </section>
+
+    <!-- 08. SHOPPING BAG & CART ARCHITECTURE -->
+    <section id="shopping-bag-cart">
+      <div class="section-kicker">Section 08 · Shopping Experience</div>
+      <h2 class="section-title">Luxury Shopping Bag &amp; Cart Architecture</h2>
+      <p class="section-desc">
+        A dual-modality shopping flow engineered with quiet luxury discipline: an instant slide-out shopping bag from the right viewport edge and a dedicated full shopping cart page.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">Modality 01</div>
+          <div class="card-title">Slide-Out Shopping Bag Drawer</div>
+          <p class="card-desc">
+            Triggered automatically when a customer adds a garment. Features micro-steppers for quantity adjustment, instant removal, "Save for Later" migration, and complimentary insured courier telemetry bar.
+          </p>
+          <table class="spec-table">
+            <tr><td>Slide Animation</td><td>300ms cubic-bezier ease-out from right margin</td></tr>
+            <tr><td>Item Data Shown</td><td>High-res thumbnail, title, size, color, unit price, stepper</td></tr>
+            <tr><td>Actions</td><td>Save for Later, Remove, Continue Shopping, Checkout</td></tr>
+            <tr><td>Empty Treatment</td><td>Embossed M.N seal with "EXPLORE COLLECTION" &amp; "NEW ARRIVALS"</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Modality 02</div>
+          <div class="card-title">Dedicated Full Shopping Cart Page</div>
+          <p class="card-desc">
+            A grand, spacious checkout preparation salon. Features full garment line items, unit and subtotal calculations, "Saved for Later" holding bay, VIP concierge privilege form, and sticky mobile checkout bar.
+          </p>
+          <table class="spec-table">
+            <tr><td>Heading</td><td>YOUR SHOPPING BAG</td></tr>
+            <tr><td>Order Summary</td><td>Subtotal, Worldwide Insured Courier ($0), Archival Box ($0), Total</td></tr>
+            <tr><td>Holding Bay</td><td>"Saved for Later" with 1-click "Move to Bag" restoration</td></tr>
+            <tr><td>VIP Privilege</td><td>Concierge promotional verification with instant percentage deduction</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top:24px;">
+        <strong>EMPTY CART EXPERIENCE CONTRACT:</strong> When zero items reside in the bag, the interface displays the sovereign headline <em>&ldquo;YOUR BAG IS EMPTY&rdquo;</em> with supporting narrative <em>&ldquo;Discover refined pieces designed for your next moment&rdquo;</em>, accompanied by dual buttons <em>&ldquo;EXPLORE COLLECTION&rdquo;</em> and <em>&ldquo;NEW ARRIVALS&rdquo;</em>. Zero generic shopping-cart clipart is permitted.
+      </div>
+    </section>
+
+    <!-- 09. CURATED WISHLIST & PRIVATE WARDROBE -->
+    <section id="curated-wishlist">
+      <div class="section-kicker">Section 09 · Private Wardrobe</div>
+      <h2 class="section-title">The M.N Curated Wishlist System</h2>
+      <p class="section-desc">
+        A private salon for saved commissions. Patrons can review pieces, toggle color swatches, select bespoke sizing, and migrate garments directly to the shopping bag with zero friction.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">Wishlist Architecture</div>
+          <div class="card-title">Dedicated Wishlist Page &amp; Drawer</div>
+          <p class="card-desc">
+            Presents each saved garment with dual-image photographic transitions, visual color swatches, active size selectors, and instant 1-click "Add to Bag" execution.
+          </p>
+          <table class="spec-table">
+            <tr><td>Heading</td><td>YOUR WISHLIST</td></tr>
+            <tr><td>Empty State</td><td>&ldquo;YOUR WISHLIST IS WAITING&rdquo; · Save the pieces you love</td></tr>
+            <tr><td>Attributes Per Card</td><td>Dual-view photos, title, price, swatches, size chips, Add to Bag</td></tr>
+            <tr><td>Recommendations</td><td>Integrated &ldquo;YOU MAY ALSO LIKE&rdquo; sartorial pairing track</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Micro-Interactions</div>
+          <div class="card-title">Refined Motion Design</div>
+          <p class="card-desc">
+            Tactile, restrained micro-interactions engineered for the high-fashion customer without flashy or distracting animations.
+          </p>
+          <table class="spec-table">
+            <tr><td>Wishlist Heart</td><td>Soft scale pop with champagne gold fill</td></tr>
+            <tr><td>Bag Notification</td><td>Top-right gold VIP toast with subtle slide and auto-dismiss</td></tr>
+            <tr><td>Image Transitions</td><td>Smooth 700ms crossfade revealing secondary editorial angle</td></tr>
+            <tr><td>Quantity Stepper</td><td>Instant numeric transition with zero layout jank</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. PREMIUM CHECKOUT & ORDER CONFIRMATION -->
+    <section id="checkout-confirmation">
+      <div class="section-kicker">Section 10 · Haute E-Commerce Finality</div>
+      <h2 class="section-title">Premium Checkout &amp; Order Confirmation Experience</h2>
+      <p class="section-desc">
+        A distraction-free, 256-bit TLS encrypted concierge checkout flow engineered with quiet luxury discipline and transparent logistics.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">Flow Architecture</div>
+          <div class="card-title">Dedicated Checkout Page</div>
+          <p class="card-desc">
+            A segmented, single-page salon containing Customer Information, Worldwide Delivery Coordinates, Payment Gateway (Credit/Debit Card, Atelier Valet COD, Concierge Wire Transfer), and live Wardrobe Order Summary.
+          </p>
+          <table class="spec-table">
+            <tr><td>Header Contract</td><td>Distraction-free: M.N sovereign mark, encryption assurance, Return to Bag link</td></tr>
+            <tr><td>Customer Fields</td><td>Full Name, Email Address, Telephone / Mobile (with real-time validation)</td></tr>
+            <tr><td>Delivery Details</td><td>Country selection (10 international hubs), City, Street, Postal Code, Courier notes</td></tr>
+            <tr><td>Primary Action</td><td>&ldquo;PLACE ORDER&rdquo; button with authorization loading spinner and error states</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Client Confirmation</div>
+          <div class="card-title">Order Confirmed Experience</div>
+          <p class="card-desc">
+            Following successful authorization, clients arrive at an architectural confirmation page featuring breathing M.N seal geometry and live status tracking.
+          </p>
+          <table class="spec-table">
+            <tr><td>Headings</td><td>&ldquo;ORDER CONFIRMED&rdquo; · &ldquo;Thank you for choosing M.N.&rdquo;</td></tr>
+            <tr><td>Manifest Data</td><td>Commission number (MN-2026-XXXXXX), date, itemized garments, delivery dossier</td></tr>
+            <tr><td>Status Stepper</td><td>1. Confirmed → 2. Preparing → 3. Dispatched → 4. Delivered</td></tr>
+            <tr><td>Actions</td><td>&ldquo;CONTINUE SHOPPING&rdquo; &amp; &ldquo;Print Commission Receipt&rdquo;</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top:24px;">
+        <strong>CHECKOUT GOVERNANCE:</strong> No artificial delivery fees or fictitious shipping estimates are shown. All orders qualify for complimentary worldwide DHL Express Valet delivery ($0) and the signature M.N Archival Packaging Suite (rigid grayboard box, grosgrain handles, acid-free tissue, and cedar hanger).
+      </div>
+    </section>
+
+    <!-- 11. BRAND STORY & CRAFTSMANSHIP -->
+    <section id="brand-story-craft">
+      <div class="section-kicker">Section 11 · Maison Story &amp; Heritage</div>
+      <h2 class="section-title">The M.N Standard — Story &amp; Craftsmanship</h2>
+      <p class="section-desc">
+        A dedicated brand salon celebrating quiet luxury, architectural tailoring, and Pakistani heritage haute couture through contemporary refinement.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-label">Pillar 01</div>
+          <div class="card-title">Precision</div>
+          <p class="card-desc">
+            Every detail matters, from proportion to finishing. A millimeter in lapel stance, shoulder slope, or trouser break defines the dialogue between the garment and the wearer.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 02</div>
+          <div class="card-title">Character</div>
+          <p class="card-desc">
+            Clothing should express individual style without unnecessary excess. Authentic confidence emerges from self-assured simplicity, commanding quiet respect without theatrical noise.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-label">Pillar 03</div>
+          <div class="card-title">Timelessness</div>
+          <p class="card-desc">
+            Create pieces designed to remain relevant beyond a single season. Future heirlooms designed for perpetuity in both structural resilience and aesthetic dignity.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 24px;">
+        <div class="card">
+          <div class="card-label">Bespoke Suiting Experience</div>
+          <div class="card-title">Architectural Formal Suiting</div>
+          <p class="card-desc">
+            Clean proportions, refined silhouettes, comfortable movement, carefully selected fabrics, and precise finishing. Coordinated high-rise dress trousers and optional tailored waistcoats. Strictly zero blazers.
+          </p>
+          <table class="spec-table">
+            <tr><td>Hero Proclamation</td><td>THE M.N STANDARD · Refined clothing. Distinctive style. Timeless confidence.</td></tr>
+            <tr><td>Silhouette</td><td>Savile Row pagoda shoulder with floating horsehair canvas</td></tr>
+            <tr><td>Textiles</td><td>Super 160s virgin wool and cashmere blends</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Heritage Haute Couture</div>
+          <div class="card-title">Tradition, Refined</div>
+          <p class="card-desc">
+            Pakistani traditional clothing presented through a contemporary luxury lens. Pure raw silk Shalwar Kameez, elegant Kurtas, and formal ceremonial waistcoats with mandarin bands for Wedding and Eid milestones.
+          </p>
+          <table class="spec-table">
+            <tr><td>Philosophy</td><td>Reverence for cultural grandeur through modern restraint</td></tr>
+            <tr><td>Garments</td><td>Shalwar Kameez, Kurtas, Ceremonial Waistcoats</td></tr>
+            <tr><td>Values</td><td>Quality · Confidence · Simplicity · Individuality</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top:24px;">
+        <strong>SOVEREIGN STATEMENTS:</strong> &ldquo;DESIGNED WITH INTENTION.&rdquo; · &ldquo;DEFINED BY DETAIL.&rdquo; · &ldquo;MADE FOR YOUR MOMENT.&rdquo;
+      </div>
+    </section>
+
+    <!-- 12. NAVIGATION, HEADER & FOOTER ARCHITECTURE -->
+    <section id="premium-navigation">
+      <div class="section-kicker">Section 12 · Global Architecture</div>
+      <h2 class="section-title">Premium Navigation, Sticky Header &amp; Mega Menus</h2>
+      <p class="section-desc">
+        A global navigation framework engineered with quiet luxury restraint, responsive compression, rich category mega menus, and full-screen search overlay.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">Header Architecture</div>
+          <div class="card-title">Sticky Header &amp; Mega Menus</div>
+          <p class="card-desc">
+            Sovereign M.N mark on left, primary luxury links across the center (New Arrivals, Suits, Formal, Traditional, Shirts, Trousers, Accessories, About M.N), and functional utilities on right (Search, Account, Wishlist, Bag).
+          </p>
+          <table class="spec-table">
+            <tr><td>Scroll Compression</td><td>Reduces height (h-20 → h-16) with glass blur &amp; fine border</td></tr>
+            <tr><td>Suits Mega Menu</td><td>Signature Suits, Black, Navy, Charcoal, Grey, Brown, Ivory, Waistcoats</td></tr>
+            <tr><td>Traditional Mega Menu</td><td>Shalwar Kameez, Kurtas, Formal Waistcoats, Eid &amp; Wedding Collections</td></tr>
+            <tr><td>Formal Mega Menu</td><td>Egyptian Cotton Shirts, Tailored Trousers, Evening Wear</td></tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Search &amp; Footer Architecture</div>
+          <div class="card-title">Search Overlay &amp; 4-Column Footer</div>
+          <p class="card-desc">
+            Instant search overlay with real-time product suggestions and curated search terms, alongside a comprehensive luxury footer and working Private Gazette newsletter.
+          </p>
+          <table class="spec-table">
+            <tr><td>Search Interface</td><td>Full-screen modal with instant query match &amp; ESC key dismissal</td></tr>
+            <tr><td>Newsletter</td><td>&ldquo;STAY IN THE WORLD OF M.N&rdquo; with live subscription state</td></tr>
+            <tr><td>Footer Matrix</td><td>4 Columns: SHOP, M.N, HELP, ACCOUNT + Brand Area &amp; Legal bar</td></tr>
+            <tr><td>Account Modal</td><td>Client Profile, Orders, Bespoke Measurements, Concierge coordination</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top:24px;">
+        <strong>PRODUCT INTEGRITY AUDIT:</strong> Strictly zero blazers, zero underwear, and zero undergarments exist in any mega menu, search recommendation, mobile navigation accordion, or footer category.
+      </div>
+    </section>
+
+    <!-- MASTER FOOTER -->
+    <footer>
+      M.N MAISON DE HAUTE COUTURE · SAVILE ROW, LONDON · VIA MONTENAPOLEONE, MILAN · LAHORE &amp; ISLAMABAD ATELIER<br>
+      © 2026 M.N. ALL RIGHTS RESERVED. STRICTLY NO BLAZERS / NO UNDERWEAR.
+    </footer>
+  </div>
+</body>
+</html>
