@@ -49,11 +49,11 @@ export const CartPage: React.FC<CartPageProps> = ({
   const handleApplyPromo = (e: React.FormEvent) => {
     e.preventDefault();
     if (!promoCode.trim()) return;
-    if (promoCode.trim().toUpperCase() === 'MN10' || promoCode.trim().toUpperCase() === 'VIP') {
+    if (promoCode.trim().toUpperCase() === 'NK10' || promoCode.trim().toUpperCase() === 'MN10' || promoCode.trim().toUpperCase() === 'VIP') {
       setPromoApplied(true);
       setPromoError(null);
     } else {
-      setPromoError('Invalid bespoke privilege code. Try "MN10" for VIP concierge access.');
+      setPromoError('Invalid bespoke privilege code. Try "NK10" for VIP concierge access.');
     }
   };
 
@@ -63,7 +63,7 @@ export const CartPage: React.FC<CartPageProps> = ({
       <div className="max-w-7xl mx-auto px-6 pt-8 pb-4">
         <div className="flex items-center gap-2 text-xs font-sans-clean text-white/50 tracking-wider">
           <button onClick={onContinueShopping} className="hover:text-[#C8A97E] transition-colors">
-            M.N Collection
+            N.K FABRICS Collection
           </button>
           <span>/</span>
           <span className="text-[#C8A97E] font-medium">Your Shopping Bag</span>
@@ -386,7 +386,7 @@ export const CartPage: React.FC<CartPageProps> = ({
                       type="text"
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
-                      placeholder="e.g. MN10"
+                      placeholder="e.g. NK10"
                       className="flex-1 bg-black/60 border border-white/15 px-3 py-2 text-xs font-mono uppercase text-white placeholder-white/30 focus:outline-none focus:border-[#C8A97E]"
                     />
                     <button
@@ -412,7 +412,7 @@ export const CartPage: React.FC<CartPageProps> = ({
                 <div className="p-4 bg-black/40 border border-white/10 space-y-2.5 text-[11px] font-sans-clean text-white/60">
                   <div className="flex items-center gap-2 text-white">
                     <span className="text-[#C8A97E]">✦</span>
-                    <strong className="font-medium text-xs">M.N Atelier Assurances:</strong>
+                    <strong className="font-medium text-xs">N.K FABRICS Atelier Assurances:</strong>
                   </div>
                   <p>• Complimentary worldwide DHL Express insured courier dispatch.</p>
                   <p>• 14-day private concierge returns with complimentary home collection.</p>

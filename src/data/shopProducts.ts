@@ -63,7 +63,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 1. SUITS
   {
     id: 'mn-suit-black-signature',
-    name: 'M.N Black Signature Suit',
+    name: 'N.K FABRICS Black Signature Suit',
     category: 'suits',
     isNewArrival: true,
     price: 4200,
@@ -84,13 +84,13 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     tailoringNotes: [
       'Full floating horsehair canvas construction',
       'Includes suit jacket, matching trousers, and optional 5-button waistcoat',
-      'Hand-carved buffalo horn buttons with micro-engraved M.N insignia',
+      'Hand-carved buffalo horn buttons with micro-engraved N.K FABRICS insignia',
       'Pick-stitched lapels and interior cupro pocket linings',
     ],
   },
   {
     id: 'mn-suit-midnight-navy',
-    name: 'M.N Midnight Navy Suit',
+    name: 'N.K FABRICS Midnight Navy Suit',
     category: 'suits',
     isNewArrival: true,
     price: 3850,
@@ -116,7 +116,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-suit-charcoal-tailored',
-    name: 'M.N Charcoal Tailored Suit',
+    name: 'N.K FABRICS Charcoal Tailored Suit',
     category: 'suits',
     price: 3600,
     formattedPrice: '$3,600',
@@ -141,7 +141,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-suit-deep-brown',
-    name: 'M.N Deep Brown Suit',
+    name: 'N.K FABRICS Deep Brown Suit',
     category: 'suits',
     isNewArrival: true,
     price: 4100,
@@ -167,7 +167,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-suit-classic-grey',
-    name: 'M.N Classic Grey Suit',
+    name: 'N.K FABRICS Classic Grey Suit',
     category: 'suits',
     price: 3450,
     formattedPrice: '$3,450',
@@ -192,7 +192,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-suit-ivory-formal',
-    name: 'M.N Ivory Formal Suit',
+    name: 'N.K FABRICS Ivory Formal Suit',
     category: 'suits',
     price: 3950,
     formattedPrice: '$3,950',
@@ -219,7 +219,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 2. FORMAL SHIRTS
   {
     id: 'mn-shirt-white-poplin',
-    name: 'M.N Royal Poplin Formal Shirt (White)',
+    name: 'N.K FABRICS Royal Poplin Formal Shirt (White)',
     category: 'formal-shirts',
     isNewArrival: true,
     price: 650,
@@ -238,14 +238,14 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     collection: 'Signature Sartorial',
     availability: 'In Stock',
     tailoringNotes: [
-      'French double cuffs designed for M.N cufflinks',
+      'French double cuffs designed for N.K FABRICS cufflinks',
       '22 stitches per inch single-needle needlework',
       'Removable champagne gold brass collar stays included',
     ],
   },
   {
     id: 'mn-shirt-ivory-sea-island',
-    name: 'M.N Sea Island Formal Shirt (Ivory)',
+    name: 'N.K FABRICS Sea Island Formal Shirt (Ivory)',
     category: 'formal-shirts',
     price: 680,
     formattedPrice: '$680',
@@ -270,7 +270,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-shirt-light-blue-twill',
-    name: 'M.N Royal Twill Formal Shirt (Light Blue)',
+    name: 'N.K FABRICS Royal Twill Formal Shirt (Light Blue)',
     category: 'formal-shirts',
     price: 620,
     formattedPrice: '$620',
@@ -289,12 +289,12 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     availability: 'In Stock',
     tailoringNotes: [
       'Dense diagonal twill weave prevents transparency',
-      'Reinforced side seam gussets with embroidered M.N period dot',
+      'Reinforced side seam gussets with embroidered N.K FABRICS atelier dot',
     ],
   },
   {
     id: 'mn-shirt-noir-black-silk',
-    name: 'M.N Imperial Silk Formal Shirt (Deep Black)',
+    name: 'N.K FABRICS Imperial Silk Formal Shirt (Deep Black)',
     category: 'formal-shirts',
     price: 740,
     formattedPrice: '$740',
@@ -319,7 +319,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 3. TROUSERS
   {
     id: 'mn-trouser-charcoal-pleated',
-    name: 'M.N High-Rise Pleated Trousers (Charcoal)',
+    name: 'N.K FABRICS High-Rise Pleated Trousers (Charcoal)',
     category: 'trousers',
     isNewArrival: true,
     price: 890,
@@ -346,7 +346,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-trouser-black-formal',
-    name: 'M.N Sartorial Wool Trousers (Deep Black)',
+    name: 'N.K FABRICS Sartorial Wool Trousers (Deep Black)',
     category: 'trousers',
     price: 850,
     formattedPrice: '$850',
@@ -370,7 +370,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-trouser-cream-riviera',
-    name: 'M.N Riviera Wool-Linen Trousers (Cream)',
+    name: 'N.K FABRICS Riviera Wool-Linen Trousers (Cream)',
     category: 'trousers',
     price: 890,
     formattedPrice: '$890',
@@ -397,7 +397,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 4. WAISTCOATS
   {
     id: 'mn-waistcoat-navy-db',
-    name: 'M.N Formal Double-Breasted Waistcoat',
+    name: 'N.K FABRICS Formal Double-Breasted Waistcoat',
     category: 'waistcoats',
     isNewArrival: true,
     price: 950,
@@ -423,12 +423,12 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-waistcoat-charcoal-traditional',
-    name: 'M.N High-V Flannel Waistcoat (Charcoal)',
+    name: 'N.K FABRICS High-V Flannel Waistcoat (Charcoal)',
     category: 'waistcoats',
     price: 890,
     formattedPrice: '$890',
     tagline: 'Five-Button Tailored Vest with Watch Chain Buttonhole',
-    description: 'Cut from worsted flannel to pair seamlessly with M.N three-piece suits or over white formal shirting and traditional kurtas.',
+    description: 'Cut from worsted flannel to pair seamlessly with N.K FABRICS three-piece suits or over white formal shirting and traditional kurtas.',
     primaryImage: IMG_HERO_MODELS,
     hoverImage: IMG_TRAD_BLACK,
     colors: [
@@ -442,12 +442,12 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     availability: 'In Stock',
     tailoringNotes: [
       'Five-button front with horn buttons',
-      'Full cupro lining printed with tonal M.N crest',
+      'Full cupro lining printed with tonal N.K FABRICS crest',
     ],
   },
   {
     id: 'mn-waistcoat-ceremonial-gold',
-    name: 'M.N Ceremonial Silk Waistcoat (Ivory & Gold)',
+    name: 'N.K FABRICS Ceremonial Silk Waistcoat (Ivory & Gold)',
     category: 'waistcoats',
     price: 1100,
     formattedPrice: '$1,100',
@@ -473,7 +473,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 5. SHALWAR KAMEEZ
   {
     id: 'mn-trad-noir-shalwar-kameez',
-    name: 'M.N Signature Shalwar Kameez',
+    name: 'N.K FABRICS Signature Shalwar Kameez',
     category: 'shalwar-kameez',
     isNewArrival: true,
     price: 1850,
@@ -488,7 +488,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     ],
     sizes: ['Small (38)', 'Medium (40)', 'Large (42)', 'Custom Bespoke'],
     fabric: '100% Pure Mulberry Raw Silk (Heavy Drape)',
-    fabricOrigin: 'M.N Heritage Silk Weavers',
+    fabricOrigin: 'N.K FABRICS Heritage Silk Weavers',
     collection: 'Pakistani Haute Couture',
     availability: 'In Stock',
     tailoringNotes: [
@@ -499,7 +499,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-trad-royal-egyptian-kameez',
-    name: 'M.N Royal Egyptian Cotton Shalwar Kameez',
+    name: 'N.K FABRICS Royal Egyptian Cotton Shalwar Kameez',
     category: 'shalwar-kameez',
     price: 1450,
     formattedPrice: '$1,450',
@@ -524,7 +524,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-trad-wedding-collection-kameez',
-    name: 'M.N Wedding Collection Shalwar Kameez',
+    name: 'N.K FABRICS Wedding Collection Shalwar Kameez',
     category: 'shalwar-kameez',
     isNewArrival: true,
     price: 2400,
@@ -551,7 +551,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 6. KURTAS
   {
     id: 'mn-kurta-premium-sandstone',
-    name: 'M.N Premium Kurta',
+    name: 'N.K FABRICS Premium Kurta',
     category: 'kurtas',
     isNewArrival: true,
     price: 1250,
@@ -570,14 +570,14 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     collection: 'Pakistani Haute Couture',
     availability: 'In Stock',
     tailoringNotes: [
-      'Discreet M.N champagne gold needlepoint along collar',
+      'Discreet N.K FABRICS champagne gold needlepoint along collar',
       'Four-button placket with micro-engraved horn buttons',
       'Straight cut side slits designed to drape over trousers',
     ],
   },
   {
     id: 'mn-kurta-eid-collection',
-    name: 'M.N Eid Collection Kurta',
+    name: 'N.K FABRICS Eid Collection Kurta',
     category: 'kurtas',
     isNewArrival: true,
     price: 1350,
@@ -604,7 +604,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 7. POLO SHIRTS
   {
     id: 'mn-polo-cashmere-silk-cream',
-    name: 'M.N Cashmere-Silk Knit Polo (Cream)',
+    name: 'N.K FABRICS Cashmere-Silk Knit Polo (Cream)',
     category: 'polo-shirts',
     isNewArrival: true,
     price: 780,
@@ -631,12 +631,12 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   },
   {
     id: 'mn-polo-pique-noir',
-    name: 'M.N Sea Island Piqué Polo (Midnight Noir)',
+    name: 'N.K FABRICS Sea Island Piqué Polo (Midnight Noir)',
     category: 'polo-shirts',
     price: 590,
     formattedPrice: '$590',
     tagline: 'Ultra-Fine Sea Island Cotton Honeycomb Piqué',
-    description: 'Elevating the classic polo to bespoke status. A tailored cut with high armholes, collar stand, and tone-on-tone M.N embroidered monogram on the hem.',
+    description: 'Elevating the classic polo to bespoke status. A tailored cut with high armholes, collar stand, and tone-on-tone N.K FABRICS embroidered monogram on the hem.',
     primaryImage: IMG_BLACK_SUIT,
     hoverImage: IMG_ESSENTIALS_POLO,
     colors: [
@@ -657,7 +657,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 8. T-SHIRTS
   {
     id: 'mn-tee-pima-mercerized-noir',
-    name: 'M.N Mercerized Pima Cotton T-Shirt',
+    name: 'N.K FABRICS Mercerized Pima Cotton T-Shirt',
     category: 't-shirts',
     price: 380,
     formattedPrice: '$380',
@@ -678,20 +678,20 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     tailoringNotes: [
       'Ribbed bound crewneck collar that never sags',
       'Blind-stitched hems for clean minimalism',
-      'Tone-on-tone embroidered M.N micro-monogram at left hip',
+      'Tone-on-tone embroidered N.K FABRICS micro-monogram at left hip',
     ],
   },
 
   // 9. JACKETS (TAILORED SAFARI & OVERCOATS ONLY - NO BLAZERS!)
   {
     id: 'mn-jacket-cashmere-overcoat',
-    name: 'M.N Double-Breasted Cashmere Overcoat',
+    name: 'N.K FABRICS Double-Breasted Cashmere Overcoat',
     category: 'jackets',
     isNewArrival: true,
     price: 4800,
     formattedPrice: '$4,800',
     tagline: '100% Pure Double-Face Mongolian Cashmere in Charcoal',
-    description: 'The monumental winter overcoat. Tailored to fit gracefully over M.N three-piece suits. Features sweeping peak lapels, deep flapped pockets, and a buttoned martingale back belt.',
+    description: 'The monumental winter overcoat. Tailored to fit gracefully over N.K FABRICS three-piece suits. Features sweeping peak lapels, deep flapped pockets, and a buttoned martingale back belt.',
     primaryImage: IMG_HERO_MODELS,
     hoverImage: IMG_FABRIC_DETAIL,
     colors: [
@@ -714,7 +714,7 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 10. SWEATERS
   {
     id: 'mn-sweater-cashmere-crewneck',
-    name: 'M.N 18-Gauge Cashmere Crewneck Sweater',
+    name: 'N.K FABRICS 18-Gauge Cashmere Crewneck Sweater',
     category: 'sweaters',
     price: 920,
     formattedPrice: '$920',
@@ -741,12 +741,12 @@ export const ALL_PRODUCTS: ShopProduct[] = [
   // 11. ACCESSORIES
   {
     id: 'mn-acc-champagne-cufflinks',
-    name: 'M.N 18K Champagne Gold Cufflinks',
+    name: 'N.K FABRICS 18K Champagne Gold Cufflinks',
     category: 'accessories',
     price: 520,
     formattedPrice: '$520',
     tagline: 'Solid Brass with 18K Champagne Gold PVD Satin Coating',
-    description: 'Micro-engraved with the sovereign M.N monogram and atelier seal. Features a smooth whale-tail toggle mechanism engineered for French cuff shirts.',
+    description: 'Micro-engraved with the sovereign N.K monogram and atelier seal. Features a smooth whale-tail toggle mechanism engineered for French cuff shirts.',
     primaryImage: IMG_TAG_TEXTURE,
     hoverImage: IMG_PACKAGING,
     colors: [
@@ -759,13 +759,13 @@ export const ALL_PRODUCTS: ShopProduct[] = [
     collection: 'Signature Sartorial',
     availability: 'In Stock',
     tailoringNotes: [
-      'Engraved with M.N atelier circular seal',
+      'Engraved with N.K FABRICS atelier circular seal',
       'Packaged in bespoke velvet presentation box',
     ],
   },
   {
     id: 'mn-acc-silk-tie-navy',
-    name: 'M.N 7-Fold Mulberry Silk Tie (Midnight Navy)',
+    name: 'N.K FABRICS 7-Fold Mulberry Silk Tie (Midnight Navy)',
     category: 'accessories',
     price: 360,
     formattedPrice: '$360',

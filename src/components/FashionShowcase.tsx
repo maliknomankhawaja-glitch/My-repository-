@@ -14,7 +14,7 @@ export const FashionShowcase: React.FC<FashionShowcaseProps> = ({ onSelectCatego
           Sartorial Portfolio
         </div>
         <h2 className="font-serif-lux text-3xl sm:text-5xl md:text-6xl text-[#FAF8F5] tracking-wide">
-          THE M.N COLLECTION
+          THE N.K FABRICS COLLECTION
         </h2>
         <div className="w-16 h-[1px] bg-[#C8A97E]/40 mx-auto mt-2" />
         <p className="text-sm font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed max-w-xl mx-auto">

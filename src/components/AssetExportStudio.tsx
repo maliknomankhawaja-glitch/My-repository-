@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MNMonogramMaster, MNWordmark, MNCompactSeal, MNMonogramLinear, LogoVariant } from './MNLogos.tsx';
+import { NKMonogramMaster, NKWordmark, NKCompactSeal, NKMonogramLinear, LogoVariant } from './MNLogos.tsx';
 
 interface ExportItem {
   id: string;
@@ -14,13 +14,13 @@ export const AssetExportStudio: React.FC = () => {
   const [selectedVariant, setSelectedVariant] = useState<LogoVariant>('champagne-gold');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  // Raw SVG generators for true vector export
+  // Raw SVG generators for true vector export of N.K FABRICS
   const getMonogramSvg = (variant: LogoVariant) => {
     const isGold = variant === 'champagne-gold';
-    const fill = isGold ? 'url(#mnChampagneGold)' : variant === 'white' ? '#FAF8F5' : '#0C0C0C';
+    const fill = isGold ? 'url(#nkChampagneGold)' : variant === 'white' ? '#FAF8F5' : '#0C0C0C';
     const defs = isGold
       ? `<defs>
-    <linearGradient id="mnChampagneGold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="nkChampagneGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F5EBDC" />
       <stop offset="25%" stop-color="#D8BE96" />
       <stop offset="50%" stop-color="#C8A97E" />
@@ -33,32 +33,34 @@ export const AssetExportStudio: React.FC = () => {
     return `<svg width="512" height="512" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   ${defs}
   <g fill="${fill}" fill-rule="evenodd" clip-rule="evenodd">
-    <!-- Letter M Left Pillar -->
-    <path d="M 32 46 H 64 V 51 H 52 V 149 H 64 V 154 H 32 V 149 H 44 V 51 H 32 V 46 Z" />
-    <!-- Letter M Hairline Diagonal -->
-    <path d="M 50 46 L 89 144 H 94 L 54 46 H 50 Z" />
-    <!-- Letter M Ascending Diagonal -->
-    <path d="M 88 144 L 126 46 H 132 L 94 144 H 88 Z" />
-    <!-- Letter N Diagonal Weave -->
-    <path d="M 104 46 H 112 L 158 149 V 154 H 146 L 102 51 V 46 H 104 Z" />
-    <!-- Letter N Right Pillar -->
-    <path d="M 148 46 H 178 V 51 H 166 V 149 H 178 V 154 H 148 V 149 H 160 V 51 H 148 V 46 Z" />
-    <!-- Letter M Right Vertical Stem -->
-    <path d="M 124 46 H 136 V 149 H 124 V 46 Z" opacity="0.95" />
-    <!-- Signature Period -->
-    <circle cx="187" cy="151.5" r="3.5" />
+    <!-- Letter N Left Column & Roman Serifs -->
+    <path d="M 32 44 H 64 V 49 H 52 V 151 H 64 V 156 H 32 V 151 H 44 V 49 H 32 V 44 Z" />
+    <!-- Letter N Primary Diagonal Traverse -->
+    <path d="M 46 44 H 56 L 114 151 V 156 H 104 L 46 49 V 44 Z" />
+    <!-- Letter N Right Column & K Shared Spine -->
+    <path d="M 104 44 H 132 V 49 H 120 V 151 H 132 V 156 H 104 V 151 H 114 V 49 H 104 V 44 Z" />
+    <!-- Letter K Upper Ascending Arm -->
+    <path d="M 112 102 L 158 49 H 146 V 44 H 178 V 49 H 168 L 123 108 L 112 102 Z" />
+    <!-- Letter K Lower Descending Leg -->
+    <path d="M 116 98 L 126 94 L 168 151 H 178 V 156 H 146 V 151 H 156 L 122 106 L 116 98 Z" />
+    <!-- Optical interlock cut & ligature accent -->
+    <path d="M 115 95 L 121 101 L 117 106 L 111 100 Z" opacity="0.9" />
+    <!-- Signature N.K Atelier Dot -->
+    <circle cx="186" cy="153.5" r="3.5" />
   </g>
 </svg>`;
   };
 
   const getSealSvg = (variant: LogoVariant) => {
     const isGold = variant === 'champagne-gold';
-    const fill = isGold ? 'url(#mnSealGold)' : variant === 'white' ? '#FAF8F5' : '#0C0C0C';
+    const fill = isGold ? 'url(#nkSealGold)' : variant === 'white' ? '#FAF8F5' : '#0C0C0C';
     const defs = isGold
       ? `<defs>
-    <linearGradient id="mnSealGold" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="nkSealGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F5EBDC" />
+      <stop offset="25%" stop-color="#D8BE96" />
       <stop offset="50%" stop-color="#C8A97E" />
+      <stop offset="75%" stop-color="#EADECB" />
       <stop offset="100%" stop-color="#B39062" />
     </linearGradient>
   </defs>`
@@ -69,15 +71,22 @@ export const AssetExportStudio: React.FC = () => {
   <circle cx="120" cy="120" r="114" stroke="${fill}" stroke-width="1.2" opacity="0.8" />
   <circle cx="120" cy="120" r="108" stroke="${fill}" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.5" />
   <circle cx="120" cy="120" r="82" stroke="${fill}" stroke-width="0.8" opacity="0.6" />
+  <path id="sealUpperExport" d="M 32 120 A 88 88 0 0 1 208 120" fill="none" />
+  <path id="sealLowerExport" d="M 208 120 A 88 88 0 0 1 32 120" fill="none" />
+  <text fill="${fill}" font-size="8.5" font-family="Plus Jakarta Sans, sans-serif" letter-spacing="0.32em" font-weight="500">
+    <textPath href="#sealUpperExport" startOffset="50%" text-anchor="middle">N.K FABRICS · ATELIER</textPath>
+  </text>
+  <text fill="${fill}" font-size="7.5" font-family="Plus Jakarta Sans, sans-serif" letter-spacing="0.28em" opacity="0.75">
+    <textPath href="#sealLowerExport" startOffset="50%" text-anchor="middle">HAUTE COUTURE &amp; LUXURY TEXTILES</textPath>
+  </text>
   <g transform="translate(45, 45) scale(0.75)">
     <g fill="${fill}" fill-rule="evenodd" clip-rule="evenodd">
-      <path d="M 32 50 H 64 V 54 H 52 V 146 H 64 V 150 H 32 V 146 H 44 V 54 H 32 V 50 Z" />
-      <path d="M 50 50 L 89 142 H 94 L 54 50 H 50 Z" />
-      <path d="M 88 142 L 126 50 H 132 L 94 142 H 88 Z" />
-      <path d="M 104 50 H 112 L 158 146 V 150 H 146 L 102 54 V 50 H 104 Z" />
-      <path d="M 148 50 H 178 V 54 H 166 V 146 H 178 V 150 H 148 V 146 H 160 V 54 H 148 V 50 Z" />
-      <path d="M 124 50 H 136 V 146 H 124 V 50 Z" opacity="0.9" />
-      <circle cx="187" cy="148" r="3.5" />
+      <path d="M 32 44 H 64 V 49 H 52 V 151 H 64 V 156 H 32 V 151 H 44 V 49 H 32 V 44 Z" />
+      <path d="M 46 44 H 56 L 114 151 V 156 H 104 L 46 49 V 44 Z" />
+      <path d="M 104 44 H 132 V 49 H 120 V 151 H 132 V 156 H 104 V 151 H 114 V 49 H 104 V 44 Z" />
+      <path d="M 112 102 L 158 49 H 146 V 44 H 178 V 49 H 168 L 123 108 L 112 102 Z" />
+      <path d="M 116 98 L 126 94 L 168 151 H 178 V 156 H 146 V 151 H 156 L 122 106 L 116 98 Z" />
+      <circle cx="186" cy="153.5" r="3.5" />
     </g>
   </g>
 </svg>`;
@@ -88,23 +97,33 @@ export const AssetExportStudio: React.FC = () => {
     const stroke = isGold ? '#C8A97E' : variant === 'white' ? '#FAF8F5' : '#0C0C0C';
     return `<svg width="512" height="512" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g stroke="${stroke}" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter">
-    <line x1="42" y1="154" x2="42" y2="46" />
-    <line x1="42" y1="46" x2="88" y2="154" />
-    <line x1="88" y1="154" x2="134" y2="46" />
-    <line x1="134" y1="46" x2="168" y2="154" />
-    <line x1="168" y1="154" x2="168" y2="46" />
+    <line x1="42" y1="156" x2="42" y2="44" />
+    <line x1="42" y1="44" x2="114" y2="156" />
+    <line x1="114" y1="44" x2="114" y2="156" />
+    <line x1="114" y1="102" x2="164" y2="44" />
+    <line x1="114" y1="102" x2="164" y2="156" />
   </g>
-  <circle cx="184" cy="151" r="4" fill="${stroke}" />
+  <circle cx="182" cy="153.5" r="4" fill="${stroke}" />
+</svg>`;
+  };
+
+  const getWordmarkSvg = (variant: LogoVariant) => {
+    const isGold = variant === 'champagne-gold';
+    const fill = isGold ? '#C8A97E' : variant === 'white' ? '#FAF8F5' : '#0C0C0C';
+    const subFill = isGold ? '#C8A97E' : variant === 'white' ? '#D8D4CC' : '#555555';
+    return `<svg width="800" height="240" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="400" y="125" text-anchor="middle" font-family="Bodoni Moda, Cormorant Garamond, serif" font-size="52" letter-spacing="0.22em" fill="${fill}">N.K FABRICS</text>
+  <text x="400" y="165" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" letter-spacing="0.42em" font-weight="300" fill="${subFill}" opacity="0.85">HAUTE COUTURE &amp; LUXURY TEXTILES</text>
 </svg>`;
   };
 
   const ASSETS: ExportItem[] = [
     {
       id: 'master-monogram',
-      title: 'Primary M.N Monogram',
+      title: 'Primary N.K Monogram',
       category: 'Monogram',
-      recommendedFor: 'Suit interior label, blazer crest, garment hangtags, rigid gift boxes, favicon',
-      component: (v) => <MNMonogramMaster variant={v} size={110} />,
+      recommendedFor: 'Suit interior label, traditional clothing tags, garment hangtags, rigid gift boxes, favicon',
+      component: (v) => <NKMonogramMaster variant={v} size={110} />,
       svgCodeGenerator: getMonogramSvg,
     },
     {
@@ -112,7 +131,7 @@ export const AssetExportStudio: React.FC = () => {
       title: 'Compact Atelier Seal',
       category: 'Seal',
       recommendedFor: 'Laser engraved horn buttons, wax seals, brass cufflinks, social profile avatars',
-      component: (v) => <MNCompactSeal variant={v} size={120} />,
+      component: (v) => <NKCompactSeal variant={v} size={120} />,
       svgCodeGenerator: getSealSvg,
     },
     {
@@ -120,16 +139,16 @@ export const AssetExportStudio: React.FC = () => {
       title: 'Architectural Ribbon Mark',
       category: 'Modern',
       recommendedFor: 'Hardware metal zipper pulls, technical athletic knitwear, micro-stamping',
-      component: (v) => <MNMonogramLinear variant={v} size={110} />,
+      component: (v) => <NKMonogramLinear variant={v} size={110} />,
       svgCodeGenerator: getLinearSvg,
     },
     {
       id: 'full-wordmark',
-      title: 'M.N Wordmark Lockup',
+      title: 'N.K FABRICS Wordmark Lockup',
       category: 'Wordmark',
       recommendedFor: 'Storefront facade, garment exterior hangtags, website header, shopping bags',
-      component: (v) => <MNWordmark variant={v} size="md" subtitle="MAISON DE COUTURE" />,
-      svgCodeGenerator: getMonogramSvg, // fallback
+      component: (v) => <NKWordmark variant={v} size="md" subtitle="HAUTE COUTURE & LUXURY TEXTILES" />,
+      svgCodeGenerator: getWordmarkSvg,
     },
   ];
 
@@ -146,7 +165,7 @@ export const AssetExportStudio: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `MN_${item.id}_${selectedVariant}.svg`;
+    link.download = `NK_FABRICS_${item.id}_${selectedVariant}.svg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -165,7 +184,7 @@ export const AssetExportStudio: React.FC = () => {
             Master Identity Assets &amp; Vector Exports
           </h2>
           <p className="text-xs font-sans-clean text-white/60">
-            Download crisp, infinitely scalable vector SVGs or copy clean code directly into Figma, Illustrator, or garment embroidery digitizing workflows.
+            Download crisp, infinitely scalable vector SVGs or copy clean code directly into Figma, Illustrator, or garment embroidery digitizing workflows for N.K FABRICS.
           </p>
         </div>
 

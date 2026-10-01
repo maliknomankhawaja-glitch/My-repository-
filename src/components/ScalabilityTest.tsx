@@ -4,7 +4,7 @@ import { MNMonogramMaster, MNWordmark, MNCompactSeal } from './MNLogos.tsx';
 const PRESET_SIZES = [
   { size: 16, label: '16px', context: 'Browser Favicon / Tab' },
   { size: 24, label: '24px', context: 'Watch Crown & Lapel Pin' },
-  { size: 36, label: '36px', context: 'Horn Blazer Button' },
+  { size: 36, label: '36px', context: 'Suit Horn Button' },
   { size: 64, label: '64px', context: 'Shirt Cuff Embroidery' },
   { size: 128, label: '128px', context: 'Suit Interior Label' },
   { size: 256, label: '256px', context: 'Rigid Gift Box Lid' },

@@ -45,7 +45,7 @@ const PALETTE: ColorSwatch[] = [
     rgb: '244, 241, 234',
     cmyk: '2, 2, 5, 1',
     pantone: 'Pantone 11-0104 TCX',
-    role: 'Garment hangtags, tailored linen summer blazers, interior garment labels, cert envelopes',
+    role: 'Garment hangtags, tailored linen summer waistcoats & suiting, interior garment labels, cert envelopes',
     material: 'Irish linen, hand-milled textured paper, unbleached cotton twill',
     textColor: '#0C0C0C',
     border: true,
@@ -108,7 +108,7 @@ export const ColorPaletteSection: React.FC = () => {
           A Timeless Palette of Natural Fibers & Gilded Metallurgy
         </h2>
         <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-          Strictly devoid of artificial neon or saturated dyes. M.N&apos;s color system is rooted in the organic noble materials of traditional sartorial tailoring: midnight wools, raw bleached silks, bleached cotton cardstock, and understated champagne gold bullion.
+          Strictly devoid of artificial neon or saturated dyes. N.K FABRICS&apos;s color system is rooted in the organic noble materials of traditional sartorial tailoring: midnight wools, raw bleached silks, bleached cotton cardstock, and understated champagne gold bullion.
         </p>
       </div>
 
@@ -210,7 +210,7 @@ export const ColorPaletteSection: React.FC = () => {
           <div>
             <h3 className="font-serif-lux text-2xl text-[#FAF8F5]">Substrate Contrast Inspection</h3>
             <p className="text-xs font-sans-clean text-white/50 mt-1">
-              Test how the M.N logo and wordmark render against each of the brand&apos;s specified background tones.
+              Test how the N.K FABRICS logo and wordmark render against each of the brand&apos;s specified background tones.
             </p>
           </div>
 

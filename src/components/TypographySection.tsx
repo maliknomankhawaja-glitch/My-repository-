@@ -3,31 +3,31 @@ import { MNWordmark } from './MNLogos.tsx';
 
 const SUB_BRANDS = [
   {
-    tier: 'M.N BESPOKE',
+    tier: 'N.K BESPOKE',
     category: "Master Suiting & Savile Row Commissions",
     spec: 'Full canvas hand-padded lapels, basted fitting, 80 hours handcraft',
     font: 'Bodoni Moda / Cormorant Garamond',
   },
   {
-    tier: 'M.N SARTORIAL',
-    category: 'Formal Shirts, Trousers & Structured Blazers',
+    tier: 'N.K SARTORIAL',
+    category: 'Formal Shirts, Trousers & Structured Suits',
     spec: 'Fine Egyptian Giza 45 cotton, mother-of-pearl buttons, single-needle stitching',
     font: 'Bodoni Moda / Cormorant Garamond',
   },
   {
-    tier: 'M.N TRADITIONAL',
+    tier: 'N.K TRADITIONAL',
     category: 'Heritage Ceremony & Traditional Luxury Attire',
     spec: 'Hand-loomed brocades, pure zardozi gold embroidery, imperial silks',
     font: 'Bodoni Moda / Cormorant Garamond',
   },
   {
-    tier: 'M.N CASUAL',
+    tier: 'N.K CASUAL',
     category: 'Noble Knitwear & Weekend Cashmere',
     spec: '12-gauge 2-ply Mongolian cashmere, seamless knit, horn toggle fasteners',
     font: 'Plus Jakarta Sans',
   },
   {
-    tier: 'M.N ACCESSORIES',
+    tier: 'N.K ACCESSORIES',
     category: 'Handmade Footwear, Silk Ties & Fine Leatherware',
     spec: 'Goodyear welted French calfskin, 7-fold hand-rolled silk foulard',
     font: 'Plus Jakarta Sans',
@@ -46,10 +46,10 @@ export const TypographySection: React.FC = () => {
           Typographic System
         </div>
         <h2 className="font-display text-3xl md:text-5xl text-[#FAF8F5]">
-          Bespoke Serifs & Restrained Modern Sans
+          Bespoke Serifs &amp; Restrained Modern Sans
         </h2>
         <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-          The typographic voice of M.N alternates between statuesque Roman serif displays for brand statements and razor-sharp, whisper-quiet sans-serif typography for technical haberdashery specifications and digital utility.
+          The typographic voice of N.K FABRICS alternates between statuesque Roman serif displays for brand statements and razor-sharp, whisper-quiet sans-serif typography for technical haberdashery specifications and digital utility.
         </p>
       </div>
 
@@ -124,7 +124,7 @@ export const TypographySection: React.FC = () => {
           <div className="space-y-2">
             <span className="text-[10px] font-mono text-white/40 uppercase">Tabular Numerals (14px)</span>
             <p className="font-mono text-sm text-white/90 tabular-nums">
-              LOT: MN-2026/89 · GAUGE: 12 · COUNT: 2/60Nm
+              LOT: NK-2026/89 · GAUGE: 12 · COUNT: 2/60Nm
             </p>
           </div>
         </div>
@@ -153,14 +153,14 @@ export const TypographySection: React.FC = () => {
           <div className="space-y-1">
             <span className="text-[10px] font-mono text-white/40 uppercase">Display Serif (Large)</span>
             <div className="font-serif-lux text-3xl md:text-5xl text-[#FAF8F5] tracking-wide">
-              {testText || 'M.N Maison de Couture'}
+              {testText || 'N.K FABRICS Atelier de Couture'}
             </div>
           </div>
 
           <div className="space-y-1">
             <span className="text-[10px] font-mono text-white/40 uppercase">All-Caps Letterspaced Serif</span>
             <div className="font-serif-lux text-xl md:text-2xl text-[#C8A97E] tracking-[0.25em] uppercase">
-              {testText || 'M.N Haute Couture'}
+              {testText || 'N.K FABRICS Haute Couture'}
             </div>
           </div>
 
@@ -177,7 +177,7 @@ export const TypographySection: React.FC = () => {
       <div className="space-y-4">
         <h3 className="font-serif-lux text-2xl text-[#FAF8F5]">Sub-Brand Tier Architecture</h3>
         <p className="text-xs font-sans-clean text-white/60">
-          How the M.N brand identity extends across clothing categories without fragmenting brand equity.
+          How the N.K FABRICS brand identity extends across clothing categories without fragmenting brand equity.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">

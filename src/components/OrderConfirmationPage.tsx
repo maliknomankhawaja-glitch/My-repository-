@@ -46,7 +46,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
   return (
     <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-black py-12 md:py-20 px-6">
       <div className="max-w-4xl mx-auto space-y-12">
-        {/* REFINED M.N MONOGRAM ANIMATION / VISUAL HEADER */}
+        {/* REFINED N.K MONOGRAM ANIMATION / VISUAL HEADER */}
         <div className="text-center space-y-6">
           <div className="relative inline-block p-7 border border-[#C8A97E]/40 bg-[#141414] shadow-2xl mx-auto animate-in fade-in duration-700">
             <div className="absolute -inset-1.5 border border-[#C8A97E]/15 pointer-events-none animate-pulse" />
@@ -61,7 +61,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
               ORDER CONFIRMED
             </h1>
             <p className="text-sm sm:text-base font-serif-lux italic text-[#D8D4CC]/85 max-w-lg mx-auto">
-              Thank you for choosing M.N.
+              Thank you for choosing N.K FABRICS.
             </p>
             <p className="text-xs font-sans-clean text-white/50 max-w-md mx-auto font-light leading-relaxed">
               Your garments have been commissioned into our Savile Row and Milan master cutting ateliers. An electronic parchment receipt has been dispatched to <strong className="text-white font-normal">{order.customer.email}</strong>.
@@ -271,7 +271,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
             <div className="p-6 bg-[#161616] border border-[#C8A97E]/30 space-y-2 text-xs font-sans-clean text-white/70">
               <div className="flex items-center gap-2 text-[#C8A97E] font-medium">
                 <span>🎁</span>
-                <span>The M.N Packaging Ceremony</span>
+                <span>The N.K FABRICS Packaging Ceremony</span>
               </div>
               <p className="text-[11px] leading-relaxed">
                 Packaged in our signature 2.5mm grayboard rigid box, lined with acid-free tissue paper, sealed with champagne-gold wax, and certified by the master tailor.

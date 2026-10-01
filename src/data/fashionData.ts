@@ -80,14 +80,14 @@ export const SUIT_COLLECTION: GarmentProduct[] = [
     waistcoat: 'Six-Button Double-Breasted Horseshoe Waistcoat with Satin Back',
     shirtPairing: 'Sea Island 200/2 Cotton Poplin in Pure Ivory with French Cuffs',
     trouserTailoring: 'High-Rise, Extended 2-Button Tab Closure, Deep Inward Pleats, Side Buckle Adjusters',
-    buttonDetails: 'Hand-Polished Black Buffalo Horn with Micro-Etched M.N Monogram',
+    buttonDetails: 'Hand-Polished Black Buffalo Horn with Micro-Etched N.K FABRICS Monogram',
     stitching: 'Hand-Executed 1.5mm AMF Pick Stitching along Lapels, Flaps, and Vents',
     image: FORMAL_SUIT,
     description: 'The defining statement of modern tailoring. Hand-canvassed with horsehair chest piece for a natural roll that moulds to your posture. Paired with a tailored double-breasted waistcoat that sculpts the chest and creates an impeccable waistline.',
     features: [
       'Full floating horsehair canvas construction',
       'Hand-attached silk armhole sweat shields',
-      'Interior silk damask M.N woven maker label with tailor serial number',
+      'Interior silk damask N.K FABRICS woven maker label with tailor serial number',
       'Unfinished trouser hems for bespoke alteration to exact inseam',
     ],
   },
@@ -138,7 +138,7 @@ export const SUIT_COLLECTION: GarmentProduct[] = [
     features: [
       'Substantial flannel drape that sharpens body lines',
       'Double rear vents engineered to prevent bunching when seated',
-      'Full cupro lining printed with tonal M.N monogram micro-crest',
+      'Full cupro lining printed with tonal N.K FABRICS monogram micro-crest',
     ],
   },
   {
@@ -250,7 +250,7 @@ export const TRADITIONAL_COLLECTION = [
     price: '$1,650',
     tagline: 'Warm Beige Matka Silk with Gold Bullion Collar Accent',
     fabric: 'Hand-Loomed Matka Raw Silk (300g/m)',
-    details: 'Band Collar with Discreet M.N Champagne Gold Needlepoint, Four-Button Placket with M.N Micro-Engraved Buttons, Tailored Cuffs with Button Closure.',
+    details: 'Band Collar with Discreet N.K FABRICS Champagne Gold Needlepoint, Four-Button Placket with N.K Micro-Engraved Buttons, Tailored Cuffs with Button Closure.',
     waistcoatPairing: 'Pairs with Matching Sandstone Silk Waistcoat with Grosgrain Trim',
     image: ESSENTIALS_POLO,
     description: 'An earthen, regal palette honoring centuries of bespoke South Asian tailoring. The thick texture of Matka silk provides majestic volume and thermal comfort for winter weddings and evening banquets.',
@@ -282,7 +282,7 @@ export const ESSENTIALS_COLLECTION = [
     price: '$650',
     tagline: 'Swiss Giza 45 Cotton Poplin in Crisp Ivory',
     fabric: '100% Giza 45 Long-Staple Egyptian Cotton',
-    details: 'Semi-Spread Collar with Removable Brass Stays, Double French Cuffs with M.N Laser-Engraved Cufflink Slots, 22 Stitches per Inch.',
+    details: 'Semi-Spread Collar with Removable Brass Stays, Double French Cuffs with N.K FABRICS Laser-Engraved Cufflink Slots, 22 Stitches per Inch.',
     image: FABRIC_TEXTURE,
   },
   {
@@ -291,7 +291,7 @@ export const ESSENTIALS_COLLECTION = [
     price: '$380',
     tagline: '280gsm Ultra-Fine Peruvian Pima Cotton in Deep Noir',
     fabric: '100% Long-Staple Mercerized Pima Cotton',
-    details: 'Ribbed Bound Crewneck Collar that Never Sags, Subtle Blind Hems, Embroidered Tone-on-Tone M.N Monogram at Left Hip Hem.',
+    details: 'Ribbed Bound Crewneck Collar that Never Sags, Subtle Blind Hems, Embroidered Tone-on-Tone N.K FABRICS Monogram at Left Hip Hem.',
     image: HERO_MODELS,
   },
 ];

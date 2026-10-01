@@ -312,14 +312,14 @@ export const PremiumFooter: React.FC<PremiumFooterProps> = ({
             <div className="flex items-center gap-3">
               <MNMonogramMaster variant="champagne-gold" size={32} />
               <div className="font-serif-lux text-2xl text-[#FAF8F5] tracking-[0.18em]">
-                M.N
+                N.K FABRICS
               </div>
             </div>
             <p className="font-serif-lux italic text-sm text-[#D8D4CC]/85">
               &ldquo;Refined clothing. Distinctive style. Timeless confidence.&rdquo;
             </p>
             <p className="text-[11px] font-sans-clean text-white/40 leading-relaxed font-light">
-              Maison de Haute Couture rooted in classical British tailoring and Pakistani heritage craftsmanship.
+              Haute Couture house and luxury textile atelier rooted in classical tailoring and Pakistani heritage craftsmanship.
             </p>
           </div>
 
@@ -367,7 +367,7 @@ export const PremiumFooter: React.FC<PremiumFooterProps> = ({
       <div className="bg-[#050505] border-t border-white/5 py-6 px-6 text-xs text-white/40 font-sans-clean">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-[11px]">
           <div>
-            © 2026 M.N. ALL RIGHTS RESERVED. SAVILE ROW · MILAN · LAHORE · ISLAMABAD.
+            © 2026 N.K FABRICS. ALL RIGHTS RESERVED. SAVILE ROW · MILAN · LAHORE · ISLAMABAD.
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-white/50">

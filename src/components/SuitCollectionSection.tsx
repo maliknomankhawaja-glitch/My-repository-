@@ -37,7 +37,7 @@ export const SuitCollectionSection: React.FC<SuitSectionProps> = ({ onSelectSuit
             Maison Suiting Atelier
           </div>
           <h2 className="font-serif-lux text-3xl sm:text-5xl text-[#FAF8F5] tracking-wide">
-            THE M.N SUIT COLLECTION
+            THE N.K FABRICS SUIT COLLECTION
           </h2>
           <p className="text-sm font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed">
             Full-canvas bespoke suits, tailored waistcoats, and matched trousers. Cut from Super 150s Merino wool and cashmere weaves. Zero blazers — strictly complete, unified sartorial architecture.

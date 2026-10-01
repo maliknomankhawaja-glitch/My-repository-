@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MNMonogramMaster } from './MNLogos.tsx';
 import { ShopProduct, ALL_PRODUCTS } from '../data/shopProducts.ts';
 import { SizeGuideModal } from './SizeGuideModal.tsx';
@@ -36,7 +36,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   product,
   onCheckout,
 }) => {
-  const currentProduct = product || ALL_PRODUCTS[0]; // defaults to M.N Black Signature Suit
+  const currentProduct = product || ALL_PRODUCTS[0]; // defaults to N.K FABRICS Black Signature Suit
 
   // Gallery Angles - dynamically tailored with current product images
   const GALLERY_ANGLES = [
@@ -66,6 +66,32 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const [isZoomModalOpen, setIsZoomModalOpen] = useState<boolean>(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>('description');
   const [toastNotification, setToastNotification] = useState<string | null>(null);
+
+  // Touch swipe detection for mobile gallery
+  const touchStartXRef = useRef<number | null>(null);
+  const touchEndXRef = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndXRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartXRef.current === null || touchEndXRef.current === null) return;
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 40) {
+      // Swiped left -> next
+      setActiveImageIndex((prev) => (prev < GALLERY_ANGLES.length - 1 ? prev + 1 : 0));
+    } else if (distance < -40) {
+      // Swiped right -> prev
+      setActiveImageIndex((prev) => (prev > 0 ? prev - 1 : GALLERY_ANGLES.length - 1));
+    }
+    touchStartXRef.current = null;
+    touchEndXRef.current = null;
+  };
 
   // Styling Section Checks
   const [stylingShirtAdded, setStylingShirtAdded] = useState<boolean>(false);
@@ -148,7 +174,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean">
+    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean pb-24 lg:pb-0">
       {/* Toast Notice */}
       {toastNotification && (
         <div className="fixed top-24 right-6 z-50 bg-[#C8A97E] text-black px-6 py-3.5 shadow-2xl text-xs font-mono font-medium flex items-center gap-2 border border-black/20 animate-in fade-in slide-in-from-top-4">
@@ -161,7 +187,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       <div className="max-w-7xl mx-auto px-6 pt-6 pb-4">
         <div className="flex items-center gap-2 text-xs font-sans-clean text-white/50 tracking-wider">
           <button onClick={onBackToShop} className="hover:text-[#C8A97E] transition-colors">
-            M.N Collection
+            N.K FABRICS Collection
           </button>
           <span>/</span>
           <button onClick={onBackToShop} className="hover:text-[#C8A97E] transition-colors">
@@ -176,11 +202,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       <section className="max-w-7xl mx-auto px-6 py-4 md:py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* LEFT: IMMERSIVE 8-ANGLE GALLERY */}
-          <div className="lg:col-span-7 space-y-4">
-            {/* Main Primary Viewport */}
+          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
+            {/* Main Primary Viewport with Mobile Touch-Swipe */}
             <div
-              className="relative h-[580px] sm:h-[680px] md:h-[740px] bg-[#0A0A0A] border border-white/10 overflow-hidden group cursor-zoom-in"
+              className="relative h-[420px] xs:h-[480px] sm:h-[680px] md:h-[740px] bg-[#0A0A0A] border border-white/10 overflow-hidden group cursor-zoom-in touch-pan-y"
               onClick={() => setIsZoomModalOpen(true)}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               <img
                 src={GALLERY_ANGLES[activeImageIndex].image}
@@ -193,14 +222,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
               {/* Angle Description Label */}
-              <div className="absolute bottom-5 left-5 bg-black/80 backdrop-blur-md px-3.5 py-1.5 border border-white/10 text-[11px] font-mono uppercase text-[#FAF8F5] tracking-wider flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C8A97E]" />
-                <span>{GALLERY_ANGLES[activeImageIndex].label}</span>
+              <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-black/80 backdrop-blur-md px-3 sm:px-3.5 py-1.5 border border-white/10 text-[10px] sm:text-[11px] font-mono uppercase text-[#FAF8F5] tracking-wider flex items-center gap-2 max-w-[85%] truncate">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C8A97E] shrink-0" />
+                <span className="truncate">{GALLERY_ANGLES[activeImageIndex].label}</span>
+              </div>
+
+              {/* Mobile Swipe Hint Badge */}
+              <div className="sm:hidden absolute top-4 left-4 bg-black/60 backdrop-blur-md px-2.5 py-1 border border-white/10 text-[9px] font-mono uppercase text-[#C8A97E] tracking-wider pointer-events-none">
+                Swipe ↔
               </div>
 
               {/* Click to Expand Prompt */}
-              <div className="absolute top-5 right-5 bg-black/60 backdrop-blur-md px-3 py-1 border border-white/10 text-[10px] font-mono uppercase text-white/70 opacity-0 group-hover:opacity-100 transition-opacity">
-                Click to Zoom (8K View)
+              <div className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-black/60 backdrop-blur-md px-2.5 sm:px-3 py-1 border border-white/10 text-[9px] sm:text-[10px] font-mono uppercase text-white/70 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                Zoom (8K View)
               </div>
 
               {/* Navigation Arrows for Quick Prev/Next */}
@@ -209,7 +243,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   e.stopPropagation();
                   setActiveImageIndex((prev) => (prev > 0 ? prev - 1 : GALLERY_ANGLES.length - 1));
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 text-white/80 hover:text-white flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/70 text-white/90 hover:text-white flex items-center justify-center border border-white/15 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity active:scale-90"
                 aria-label="Previous image"
               >
                 ←
@@ -219,20 +253,34 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   e.stopPropagation();
                   setActiveImageIndex((prev) => (prev < GALLERY_ANGLES.length - 1 ? prev + 1 : 0));
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 text-white/80 hover:text-white flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/70 text-white/90 hover:text-white flex items-center justify-center border border-white/15 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity active:scale-90"
                 aria-label="Next image"
               >
                 →
               </button>
             </div>
 
+            {/* Mobile Pagination Dot Bar */}
+            <div className="flex sm:hidden items-center justify-center gap-1.5 py-1">
+              {GALLERY_ANGLES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImageIndex(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    activeImageIndex === idx ? 'w-5 bg-[#C8A97E]' : 'w-1.5 bg-white/20'
+                  }`}
+                  aria-label={`View angle ${idx + 1}`}
+                />
+              ))}
+            </div>
+
             {/* 8-Thumbnail Carousel Strip */}
-            <div className="grid grid-cols-4 sm:grid-cols-8 gap-2.5">
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 sm:gap-2.5">
               {GALLERY_ANGLES.map((angle, idx) => (
                 <button
                   key={angle.id}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative h-24 sm:h-28 overflow-hidden border transition-all ${
+                  className={`relative h-20 sm:h-28 overflow-hidden border transition-all ${
                     activeImageIndex === idx
                       ? 'border-[#C8A97E] ring-1 ring-[#C8A97E] opacity-100'
                       : 'border-white/15 opacity-60 hover:opacity-100'
@@ -261,12 +309,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 <div className="flex items-center gap-2">
                   <MNMonogramMaster variant="champagne-gold" size={24} />
                   <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#C8A97E]">
-                    M.N Haute Couture Sartorial
+                    N.K FABRICS Sartorial Atelier
                   </span>
                 </div>
 
                 <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-                  Art. MN-SUIT-001
+                  Art. NK-SUIT-001
                 </div>
               </div>
 
@@ -298,12 +346,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 <span className="text-[10px] font-mono text-white/40">5 Sartorial Tones</span>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
                 {COLOR_OPTIONS.map((col) => (
                   <button
                     key={col.name}
                     onClick={() => setSelectedColor(col.name)}
-                    className={`relative w-8 h-8 rounded-full border transition-all flex items-center justify-center ${
+                    className={`relative w-9 h-9 sm:w-8 sm:h-8 rounded-full border transition-all flex items-center justify-center touch-manipulation active:scale-95 ${
                       selectedColor === col.name
                         ? 'ring-2 ring-[#C8A97E] scale-110 border-white'
                         : 'border-white/20 hover:scale-105 opacity-80 hover:opacity-100'
@@ -328,20 +376,20 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
                 <button
                   onClick={() => setIsSizeGuideOpen(true)}
-                  className="text-xs font-mono uppercase text-[#C8A97E] hover:underline flex items-center gap-1"
+                  className="text-xs font-mono uppercase text-[#C8A97E] hover:underline flex items-center gap-1 p-1 touch-manipulation"
                 >
                   <span>SIZE GUIDE</span>
                   <span className="text-[10px]">📏</span>
                 </button>
               </div>
 
-              {/* Sizes Grid */}
-              <div className="grid grid-cols-6 gap-2">
+              {/* Sizes Grid: 3 cols on mobile, 6 on desktop */}
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                 {SIZES.map((sz) => (
                   <button
                     key={sz}
                     onClick={() => setSelectedSize(sz)}
-                    className={`py-3 text-xs font-mono font-medium border transition-all text-center ${
+                    className={`py-3 text-xs font-mono font-medium border transition-all min-h-[44px] flex items-center justify-center touch-manipulation active:scale-95 ${
                       selectedSize === sz
                         ? 'bg-[#FAF8F5] text-black border-white font-bold'
                         : 'bg-black/40 border-white/15 text-white/70 hover:border-white/40 hover:text-white'
@@ -443,7 +491,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {activeAccordion === 'description' && (
                   <div className="pb-4 text-white/70 font-light leading-relaxed space-y-2">
                     <p>
-                      The M.N Signature Suit represents the quintessential harmony between classical Savile Row tailoring and modern Italian lightness. Each suit is constructed with an authentic full floating horsehair canvas that molds organically to the contours of your posture over time.
+                      The N.K FABRICS Signature Suit represents the quintessential harmony between classical Savile Row tailoring and modern Italian lightness. Each suit is constructed with an authentic full floating horsehair canvas that molds organically to the contours of your posture over time.
                     </p>
                     <p>
                       Comes complete with single-breasted two-button jacket, high-rise forward-pleated trousers with side tabs, and matching tailored five-button waistcoat.
@@ -465,8 +513,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <div className="pb-4 text-white/70 font-light leading-relaxed space-y-2">
                     <p>• <strong>Primary Cloth</strong>: 90% Super 160s Virgin Wool, 10% Mongolian Cashmere (270g/m).</p>
                     <p>• <strong>Mill Origin</strong>: Loro Piana, Quarona, Piedmont, Italy.</p>
-                    <p>• <strong>Internal Lining</strong>: 100% Cupro Bemberg (breathable, anti-static, printed with tone-on-tone M.N monogram).</p>
-                    <p>• <strong>Hardware</strong>: Solid natural water buffalo horn buttons, laser-engraved with M.N atelier signature.</p>
+                    <p>• <strong>Internal Lining</strong>: 100% Cupro Bemberg (breathable, anti-static, printed with tone-on-tone N.K FABRICS monogram).</p>
+                    <p>• <strong>Hardware</strong>: Solid natural water buffalo horn buttons, laser-engraved with N.K FABRICS atelier signature.</p>
                   </div>
                 )}
               </div>
@@ -616,7 +664,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </span>
               <h3 className="font-serif-lux text-2xl text-[#FAF8F5]">Genuine Horn Buttons</h3>
               <p className="text-xs font-sans-clean text-white/60 font-light leading-relaxed">
-                Carved from solid water buffalo horn, matte burnished, and laser-etched with the M.N monogram. Hand-sewn with thread-shank cross stitching for indestructible permanence.
+                Carved from solid water buffalo horn, matte burnished, and laser-etched with the N.K monogram. Hand-sewn with thread-shank cross stitching for indestructible permanence.
               </p>
             </div>
 
@@ -701,7 +749,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="lg:col-span-6 relative h-[480px] bg-black border border-white/10 overflow-hidden">
             <img
               src={IMG_STYLING}
-              alt="Complete M.N Signature Suit Look"
+              alt="Complete N.K FABRICS Signature Suit Look"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-top brightness-[0.88]"
             />
@@ -718,7 +766,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="pt-2 flex items-center justify-between">
                 <div className="space-y-0.5">
                   <div className="text-xs font-mono text-[#C8A97E] uppercase">Foundation</div>
-                  <div className="font-serif-lux text-lg text-white">M.N Signature Suit</div>
+                  <div className="font-serif-lux text-lg text-white">N.K FABRICS Signature Suit</div>
                   <div className="text-xs font-mono text-white/60">$4,200 (Selected)</div>
                 </div>
                 <span className="text-xs font-mono text-white/40">✓ Included Above</span>
@@ -797,7 +845,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               Boutique Presentation
             </div>
             <h2 className="font-serif-lux text-3xl sm:text-5xl text-[#FAF8F5] tracking-wide">
-              THE M.N PACKAGING CEREMONY
+              THE N.K FABRICS PACKAGING CEREMONY
             </h2>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed">
               Every commission arrives as a ceremonial gift to yourself. Packaged in archival 2.5mm grayboard rigid boxes, sealed with champagne gold wax, and hand-signed by your tailor.
@@ -809,13 +857,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div className="relative h-[420px] bg-black border border-white/10 overflow-hidden">
               <img
                 src={IMG_PACKAGING_UNBOXING}
-                alt="M.N Luxury Packaging Suite"
+                alt="N.K FABRICS Luxury Packaging Suite"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover brightness-[0.9]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                 <div className="text-white space-y-1">
-                  <div className="font-serif-lux text-lg text-[#FAF8F5]">M.N Archival Rigid Garment Box</div>
+                  <div className="font-serif-lux text-lg text-[#FAF8F5]">N.K FABRICS Archival Rigid Garment Box</div>
                   <div className="text-xs text-[#C8A97E]">Wrapped in Charcoal Bookcloth with Gold Foil Stamp</div>
                 </div>
               </div>
@@ -825,7 +873,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div className="relative h-[420px] bg-black border border-white/10 overflow-hidden">
               <img
                 src={IMG_PACKAGING_BAG}
-                alt="M.N Shopping Bag & Tissue"
+                alt="N.K FABRICS Shopping Bag &amp; Tissue"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover brightness-[0.9]"
               />
@@ -1045,8 +1093,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       {/* 9. MOBILE STICKY BOTTOM ACTION BAR */}
       <div className="fixed bottom-0 inset-x-0 z-40 bg-[#121212]/95 backdrop-blur-md border-t border-white/15 p-4 sm:hidden flex items-center justify-between gap-4">
         <div>
-          <div className="text-[10px] font-mono text-white/50 uppercase">M.N Signature Suit</div>
-          <div className="font-mono text-base font-bold text-[#FAF8F5]">$4,200</div>
+          <div className="text-[10px] font-mono text-white/50 uppercase">{currentProduct.name}</div>
+          <div className="font-mono text-base font-bold text-[#FAF8F5]">{currentProduct.formattedPrice}</div>
         </div>
 
         <div className="flex items-center gap-2">

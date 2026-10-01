@@ -57,7 +57,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <MNMonogramMaster variant="champagne-gold" size={26} />
             <div>
               <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">
-                Maison M.N
+                N.K FABRICS
               </div>
               <h3 className="font-serif-lux text-xl text-[#FAF8F5] tracking-wide">
                 Shopping Bag
@@ -95,7 +95,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           {items.length === 0 ? (
             /* 4. EMPTY SHOPPING BAG STATE */
             <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12 px-4">
-              {/* Subtle M.N Visual Treatment */}
+              {/* Subtle N.K FABRICS Visual Treatment */}
               <div className="relative p-6 border border-[#C8A97E]/30 bg-[#141414] shadow-2xl">
                 <div className="absolute -inset-1 border border-[#C8A97E]/10 pointer-events-none" />
                 <MNCompactSeal variant="champagne-gold" size={72} />

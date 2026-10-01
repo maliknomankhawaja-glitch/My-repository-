@@ -27,13 +27,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 }) => {
   return (
     <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-black">
-      {/* 1. ABOUT M.N HERO SECTION */}
+      {/* 1. ABOUT N.K FABRICS HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-white/10">
         {/* Background Editorial Image with Luxury Vignette */}
         <div className="absolute inset-0 z-0">
           <img
             src={IMG_HERO}
-            alt="The M.N Standard"
+            alt="The N.K Standard"
             className="w-full h-full object-cover object-center filter brightness-[0.42] scale-105 animate-pulse duration-[10000ms]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-[#0C0C0C]/80" />
@@ -45,13 +45,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           <div className="inline-flex items-center gap-3 px-4 py-1.5 border border-[#C8A97E]/30 bg-black/50 backdrop-blur-md">
             <MNMonogramMaster variant="champagne-gold" size={20} />
             <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-[#C8A97E]">
-              Maison de Haute Couture
+              N.K FABRICS Atelier
             </span>
           </div>
 
           <div className="space-y-4">
             <h1 className="font-serif-lux text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF8F5] tracking-[0.06em] leading-[1.05]">
-              THE M.N STANDARD
+              THE N.K STANDARD
             </h1>
             <p className="font-serif-lux text-xl sm:text-2xl md:text-3xl text-[#E6DFD5] italic font-light tracking-wide max-w-2xl mx-auto">
               Refined clothing. Distinctive style. Timeless confidence.
@@ -60,7 +60,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
           <div className="max-w-xl mx-auto pt-2">
             <p className="text-xs sm:text-sm font-sans-clean text-[#D8D4CC]/75 font-light leading-relaxed">
-              M.N exists to craft pieces that honor the human form through balanced proportion, rigorous tailoring, and architectural poise. Every garment is conceived for moments that demand quiet distinction.
+              N.K FABRICS exists to craft pieces that honor the human form through balanced proportion, rigorous tailoring, and architectural poise. Every garment is conceived for moments that demand quiet distinction.
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
             <div className="space-y-5 text-sm sm:text-base font-sans-clean text-[#D8D4CC]/85 font-light leading-relaxed">
               <p>
-                M.N represents refined personal style. We believe that true distinction requires no exclamation; it speaks through the poise of an unhurried cut, the substance of virgin wool, and the subtle resonance of an architecturally balanced shoulder.
+                N.K FABRICS represents refined personal style. We believe that true distinction requires no exclamation; it speaks through the poise of an unhurried cut, the substance of virgin wool, and the subtle resonance of an architecturally balanced shoulder.
               </p>
               <p>
                 Every piece in the collection is designed with unwavering attention to proportion, detail, fabric, and finishing. By respecting classic tailoring while stripping away superfluous ornament, we create clothing that combines modern sophistication with enduring relevance.
@@ -116,7 +116,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <div className="relative border border-white/15 p-2 bg-[#121212] shadow-2xl">
               <img
                 src={IMG_SUIT_FORMAL}
-                alt="M.N Atelier Tailoring"
+                alt="N.K FABRICS Atelier Tailoring"
                 className="w-full h-auto object-cover object-top border border-white/10"
               />
               <div className="p-4 bg-[#141414] border-t border-white/10 flex items-center justify-between">
@@ -135,14 +135,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         </div>
       </section>
 
-      {/* 3. THE M.N PHILOSOPHY (3 PILLARS) */}
+      {/* 3. THE N.K FABRICS PHILOSOPHY (3 PILLARS) */}
       <section className="py-24 px-6 max-w-7xl mx-auto border-b border-white/10">
         <div className="text-center space-y-3 mb-16">
           <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-[#C8A97E]">
             Foundational Tenets
           </span>
           <h2 className="font-serif-lux text-3xl sm:text-5xl text-[#FAF8F5] tracking-wide">
-            THE M.N PHILOSOPHY
+            THE N.K FABRICS PHILOSOPHY
           </h2>
           <p className="text-xs sm:text-sm font-sans-clean text-white/50 max-w-lg mx-auto font-light">
             Three sovereign principles that govern every stitch, cut, and pattern in our maison.
@@ -218,7 +218,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             </h2>
           </div>
           <p className="text-xs font-sans-clean text-white/50 max-w-md font-light">
-            An intimate inspection of the components, textiles, and finishing methods shaping the M.N collection.
+            An intimate inspection of the components, textiles, and finishing methods shaping the N.K FABRICS collection.
           </p>
         </div>
 
@@ -307,7 +307,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 Cuffs &amp; Horn Buttons
               </h4>
               <p className="text-xs font-sans-clean text-white/60 leading-relaxed font-light">
-                Natural horn buttons engraved with subtle M.N hallmarks, hand-sewn with functional working cuff slits.
+                Natural horn buttons engraved with subtle N.K hallmarks, hand-sewn with functional working cuff slits.
               </p>
             </div>
           </div>
@@ -366,7 +366,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <div className="border border-white/15 p-2 bg-[#121212] shadow-2xl">
               <img
                 src={IMG_SUIT_FORMAL}
-                alt="The M.N Formal Suit"
+                alt="The N.K FABRICS Formal Suit"
                 className="w-full h-auto object-cover object-top border border-white/10"
               />
               <div className="p-4 bg-[#141414] border-t border-white/10 flex items-center justify-between text-xs font-sans-clean">
@@ -390,7 +390,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             </div>
 
             <p className="text-sm sm:text-base font-sans-clean text-[#D8D4CC]/85 font-light leading-relaxed">
-              M.N takes an architectural approach to formal suiting. Rather than following transient fashion cycles, we engineer suits around balanced proportions, clean silhouettes, and comfortable movement that allows the wearer to remain composed through long formal gatherings.
+              N.K FABRICS takes an architectural approach to formal suiting. Rather than following transient fashion cycles, we engineer suits around balanced proportions, clean silhouettes, and comfortable movement that allows the wearer to remain composed through long formal gatherings.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -497,7 +497,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         </div>
       </section>
 
-      {/* 7. M.N DETAILS (EDITORIAL STATEMENTS) */}
+      {/* 7. N.K FABRICS DETAILS (EDITORIAL STATEMENTS) */}
       <section className="py-28 md:py-36 px-6 bg-[#090909] border-b border-white/10 text-center">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-[11px] font-mono uppercase tracking-[0.4em] text-[#C8A97E]">
@@ -566,7 +566,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <div className="text-[11px] font-mono text-[#C8A97E]">04</div>
             <h3 className="font-serif-lux text-xl text-[#FAF8F5]">INDIVIDUALITY</h3>
             <p className="text-xs font-sans-clean text-white/60 font-light leading-relaxed">
-              M.N pieces should allow personal style to stand out. Our silhouettes serve as the architectural frame for the client’s own presence.
+              N.K FABRICS pieces should allow personal style to stand out. Our silhouettes serve as the architectural frame for the client’s own presence.
             </p>
           </div>
         </div>
@@ -583,7 +583,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             Experience The Maison
           </span>
           <h2 className="font-serif-lux text-4xl sm:text-5xl text-[#FAF8F5] tracking-wide">
-            DISCOVER M.N
+            DISCOVER N.K FABRICS
           </h2>
           <p className="text-sm font-sans-clean text-[#D8D4CC]/80 font-light max-w-md mx-auto leading-relaxed">
             Explore the collection and find pieces made for your moment.

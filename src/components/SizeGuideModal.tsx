@@ -196,7 +196,7 @@ export const SizeGuideModal: React.FC<SizeGuideProps> = ({ isOpen, onClose }) =>
               Bespoke Made-to-Measure Guarantee
             </div>
             <p className="text-[11px] leading-relaxed font-light">
-              All M.N suit trousers arrive with generous 2-inch inlay seam allowances and unhemmed cuffs, enabling your personal tailor or our atelier master to finish the break to your exact shoe height. Made-to-Measure orders include virtual concierge measurement consultation.
+              All N.K FABRICS suit trousers arrive with generous 2-inch inlay seam allowances and unhemmed cuffs, enabling your personal tailor or our atelier master to finish the break to your exact shoe height. Made-to-Measure orders include virtual concierge measurement consultation.
             </p>
           </div>
         </div>

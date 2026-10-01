@@ -40,7 +40,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
             <MNMonogramMaster variant="champagne-gold" size={26} />
             <div>
               <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">
-                Maison M.N
+                N.K FABRICS
               </div>
               <h3 className="font-serif-lux text-xl sm:text-2xl text-[#FAF8F5]">
                 CLIENT CONCIERGE &amp; ACCOUNT
@@ -163,7 +163,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                   For bespoke tailoring adjustments, private showroom appointments in London, Milan, Lahore, or worldwide home fittings:
                 </p>
                 <div className="font-mono text-[11px] text-[#C8A97E] pt-1">
-                  concierge@maison-mn.com · +44 20 7946 0912
+                  concierge@nkfabrics.com · +44 20 7946 0912
                 </div>
               </div>
             </div>

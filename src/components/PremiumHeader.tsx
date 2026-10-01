@@ -113,24 +113,24 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
         }`}
         onMouseLeave={handleMouseLeaveNav}
       >
-        <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto h-full px-3.5 sm:px-6 flex items-center justify-between">
           {/* LEFT: N.K FABRICS BRAND LOGO */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <button
               onClick={onNavigateHome}
-              className="flex items-center gap-3 group text-left transition-opacity hover:opacity-90"
+              className="flex items-center gap-2.5 sm:gap-3 group text-left transition-opacity hover:opacity-90"
               aria-label="N.K FABRICS Homepage"
             >
-              <MNMonogramMaster variant="champagne-gold" size={isScrolled ? 26 : 30} />
+              <MNMonogramMaster variant="champagne-gold" size={isScrolled ? 24 : 28} />
               <div className="flex flex-col">
                 <span
-                  className={`font-serif-lux text-[#FAF8F5] tracking-[0.2em] font-semibold leading-none transition-all duration-300 ${
-                    isScrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'
+                  className={`font-serif-lux text-[#FAF8F5] tracking-[0.18em] sm:tracking-[0.2em] font-semibold leading-none transition-all duration-300 ${
+                    isScrolled ? 'text-base sm:text-xl' : 'text-lg sm:text-2xl'
                   }`}
                 >
                   N.K FABRICS
                 </span>
-                <span className="text-[7.5px] sm:text-[8px] font-mono uppercase tracking-[0.28em] text-[#C8A97E]/80 mt-1">
+                <span className="text-[7px] sm:text-[8px] font-mono uppercase tracking-[0.24em] sm:tracking-[0.28em] text-[#C8A97E]/80 mt-1">
                   Haute Couture &amp; Textiles
                 </span>
               </div>
@@ -266,17 +266,17 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
             </button>
           </nav>
 
-          {/* RIGHT UTILITY ICONS: SEARCH, ACCOUNT, WISHLIST, SHOPPING BAG */}
-          <div className="flex items-center gap-4 sm:gap-6">
+          {/* RIGHT UTILITY ICONS: SEARCH, ACCOUNT, WISHLIST, SHOPPING BAG, MENU TOGGLE */}
+          <div className="flex items-center gap-1 sm:gap-4 md:gap-6">
             {/* Search Icon */}
             <button
               onClick={onOpenSearch}
-              className="flex items-center gap-1.5 text-xs text-white/70 hover:text-[#C8A97E] transition-colors group p-1"
+              className="flex items-center justify-center gap-1.5 text-xs text-white/70 hover:text-[#C8A97E] active:text-[#C8A97E] transition-colors group p-2.5 min-w-[44px] min-h-[44px] touch-manipulation active:scale-95"
               title="Search Creations (ESC)"
               aria-label="Search Creations"
             >
               <svg
-                className="w-4 h-4 text-white/70 group-hover:text-[#C8A97E] transition-colors"
+                className="w-4 h-4 text-white/75 group-hover:text-[#C8A97E] transition-colors"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -293,10 +293,10 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
               </span>
             </button>
 
-            {/* Account Icon */}
+            {/* Account Icon (Desktop) */}
             <button
               onClick={onOpenAccount}
-              className="flex items-center gap-1.5 text-xs text-white/70 hover:text-[#C8A97E] transition-colors group p-1"
+              className="hidden sm:flex items-center gap-1.5 text-xs text-white/70 hover:text-[#C8A97E] transition-colors group p-2 min-h-[44px]"
               title="Client Account &amp; Concierge"
               aria-label="Client Account &amp; Concierge"
             >
@@ -321,7 +321,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
             {/* Wishlist Icon */}
             <button
               onClick={onNavigateWishlist}
-              className="relative flex items-center gap-1.5 text-xs text-white/70 hover:text-[#C8A97E] transition-colors group p-1"
+              className="relative flex items-center justify-center gap-1.5 text-xs text-white/70 hover:text-[#C8A97E] active:text-[#C8A97E] transition-colors group p-2.5 min-w-[44px] min-h-[44px] touch-manipulation active:scale-95"
               title="Saved Wishlist"
               aria-label="Saved Wishlist"
             >
@@ -332,7 +332,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                 Wishlist
               </span>
               {wishlistCount > 0 && (
-                <span className="font-mono text-[9px] bg-[#C8A97E] text-black font-semibold rounded-full w-4 h-4 flex items-center justify-center -ml-0.5 animate-in zoom-in-50 duration-200">
+                <span className="absolute top-1 right-0.5 sm:static font-mono text-[9px] bg-[#C8A97E] text-black font-semibold rounded-full w-4 h-4 flex items-center justify-center -ml-0.5 animate-in zoom-in-50 duration-200">
                   {wishlistCount}
                 </span>
               )}
@@ -341,12 +341,12 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
             {/* Shopping Bag Icon */}
             <button
               onClick={onNavigateCart}
-              className="relative flex items-center gap-2 text-xs bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#C8A97E]/50 px-3 py-1.5 transition-all group"
+              className="relative flex items-center gap-1.5 sm:gap-2 text-xs bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#C8A97E]/50 px-2.5 sm:px-3 py-2 transition-all group min-h-[44px] touch-manipulation active:scale-95"
               title="Shopping Bag"
               aria-label="Shopping Bag"
             >
               <svg
-                className="w-3.5 h-3.5 text-white/70 group-hover:text-[#C8A97E] transition-colors"
+                className="w-3.5 h-3.5 text-white/75 group-hover:text-[#C8A97E] transition-colors"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -358,7 +358,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                   d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"
                 />
               </svg>
-              <span className="text-[10px] font-mono text-white/80 group-hover:text-[#C8A97E] uppercase tracking-wider">
+              <span className="hidden xs:inline text-[10px] font-mono text-white/80 group-hover:text-[#C8A97E] uppercase tracking-wider">
                 Bag
               </span>
               <span className="font-mono text-[10px] text-[#C8A97E] font-bold">
@@ -369,7 +369,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
             {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white/70 hover:text-white border border-white/10 focus:outline-none"
+              className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/80 hover:text-white border border-white/10 active:bg-white/10 transition-colors focus:outline-none touch-manipulation active:scale-95"
               aria-label="Toggle Mobile Navigation"
             >
               {isMobileMenuOpen ? (
@@ -728,62 +728,102 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
 
       {/* 4. EXPANDABLE MOBILE MENU DRAWER */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-[65px] z-50 bg-[#0C0C0C]/98 backdrop-blur-2xl overflow-y-auto p-6 flex flex-col justify-between animate-in slide-in-from-top-4 duration-300">
+        <div className={`fixed inset-x-0 bottom-0 ${isScrolled ? 'top-16' : 'top-20'} z-50 bg-[#0C0C0C]/98 backdrop-blur-2xl overflow-y-auto px-5 py-6 pb-safe flex flex-col justify-between animate-in fade-in slide-in-from-top-3 duration-250`}>
           <div className="space-y-6">
-            {/* Quick action bar */}
-            <div className="grid grid-cols-2 gap-3 pb-4 border-b border-white/10 text-xs font-mono">
+            {/* Mobile Header Brand & Close Header */}
+            <div className="flex items-center justify-between pb-4 border-b border-white/10">
+              <div className="flex items-center gap-2.5">
+                <MNMonogramMaster variant="champagne-gold" size={26} />
+                <span className="font-serif-lux text-base text-[#FAF8F5] tracking-[0.18em]">
+                  N.K FABRICS
+                </span>
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-1.5 py-1 px-2.5 border border-white/15 text-[10px] font-mono uppercase tracking-widest text-[#C8A97E] hover:text-white hover:border-[#C8A97E] active:scale-95 transition-all"
+                aria-label="Close Menu"
+              >
+                <span>✕</span>
+                <span>Close</span>
+              </button>
+            </div>
+
+            {/* Quick action bar: Search, Wishlist, Bag, Account */}
+            <div className="grid grid-cols-2 gap-2.5 pb-2 text-xs font-mono">
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   onOpenSearch();
                 }}
-                className="py-2.5 px-3 bg-[#141414] border border-white/10 flex items-center justify-center gap-2 text-white/80"
+                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
               >
                 <span>🔍 Search</span>
               </button>
+
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onNavigateWishlist();
+                }}
+                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
+              >
+                <span>♡ Wishlist ({wishlistCount})</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onNavigateCart();
+                }}
+                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
+              >
+                <span>🛍 Bag ({cartCount})</span>
+              </button>
+
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   onOpenAccount();
                 }}
-                className="py-2.5 px-3 bg-[#141414] border border-white/10 flex items-center justify-center gap-2 text-white/80"
+                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
               >
-                <span>👤 Account</span>
+                <span>👤 Concierge</span>
               </button>
             </div>
 
             {/* Navigation links & accordions */}
-            <div className="space-y-1 divide-y divide-white/5">
+            <div className="space-y-1 divide-y divide-white/5 pt-1">
               {/* New Arrivals */}
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   onNavigateShop('new-arrivals');
                 }}
-                className="w-full py-3.5 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                className="w-full py-4 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] active:text-[#C8A97E] flex items-center justify-between"
               >
-                New Arrivals
+                <span>New Arrivals</span>
+                <span className="text-[10px] font-mono text-[#C8A97E] uppercase tracking-wider">New</span>
               </button>
 
               {/* Suits Accordion */}
               <div>
                 <button
                   onClick={() => toggleMobileAccordion('suits')}
-                  className="w-full py-3.5 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                  className="w-full py-4 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
                 >
                   <span>Suits</span>
-                  <span className="text-xs font-mono text-[#C8A97E]">
+                  <span className="text-sm font-mono text-[#C8A97E] w-6 h-6 flex items-center justify-center">
                     {mobileExpandedSection === 'suits' ? '−' : '+'}
                   </span>
                 </button>
                 {mobileExpandedSection === 'suits' && (
-                  <div className="pl-4 pb-3 space-y-2 text-sm font-sans-clean text-white/70">
+                  <div className="pl-4 pb-3 space-y-2.5 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('suits');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
                       Signature Suits
                     </button>
@@ -792,7 +832,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                         setIsMobileMenuOpen(false);
                         onNavigateShop('suits', 'Deep Black');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
                       Black Suits
                     </button>
@@ -801,7 +841,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                         setIsMobileMenuOpen(false);
                         onNavigateShop('suits', 'Midnight Navy');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
                       Navy Suits
                     </button>
@@ -810,7 +850,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                         setIsMobileMenuOpen(false);
                         onNavigateShop('suits', 'Charcoal');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
                       Charcoal Suits
                     </button>
@@ -819,9 +859,9 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                         setIsMobileMenuOpen(false);
                         onNavigateShop('waistcoats');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Waistcoats
+                      Tailored Waistcoats
                     </button>
                   </div>
                 )}
@@ -831,41 +871,41 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
               <div>
                 <button
                   onClick={() => toggleMobileAccordion('formal')}
-                  className="w-full py-3.5 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                  className="w-full py-4 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
                 >
-                  <span>Formal</span>
-                  <span className="text-xs font-mono text-[#C8A97E]">
+                  <span>Formal Shirting &amp; Trousers</span>
+                  <span className="text-sm font-mono text-[#C8A97E] w-6 h-6 flex items-center justify-center">
                     {mobileExpandedSection === 'formal' ? '−' : '+'}
                   </span>
                 </button>
                 {mobileExpandedSection === 'formal' && (
-                  <div className="pl-4 pb-3 space-y-2 text-sm font-sans-clean text-white/70">
+                  <div className="pl-4 pb-3 space-y-2.5 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('formal-shirts');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Formal Shirts
+                      Formal Shirts (Sea Island &amp; Giza 45)
                     </button>
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('trousers');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Trousers
+                      Pleated Wool Trousers
                     </button>
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('suits');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Evening Wear
+                      Evening Gala Wear
                     </button>
                   </div>
                 )}
@@ -875,48 +915,48 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
               <div>
                 <button
                   onClick={() => toggleMobileAccordion('traditional')}
-                  className="w-full py-3.5 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                  className="w-full py-4 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
                 >
-                  <span>Traditional</span>
-                  <span className="text-xs font-mono text-[#C8A97E]">
+                  <span>Traditional Pakistani Attire</span>
+                  <span className="text-sm font-mono text-[#C8A97E] w-6 h-6 flex items-center justify-center">
                     {mobileExpandedSection === 'traditional' ? '−' : '+'}
                   </span>
                 </button>
                 {mobileExpandedSection === 'traditional' && (
-                  <div className="pl-4 pb-3 space-y-2 text-sm font-sans-clean text-white/70">
+                  <div className="pl-4 pb-3 space-y-2.5 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('shalwar-kameez');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Shalwar Kameez
+                      Shalwar Kameez (Raw Mulberry Silk)
                     </button>
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('kurtas');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Kurtas
+                      Kurtas (Handcrafted Egyptian Cotton)
                     </button>
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('waistcoats');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Formal Waistcoats
+                      Ceremonial Waistcoats
                     </button>
                     <button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         onNavigateShop('shalwar-kameez');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
                       Eid Collection
                     </button>
@@ -925,35 +965,13 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                         setIsMobileMenuOpen(false);
                         onNavigateShop('shalwar-kameez');
                       }}
-                      className="block hover:text-[#C8A97E]"
+                      className="block py-1 hover:text-[#C8A97E]"
                     >
-                      Wedding Collection
+                      Wedding Couture
                     </button>
                   </div>
                 )}
               </div>
-
-              {/* Shirts */}
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateShop('formal-shirts');
-                }}
-                className="w-full py-3.5 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
-              >
-                Shirts
-              </button>
-
-              {/* Trousers */}
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateShop('trousers');
-                }}
-                className="w-full py-3.5 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
-              >
-                Trousers
-              </button>
 
               {/* Accessories */}
               <button
@@ -961,9 +979,9 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                   setIsMobileMenuOpen(false);
                   onNavigateShop('accessories');
                 }}
-                className="w-full py-3.5 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                className="w-full py-4 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
               >
-                Accessories
+                Accessories &amp; Leather
               </button>
 
               {/* About N.K FABRICS */}
@@ -972,20 +990,21 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                   setIsMobileMenuOpen(false);
                   onNavigateAbout();
                 }}
-                className="w-full py-3.5 text-left font-serif-lux text-lg text-[#C8A97E]"
+                className="w-full py-4 text-left font-serif-lux text-lg text-[#C8A97E] flex items-center justify-between"
               >
-                About N.K FABRICS &amp; Story
+                <span>About N.K FABRICS</span>
+                <span>→</span>
               </button>
             </div>
           </div>
 
-          {/* Bottom mobile info */}
+          {/* Bottom mobile info with safe-area spacing */}
           <div className="pt-6 border-t border-white/10 text-center space-y-2">
             <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-              Complimentary Worldwide Shipping · 14-Day Returns
+              Complimentary Insured Courier Worldwide · 14-Day Returns
             </div>
             <div className="text-xs font-mono text-[#C8A97E]">
-              concierge@nkfabrics.com
+              concierge@nkfabrics.com · London &amp; Lahore Ateliers
             </div>
           </div>
         </div>

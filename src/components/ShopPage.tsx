@@ -138,7 +138,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
     <div className="py-12 md:py-20 px-6 max-w-7xl mx-auto space-y-12">
       {/* 1. TOP HEADER SECTION */}
       <div className="text-center space-y-5 max-w-3xl mx-auto pt-4">
-        {/* Approved M.N Logo */}
+        {/* Approved N.K FABRICS Logo */}
         <div className="flex flex-col items-center space-y-3">
           <MNMonogramMaster variant="champagne-gold" size={48} />
           <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C8A97E]/70 to-transparent" />
@@ -146,7 +146,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
 
         <div className="space-y-2">
           <h1 className="font-serif-lux text-3xl sm:text-5xl md:text-6xl text-[#FAF8F5] tracking-[0.06em]">
-            THE M.N COLLECTION
+            THE N.K FABRICS COLLECTION
           </h1>
           <p className="font-serif italic text-lg sm:text-2xl text-[#E6DFD5] font-light">
             Designed with precision. Made for distinction.
@@ -159,7 +159,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       </div>
 
       {/* 2. ELEGANT CATEGORY NAVIGATION BAR */}
-      <div className="border-y border-white/10 py-3 overflow-x-auto scrollbar-none">
+      <div className="border-y border-white/10 py-2.5 -mx-6 px-6 overflow-x-auto scrollbar-none">
         <div className="flex items-center gap-2 sm:gap-4 min-w-max px-2">
           {SHOP_CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat.id;
@@ -167,10 +167,10 @@ export const ShopPage: React.FC<ShopPageProps> = ({
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 text-xs font-sans-clean uppercase tracking-[0.2em] transition-all whitespace-nowrap ${
+                className={`px-3.5 sm:px-4 py-2 text-[11px] sm:text-xs font-sans-clean uppercase tracking-[0.18em] sm:tracking-[0.2em] transition-all whitespace-nowrap active:scale-[0.98] ${
                   isSelected
                     ? 'bg-[#C8A97E] text-black font-semibold shadow-md'
-                    : 'text-white/60 hover:text-white hover:bg-white/5'
+                    : 'text-white/65 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {cat.label}
@@ -181,8 +181,8 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       </div>
 
       {/* 3. FILTER BAR & SORT CONTROLS */}
-      <div className="bg-[#121212] border border-white/10 p-4 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-sans-clean">
+      <div className="bg-[#121212] border border-white/10 p-3.5 sm:p-4 space-y-3 sm:space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-sans-clean">
           {/* Desktop Filter Pills */}
           <div className="hidden lg:flex items-center gap-3 flex-wrap">
             {/* Color Filter Dropdown */}
@@ -261,17 +261,30 @@ export const ShopPage: React.FC<ShopPageProps> = ({
             )}
           </div>
 
-          {/* Mobile Filter Toggle */}
-          <button
-            onClick={() => setIsMobileFilterOpen(true)}
-            className="lg:hidden flex items-center gap-2 px-4 py-2 border border-white/20 text-white text-xs uppercase tracking-wider"
-          >
-            <span>Filters &amp; Refinements</span>
-            {hasActiveFilters && <span className="w-2 h-2 rounded-full bg-[#C8A97E]" />}
-          </button>
+          {/* Mobile Filter Toggle & Sort */}
+          <div className="flex lg:hidden items-center justify-between gap-2 w-full">
+            <button
+              onClick={() => setIsMobileFilterOpen(true)}
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 border border-white/20 bg-black/40 text-white text-[11px] uppercase tracking-wider active:bg-white/10 transition-colors"
+            >
+              <span>Filters</span>
+              {hasActiveFilters && <span className="w-2 h-2 rounded-full bg-[#C8A97E]" />}
+            </button>
 
-          {/* Sort & Count */}
-          <div className="flex items-center gap-4 ml-auto">
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="flex-1 bg-black/60 border border-white/15 px-2.5 py-2.5 text-white/80 focus:border-[#C8A97E] focus:outline-none text-[11px] uppercase tracking-wider truncate"
+            >
+              <option value="recommended">Sort: Recommended</option>
+              <option value="newest">Sort: Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+
+          {/* Desktop Sort & Count */}
+          <div className="hidden lg:flex items-center gap-4 ml-auto">
             <span className="text-[11px] font-mono text-white/40">
               {filteredProducts.length} {filteredProducts.length === 1 ? 'Creation' : 'Creations'}
             </span>
@@ -309,16 +322,19 @@ export const ShopPage: React.FC<ShopPageProps> = ({
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
           {filteredProducts.map((product) => {
             const isWishlisted = wishlistIds.includes(product.id);
             return (
               <div
                 key={product.id}
-                className="group relative bg-[#121212] border border-white/10 flex flex-col justify-between transition-all duration-700 hover:border-[#C8A97E]/70 shadow-2xl hover:-translate-y-1 overflow-hidden"
+                className="group relative bg-[#121212] border border-white/10 flex flex-col justify-between transition-all duration-500 hover:border-[#C8A97E]/70 shadow-xl overflow-hidden"
               >
                 {/* Image Showcase Container with Two-Image Smooth Transition */}
-                <div className="relative h-[480px] sm:h-[520px] overflow-hidden bg-[#0A0A0A]">
+                <div
+                  onClick={() => onOpenFullDetail(product)}
+                  className="relative h-[220px] xs:h-[270px] sm:h-[420px] md:h-[480px] lg:h-[500px] overflow-hidden bg-[#0A0A0A] cursor-pointer"
+                >
                   {/* Primary Image */}
                   <img
                     src={product.primaryImage}
@@ -336,17 +352,17 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                   />
 
                   {/* Gradient Scrim */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
 
                   {/* Top Badges: Category/New Arrival & Wishlist */}
-                  <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
+                  <div className="absolute top-2 left-2 right-2 sm:top-3.5 sm:left-3.5 sm:right-3.5 flex justify-between items-start z-10 pointer-events-none">
                     <div className="flex flex-col gap-1">
                       {product.isNewArrival && (
-                        <span className="bg-[#C8A97E] text-black text-[9px] font-mono uppercase tracking-widest px-2.5 py-0.5 font-semibold">
-                          New Season
+                        <span className="bg-[#C8A97E] text-black text-[8px] sm:text-[9px] font-mono uppercase tracking-wider px-1.5 sm:px-2 py-0.5 font-semibold">
+                          New
                         </span>
                       )}
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-white/70 bg-black/60 backdrop-blur-sm px-2 py-0.5 border border-white/10">
+                      <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-wider text-white/70 bg-black/60 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 border border-white/10 hidden xs:inline-block">
                         {product.collection}
                       </span>
                     </div>
@@ -357,27 +373,33 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                         e.stopPropagation();
                         onToggleWishlist(product.id);
                       }}
-                      className={`w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all ${
+                      className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all pointer-events-auto active:scale-90 ${
                         isWishlisted
                           ? 'bg-[#C8A97E] text-black border-[#C8A97E]'
-                          : 'bg-black/50 text-white/70 border-white/15 hover:text-white hover:border-white/40'
+                          : 'bg-black/60 text-white/80 border-white/20 hover:text-white hover:border-white/40'
                       }`}
                       aria-label="Add to wishlist"
                     >
-                      {isWishlisted ? '♥' : '♡'}
+                      <span className="text-xs sm:text-sm">{isWishlisted ? '♥' : '♡'}</span>
                     </button>
                   </div>
 
-                  {/* Hover Quick Action Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  {/* Hover Quick Action Overlay (Desktop) */}
+                  <div className="hidden sm:flex absolute bottom-4 left-4 right-4 items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                     <button
-                      onClick={() => onQuickView(product)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onQuickView(product);
+                      }}
                       className="flex-1 py-3 bg-[#FAF8F5] text-black text-[11px] font-sans-clean uppercase tracking-[0.2em] font-semibold hover:bg-[#C8A97E] transition-colors shadow-2xl text-center"
                     >
                       Quick View
                     </button>
                     <button
-                      onClick={() => onAddToBag(product, product.sizes[0] || '40R', product.colors[0]?.name || 'Standard')}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onAddToBag(product, product.sizes[0] || '40R', product.colors[0]?.name || 'Standard');
+                      }}
                       className="px-4 py-3 bg-black/80 border border-white/20 text-[#FAF8F5] text-[11px] font-sans-clean uppercase tracking-wider hover:border-[#C8A97E] hover:text-[#C8A97E] transition-colors"
                       title="Quick Add to Bag"
                     >
@@ -387,49 +409,65 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                 </div>
 
                 {/* Product Card Body */}
-                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <div className="flex items-baseline justify-between gap-2">
+                <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
+                  <div className="space-y-1">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 sm:gap-2">
                       <h3
                         onClick={() => onOpenFullDetail(product)}
-                        className="font-serif-lux text-xl sm:text-2xl text-[#FAF8F5] group-hover:text-[#C8A97E] transition-colors cursor-pointer leading-tight"
+                        className="font-serif-lux text-xs sm:text-lg text-[#FAF8F5] group-hover:text-[#C8A97E] transition-colors cursor-pointer leading-snug line-clamp-1 sm:line-clamp-2"
                       >
                         {product.name}
                       </h3>
-                      <div className="font-mono text-base text-[#FAF8F5] font-semibold shrink-0">
+                      <div className="font-mono text-xs sm:text-base text-[#FAF8F5] font-semibold shrink-0">
                         {product.formattedPrice}
                       </div>
                     </div>
 
-                    <p className="text-xs font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed line-clamp-2">
+                    <p className="hidden sm:block text-xs font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed line-clamp-2">
                       {product.tagline}
                     </p>
                   </div>
 
-                  {/* Available Color Swatches */}
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-sans-clean">
-                    <div className="flex items-center gap-1.5">
-                      {product.colors.map((c) => (
+                  {/* Available Color Swatches & Fabric Origin */}
+                  <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-sans-clean">
+                    <div className="flex items-center gap-1 sm:gap-1.5">
+                      {product.colors.slice(0, 4).map((c) => (
                         <span
                           key={c.name}
-                          className="w-3.5 h-3.5 rounded-full border border-white/30"
+                          className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full border border-white/30"
                           style={{ backgroundColor: c.hex }}
                           title={c.name}
                         />
                       ))}
-                      <span className="text-[10px] text-white/40 ml-1">
-                        {product.colors.length} {product.colors.length === 1 ? 'Tone' : 'Tones'}
-                      </span>
+                      {product.colors.length > 4 && (
+                        <span className="text-[9px] text-white/50">+{product.colors.length - 4}</span>
+                      )}
                     </div>
 
-                    <div className="text-[10px] font-mono text-[#C8A97E] uppercase">
+                    <div className="text-[9px] sm:text-[10px] font-mono text-[#C8A97E] uppercase truncate max-w-[80px] sm:max-w-none">
                       {product.fabricOrigin.split(',')[0]}
                     </div>
                   </div>
 
-                  {/* Tailoring Micro Specification */}
-                  <div className="pt-2 text-[11px] font-sans-clean text-white/50 border-t border-white/5 flex justify-between items-center">
-                    <span className="truncate max-w-[220px]">{product.fabric}</span>
+                  {/* Mobile Quick Action Strip (Touch-friendly on small screens) */}
+                  <div className="sm:hidden pt-1 flex items-center gap-1.5">
+                    <button
+                      onClick={() => onAddToBag(product, product.sizes[0] || '40R', product.colors[0]?.name || 'Standard')}
+                      className="flex-1 py-1.5 text-[10px] font-mono uppercase bg-white/10 hover:bg-[#C8A97E] hover:text-black border border-white/15 text-white active:scale-95 transition-all text-center"
+                    >
+                      + Add to Bag
+                    </button>
+                    <button
+                      onClick={() => onOpenFullDetail(product)}
+                      className="py-1.5 px-2 text-[10px] font-mono uppercase bg-transparent text-white/60 hover:text-white border border-white/10 active:scale-95 transition-all text-center"
+                    >
+                      View
+                    </button>
+                  </div>
+
+                  {/* Tailoring Micro Specification (Desktop) */}
+                  <div className="hidden sm:flex pt-2 text-[11px] font-sans-clean text-white/50 border-t border-white/5 justify-between items-center">
+                    <span className="truncate max-w-[200px]">{product.fabric}</span>
                     <button
                       onClick={() => onOpenFullDetail(product)}
                       className="text-white hover:text-[#C8A97E] transition-colors uppercase text-[10px] font-mono shrink-0 ml-2"

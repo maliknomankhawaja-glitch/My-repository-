@@ -59,7 +59,7 @@ export const PhysicalMockups: React.FC = () => {
                   <MNMonogramMaster variant="champagne-gold" size={68} />
                   
                   <div>
-                    <h3 className="font-serif-lux text-xl tracking-[0.22em] text-[#FAF8F5]">M.N</h3>
+                    <h3 className="font-serif-lux text-xl tracking-[0.22em] text-[#FAF8F5]">N.K FABRICS</h3>
                     <p className="font-sans-clean text-[9px] uppercase tracking-[0.35em] text-[#C8A97E]">
                       HAUTE COUTURE SARTORIAL
                     </p>
@@ -69,8 +69,8 @@ export const PhysicalMockups: React.FC = () => {
 
                   <div className="text-[9px] font-sans-clean text-white/50 tracking-[0.2em] uppercase leading-relaxed">
                     <div>Savile Row, London · Via Montenapoleone, Milan</div>
-                    <div className="text-[8px] text-white/40 mt-1">Super 150s Pure Cashmere & Wool</div>
-                    <div className="text-[8px] text-[#C8A97E]/80 mt-1.5 font-mono">SPECIMEN NO. MN-2026-084</div>
+                    <div className="text-[8px] text-white/40 mt-1">Super 150s Pure Cashmere &amp; Wool</div>
+                    <div className="text-[8px] text-[#C8A97E]/80 mt-1.5 font-mono">SPECIMEN NO. NK-2026-084</div>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export const PhysicalMockups: React.FC = () => {
               High-Density Damask Silk Woven Garment Label
             </h3>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-              Crafted with ultra-fine 50-denier silk warp threads. The intertwined M.N ligature is reproduced at 0.15mm thread precision, ensuring that the razor-thin serifs and champagne gold metallic yarn remain pristine over decades of dry cleaning and wear.
+              Crafted with ultra-fine 50-denier silk warp threads. The intertwined N.K ligature is reproduced at 0.15mm thread precision, ensuring that the razor-thin serifs and champagne gold metallic yarn remain pristine over decades of dry cleaning and wear.
             </p>
             <div className="border-t border-white/10 pt-4 space-y-2 text-xs font-sans-clean text-white/60">
               <div className="flex justify-between py-1 border-b border-white/5">
@@ -127,7 +127,7 @@ export const PhysicalMockups: React.FC = () => {
                   <MNMonogramMaster variant="black" size={60} />
                   
                   <div>
-                    <div className="font-serif-lux text-2xl tracking-[0.2em] text-[#0C0C0C]">M.N</div>
+                    <div className="font-serif-lux text-2xl tracking-[0.2em] text-[#0C0C0C]">N.K</div>
                     <div className="font-sans-clean text-[9px] uppercase tracking-[0.4em] text-[#666]">
                       ATELIER PRIVÉ
                     </div>
@@ -157,7 +157,7 @@ export const PhysicalMockups: React.FC = () => {
               600gsm Cotton Hangtag with Blind Deboss & Foil
             </h3>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-              Letterpressed on Italian FSC-certified cotton paper with a tactile, pillowy surface. The M.N monogram features a multi-level 3D blind deboss, while the atelier typography is hot-stamped with genuine matte champagne gold foil.
+              Letterpressed on Italian FSC-certified cotton paper with a tactile, pillowy surface. The N.K monogram features a multi-level 3D blind deboss, while the atelier typography is hot-stamped with genuine matte champagne gold foil.
             </p>
             <div className="border-t border-white/10 pt-4 space-y-2 text-xs font-sans-clean text-white/60">
               <div className="flex justify-between py-1 border-b border-white/5">
@@ -204,7 +204,7 @@ export const PhysicalMockups: React.FC = () => {
                     />
                     <text fill="#6E6254" fontSize="4.2" fontFamily="Plus Jakarta Sans" letterSpacing="0.25em" fontWeight="600">
                       <textPath href="#buttonTextUpper" startOffset="50%" textAnchor="middle">
-                        M.N ATELIER
+                        N.K ATELIER
                       </textPath>
                     </text>
                     <text fill="#5A5044" fontSize="3.8" fontFamily="Plus Jakarta Sans" letterSpacing="0.22em">
@@ -250,7 +250,7 @@ export const PhysicalMockups: React.FC = () => {
               Laser-Engraved Natural Horn & Gilded Accessories
             </h3>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-              Every detail is engineered for permanence. Jacket buttons are carved from ethically sourced solid water buffalo horn, matte burnished, and circular-engraved with micro laser etching. Formal cufflinks feature the sovereign M.N monogram set into solid jewelry brass.
+              Every detail is engineered for permanence. Jacket buttons are carved from ethically sourced solid water buffalo horn, matte burnished, and circular-engraved with micro laser etching. Formal cufflinks feature the sovereign N.K monogram set into solid jewelry brass.
             </p>
             <div className="border-t border-white/10 pt-4 space-y-2 text-xs font-sans-clean text-white/60">
               <div className="flex justify-between py-1 border-b border-white/5">
@@ -281,13 +281,13 @@ export const PhysicalMockups: React.FC = () => {
             {/* Generated photo mockup of luxury packaging */}
             <img
               src={PACKAGING_IMG}
-              alt="M.N Luxury Packaging Showcase"
+              alt="N.K FABRICS Luxury Packaging Showcase"
               referrerPolicy="no-referrer"
               className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
               <div className="text-white space-y-1">
-                <div className="font-serif-lux text-xl text-[#FAF8F5]">M.N ATELIER PACKAGING SUITE</div>
+                <div className="font-serif-lux text-xl text-[#FAF8F5]">N.K FABRICS ATELIER PACKAGING SUITE</div>
                 <div className="text-xs font-sans-clean text-[#C8A97E] tracking-wider uppercase">
                   Rigid Hinged Suit Presentation Box & Off-White Textured Tote
                 </div>
@@ -341,12 +341,12 @@ export const PhysicalMockups: React.FC = () => {
               {/* Overlay simulation of delicate silk embroidery */}
               <div className="bg-black/60 backdrop-blur-md p-8 border border-white/10 text-center max-w-sm">
                 <MNMonogramMaster variant="champagne-gold" size={72} />
-                <div className="font-serif-lux text-xl text-[#FAF8F5] mt-2">M.N</div>
+                <div className="font-serif-lux text-xl text-[#FAF8F5] mt-2">N.K</div>
                 <div className="text-[9px] uppercase tracking-[0.3em] text-[#C8A97E] mt-1">
                   Hand-Piped Gold Bullion Embroidery
                 </div>
                 <div className="text-[10px] text-white/50 font-sans-clean mt-2">
-                  Blazer Lapel Crest & Shirt Breast Placement
+                  Suit Lapel Insignia &amp; Shirt Breast Placement
                 </div>
               </div>
             </div>
@@ -357,10 +357,10 @@ export const PhysicalMockups: React.FC = () => {
               Tailoring Detail
             </div>
             <h3 className="font-display text-3xl md:text-4xl text-[#FAF8F5] leading-tight">
-              Micro-Stitch Embroidery for Suiting & Shirting
+              Micro-Stitch Embroidery for Suiting &amp; Shirting
             </h3>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-              For traditional blazers, formal Sea Island cotton shirts, and bespoke trousers, the monogram is rendered in tonal silk or discreet champagne bullion wire. The structural balance of the M.N letterforms prevents thread clustering, maintaining crisp delineation.
+              For bespoke formal suits, formal Sea Island cotton shirts, and bespoke trousers, the monogram is rendered in tonal silk or discreet champagne bullion wire. The structural balance of the N.K letterforms prevents thread clustering, maintaining crisp delineation.
             </p>
             <div className="border-t border-white/10 pt-4 space-y-2 text-xs font-sans-clean text-white/60">
               <div className="flex justify-between py-1 border-b border-white/5">
@@ -368,7 +368,7 @@ export const PhysicalMockups: React.FC = () => {
                 <span className="text-[#FAF8F5]">9mm height (Subtle tone-on-tone French cuff)</span>
               </div>
               <div className="flex justify-between py-1 border-b border-white/5">
-                <span className="text-white/40">Blazer Crest Size</span>
+                <span className="text-white/40">Suit Lapel Insignia</span>
                 <span className="text-[#FAF8F5]">38mm height (Hand-embroidered gold wire)</span>
               </div>
               <div className="flex justify-between py-1 border-b border-white/5">
@@ -401,11 +401,11 @@ export const PhysicalMockups: React.FC = () => {
                   <div className="w-4 h-4 bg-black rounded-sm flex items-center justify-center p-0.5">
                     <MNMonogramMaster variant="champagne-gold" size={14} showPeriod={false} />
                   </div>
-                  <span className="truncate text-[11px] font-sans-clean">M.N Maison de Haute Couture</span>
+                  <span className="truncate text-[11px] font-sans-clean">N.K FABRICS Maison de Haute Couture</span>
                 </div>
               </div>
               <div className="p-4 text-center text-xs text-white/40 font-mono">
-                16px & 32px Micro-Favicon in Retina Browser Chrome
+                16px &amp; 32px Micro-Favicon in Retina Browser Chrome
               </div>
             </div>
 
@@ -448,7 +448,7 @@ export const PhysicalMockups: React.FC = () => {
               Micro-Scale Optical Legibility
             </h3>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/70 leading-relaxed font-light">
-              Unlike generic fashion marks that collapse into illegible noise when scaled down, the high-contrast geometry of M.N has been optically tuned to retain immediate letter recognition at 16×16 pixels for favicons and 64×64 pixels on mobile retina screens.
+              Unlike generic fashion marks that collapse into illegible noise when scaled down, the high-contrast geometry of N.K has been optically tuned to retain immediate letter recognition at 16×16 pixels for favicons and 64×64 pixels on mobile retina screens.
             </p>
             <div className="border-t border-white/10 pt-4 space-y-2 text-xs font-sans-clean text-white/60">
               <div className="flex justify-between py-1 border-b border-white/5">

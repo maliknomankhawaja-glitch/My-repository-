@@ -37,7 +37,7 @@ import { TypographySection } from './components/TypographySection.tsx';
 import { AssetExportStudio } from './components/AssetExportStudio.tsx';
 
 export default function App() {
-  const [activeView, setActiveView] = useState<'showroom' | 'shop' | 'brand-system' | 'pdp' | 'cart' | 'wishlist' | 'checkout' | 'confirmation' | 'about'>('about');
+  const [activeView, setActiveView] = useState<'showroom' | 'shop' | 'brand-system' | 'pdp' | 'cart' | 'wishlist' | 'checkout' | 'confirmation' | 'about'>('showroom');
   const [selectedProduct, setSelectedProduct] = useState<GarmentProduct | null>(null);
   const [quickViewProduct, setQuickViewProduct] = useState<ShopProduct | null>(null);
   const [pdpProduct, setPdpProduct] = useState<ShopProduct>(ALL_PRODUCTS[0]);
@@ -58,7 +58,7 @@ export default function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([
     {
       id: 'initial-suit-navy',
-      product: ALL_PRODUCTS[1], // M.N Midnight Navy Suit
+      product: ALL_PRODUCTS[1], // N.K FABRICS Midnight Navy Suit
       size: '40R',
       color: 'Midnight Navy',
       quantity: 1,
@@ -225,7 +225,7 @@ export default function App() {
       />
 
       {/* VIEW SWITCHER SUB-BAR */}
-      <div className="bg-[#121212] border-b border-white/5 px-6 py-2 flex items-center justify-between text-[11px] font-sans-clean overflow-x-auto">
+      <div className="bg-[#121212] border-b border-white/5 px-3.5 sm:px-6 py-2 flex items-center justify-between text-[11px] font-sans-clean overflow-x-auto scrollbar-none">
         <div className="flex items-center gap-4 text-white/50 shrink-0">
           <span>Experience:</span>
           <button
@@ -331,7 +331,7 @@ export default function App() {
                 : 'hover:text-white'
             }`}
           >
-            About M.N &amp; Craftsmanship
+            About N.K FABRICS &amp; Craftsmanship
           </button>
           <span>·</span>
           <button
@@ -368,7 +368,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* VIEW 0: THE M.N LUXURY PRODUCT DETAIL PAGE */}
+      {/* VIEW 0: THE N.K FABRICS LUXURY PRODUCT DETAIL PAGE */}
       {activeView === 'pdp' && (
         <main>
           <ProductDetailPage
@@ -389,7 +389,7 @@ export default function App() {
         </main>
       )}
 
-      {/* VIEW 1: THE M.N LUXURY SHOP PAGE */}
+      {/* VIEW 1: THE N.K FABRICS LUXURY SHOP PAGE */}
       {activeView === 'shop' && (
         <main>
           <ShopPage
@@ -484,7 +484,7 @@ export default function App() {
         </main>
       )}
 
-      {/* VIEW 8: THE M.N BRAND STORY & ABOUT PAGE */}
+      {/* VIEW 8: THE N.K FABRICS BRAND STORY & ABOUT PAGE */}
       {activeView === 'about' && (
         <main>
           <AboutPage
@@ -571,9 +571,9 @@ export default function App() {
                 cut: 'Precision Tailored Casual Silhouette',
                 lapel: 'Self-Fabric Collar / Ribbed Neckline',
                 waistcoat: 'N/A — Everyday Luxury Wear',
-                shirtPairing: 'Pairs with M.N Pleated High-Rise Trousers',
+                shirtPairing: 'Pairs with N.K FABRICS Pleated High-Rise Trousers',
                 trouserTailoring: 'Engineered Drape',
-                buttonDetails: 'Mother-of-Pearl or Tone-on-Tone M.N Monogram',
+                buttonDetails: 'Mother-of-Pearl or Tone-on-Tone N.K FABRICS Monogram',
                 stitching: 'Blind-Stitched Hems',
                 image: item.image,
                 description: item.details,
@@ -591,10 +591,10 @@ export default function App() {
               Brand Manual &amp; Vector System
             </div>
             <h1 className="font-serif-lux text-4xl sm:text-6xl text-[#FAF8F5]">
-              M.N Brand Identity &amp; Logo System
+              N.K FABRICS Brand Identity &amp; Logo System
             </h1>
             <p className="text-sm font-sans-clean text-[#D8D4CC]/75 font-light leading-relaxed max-w-2xl">
-              The sovereign monogram, typography scale, palette standards, and vector export files powering the entire M.N Maison.
+              The sovereign monogram, typography scale, palette standards, and vector export files powering N.K FABRICS.
             </p>
           </div>
 
@@ -686,7 +686,7 @@ export default function App() {
         }}
       />
 
-      {/* 7. PREMIUM LUXURY FOOTER (WITH NEWSLETTER, SHOP, M.N, HELP, ACCOUNT, BRAND & BOTTOM BAR) */}
+      {/* 7. PREMIUM LUXURY FOOTER (WITH NEWSLETTER, SHOP, N.K FABRICS, HELP, ACCOUNT, BRAND & BOTTOM BAR) */}
       <PremiumFooter
         onNavigateShop={(cat) => {
           setShopCategoryFilter(cat || 'all');

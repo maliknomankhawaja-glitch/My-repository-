@@ -135,7 +135,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
     setTimeout(() => {
       setIsProcessing(false);
 
-      const generatedOrderNumber = `MN-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+      const generatedOrderNumber = `NK-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
       const now = new Date();
       const dateFormatted = now.toLocaleDateString('en-US', {
         month: 'long',
@@ -206,7 +206,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
               onClick={onContinueShopping}
               className="font-serif-lux text-2xl tracking-[0.2em] text-[#FAF8F5] hover:text-[#C8A97E] transition-colors"
             >
-              M.N
+              N.K FABRICS
             </button>
             <span className="text-[9px] uppercase tracking-[0.25em] text-[#C8A97E]/80 border-l border-white/15 pl-3">
               Valet Concierge Checkout
@@ -722,7 +722,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                 {/* Assurance Badges */}
                 <div className="pt-2 text-center text-[10px] font-mono text-white/40 uppercase tracking-widest space-y-1">
                   <div>Signature Delivery · 14-Day Private Returns</div>
-                  <div>Maison M.N Savile Row &amp; Haute Couture Guaranteed</div>
+                  <div>N.K FABRICS Haute Couture &amp; Tailoring Guaranteed</div>
                 </div>
               </div>
             </div>

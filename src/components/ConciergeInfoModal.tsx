@@ -27,7 +27,7 @@ export const ConciergeInfoModal: React.FC<ConciergeInfoModalProps> = ({
             <MNMonogramMaster variant="champagne-gold" size={26} />
             <div>
               <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">
-                Maison M.N
+                N.K FABRICS
               </div>
               <h3 className="font-serif-lux text-xl sm:text-2xl text-[#FAF8F5]">
                 CLIENT CONCIERGE &amp; SERVICES
@@ -95,7 +95,7 @@ export const ConciergeInfoModal: React.FC<ConciergeInfoModalProps> = ({
                 Complimentary Worldwide Insured Delivery
               </h4>
               <p>
-                Every commission placed with Maison M.N is delivered via complimentary DHL Express Valet Courier with real-time end-to-end GPS telemetry and signature-required handoff.
+                Every commission placed with N.K FABRICS is delivered via complimentary DHL Express Valet Courier with real-time end-to-end GPS telemetry and signature-required handoff.
               </p>
               <div className="p-4 bg-[#141414] border border-white/10 space-y-2">
                 <div className="font-mono text-[11px] text-[#C8A97E] uppercase">Delivery Horizons:</div>
@@ -124,7 +124,7 @@ export const ConciergeInfoModal: React.FC<ConciergeInfoModalProps> = ({
               <div className="p-4 bg-[#141414] border border-white/10 space-y-2">
                 <div className="font-mono text-[11px] text-[#C8A97E] uppercase">Alterations Guarantee:</div>
                 <p>
-                  To ensure an immaculate bespoke break, M.N provides a complimentary alteration credit of up to $150 at your local master tailor of choice.
+                  To ensure an immaculate bespoke break, N.K FABRICS provides a complimentary alteration credit of up to $150 at your local master tailor of choice.
                 </p>
               </div>
             </div>
@@ -133,13 +133,13 @@ export const ConciergeInfoModal: React.FC<ConciergeInfoModalProps> = ({
           {topic === 'contact' && (
             <div className="space-y-4">
               <h4 className="font-serif-lux text-base text-white">
-                Maison M.N Private Concierge
+                N.K FABRICS Private Concierge
               </h4>
               <p>
                 Our sartorial advisors are available to assist with sizing consultations, made-to-measure appointments, and wedding commissions.
               </p>
               <div className="space-y-2 p-4 bg-[#141414] border border-white/10 font-mono text-[11px]">
-                <div className="text-white">Email: <span className="text-[#C8A97E]">concierge@maison-mn.com</span></div>
+                <div className="text-white">Email: <span className="text-[#C8A97E]">concierge@nkfabrics.com</span></div>
                 <div className="text-white">London Atelier: <span className="text-[#C8A97E]">+44 20 7946 0912</span></div>
                 <div className="text-white">Lahore Atelier: <span className="text-[#C8A97E]">+92 42 3578 9200</span></div>
                 <div className="text-white">Hours: <span className="text-white/60">Monday – Saturday, 9:00 AM – 8:00 PM GMT</span></div>
@@ -156,7 +156,7 @@ export const ConciergeInfoModal: React.FC<ConciergeInfoModalProps> = ({
                 <div className="p-3 bg-[#141414] border border-white/10 space-y-1">
                   <div className="text-white font-medium">Do you offer separate suit jacket purchases?</div>
                   <div className="text-white/60">
-                    M.N suits are architectural creations sold strictly as coordinated ensembles (two-piece or three-piece with matching trousers). We never produce or sell blazers.
+                    N.K FABRICS suits are architectural creations sold strictly as coordinated ensembles (two-piece or three-piece with matching trousers). We never produce or sell blazers.
                   </div>
                 </div>
                 <div className="p-3 bg-[#141414] border border-white/10 space-y-1">

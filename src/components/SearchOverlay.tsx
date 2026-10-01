@@ -81,7 +81,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
         <div className="flex items-center gap-3">
           <MNMonogramMaster variant="champagne-gold" size={26} />
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#C8A97E]">
-            Maison M.N Search
+            N.K FABRICS Search
           </span>
         </div>
 
@@ -205,7 +205,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
 
       {/* Footer hint */}
       <div className="border-t border-white/5 py-4 px-6 text-center text-[10px] font-mono text-white/40 uppercase tracking-widest">
-        Maison M.N Savile Row Suiting &amp; Pakistani Haute Couture
+        N.K FABRICS Savile Row Suiting &amp; Pakistani Haute Couture
       </div>
     </div>
   );

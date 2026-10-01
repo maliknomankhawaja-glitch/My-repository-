@@ -100,7 +100,7 @@ export const QuickViewModal: React.FC<QuickViewProps> = ({
             <div className="space-y-4">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">
-                  M.N Sartorial Collection
+                  N.K FABRICS Sartorial Collection
                 </span>
                 <h3 className="font-serif-lux text-2xl sm:text-3xl text-[#FAF8F5] mt-1">
                   {product.name}

@@ -48,7 +48,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
       <div className="max-w-7xl mx-auto px-6 pt-8 pb-4">
         <div className="flex items-center gap-2 text-xs font-sans-clean text-white/50 tracking-wider">
           <button onClick={onExploreCollection} className="hover:text-[#C8A97E] transition-colors">
-            M.N Collection
+            N.K FABRICS Collection
           </button>
           <span>/</span>
           <span className="text-[#C8A97E] font-medium">Your Wishlist</span>
@@ -75,7 +75,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
         {wishlistedProducts.length === 0 ? (
           /* 6. EMPTY WISHLIST STATE */
           <div className="py-24 px-6 bg-[#121212] border border-white/10 text-center space-y-8 my-8 shadow-2xl">
-            {/* Subtle M.N Visual Treatment */}
+            {/* Subtle N.K FABRICS Visual Treatment */}
             <div className="relative inline-block p-8 border border-[#C8A97E]/30 bg-[#161616] shadow-2xl mx-auto">
               <div className="absolute -inset-1.5 border border-[#C8A97E]/10 pointer-events-none" />
               <MNCompactSeal variant="champagne-gold" size={90} />
