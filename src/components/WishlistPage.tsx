@@ -178,18 +178,19 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                         <span>Color: <strong className="text-white font-medium">{currentChosenColor}</strong></span>
                         <span className="text-[10px] font-mono text-white/40">{product.colors.length} Tones</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2.5 py-1">
                         {product.colors.map((c) => (
                           <button
                             key={c.name}
                             onClick={() => handleSelectColor(product.id, c.name)}
-                            className={`w-5 h-5 rounded-full border transition-all ${
+                            className={`w-6 h-6 rounded-full border transition-all touch-manipulation ${
                               currentChosenColor === c.name
                                 ? 'ring-2 ring-[#C8A97E] scale-110 border-white'
                                 : 'border-white/20 hover:scale-105 opacity-80 hover:opacity-100'
                             }`}
                             style={{ backgroundColor: c.hex }}
                             title={c.name}
+                            aria-label={`Select color ${c.name}`}
                           />
                         ))}
                       </div>
@@ -201,12 +202,12 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                         <span>Select Size:</span>
                         <span className="text-[10px] font-mono text-[#C8A97E]">Ready to Ship</span>
                       </div>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-2">
                         {product.sizes.map((sz) => (
                           <button
                             key={sz}
                             onClick={() => handleSelectSize(product.id, sz)}
-                            className={`px-2.5 py-1 text-[11px] font-mono border transition-all ${
+                            className={`min-w-[36px] min-h-[36px] px-3 py-1.5 text-xs font-mono border transition-all flex items-center justify-center active:scale-95 touch-manipulation ${
                               currentChosenSize === sz
                                 ? 'bg-white text-black border-white font-semibold'
                                 : 'bg-black/30 border-white/15 text-white/70 hover:border-white/40 hover:text-white'

@@ -55,6 +55,12 @@
   box-sizing: border-box;
 }
 
+/* Accessible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #C8A97E;
+  outline-offset: 2px;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -86,4 +92,148 @@ body {
 }
 .pt-safe {
   padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+/* ==========================================================================
+   STEP 10: LUXURY ANIMATIONS & MICRO-INTERACTIONS
+   Calm, elegant, GPU-accelerated motion tailored for Haute Couture
+   ========================================================================== */
+
+@keyframes luxuryFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes luxuryFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBadge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Staged Hero Entrance Sequence */
+.animate-hero-image {
+  animation: luxuryFadeIn 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-brand {
+  animation: luxuryFadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+.animate-hero-headline {
+  animation: luxuryFadeUp 900ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+}
+
+.animate-hero-text {
+  animation: luxuryFadeUp 900ms cubic-bezier(0.16, 1, 0.3, 1) 400ms both;
+}
+
+.animate-hero-cta {
+  animation: luxuryFadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) 550ms both;
+}
+
+/* General Luxury Page Transition */
+.animate-luxury-fade-up {
+  animation: luxuryFadeUp 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-luxury-fade-in {
+  animation: luxuryFadeIn 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Interactive Badge Pulse */
+.animate-badge-pulse {
+  animation: pulseBadge 320ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Haute Couture Skeleton Loading Treatment */
+.skeleton-luxury {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(200, 169, 126, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.8s infinite linear;
+}
+
+/* Editorial Hover Link with Gold Thread Expansion */
+.editorial-hover-link {
+  position: relative;
+  display: inline-block;
+  transition: color 250ms ease;
+}
+
+.editorial-hover-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #C8A97E;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-hover-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-hero-image,
+  .animate-hero-brand,
+  .animate-hero-headline,
+  .animate-hero-text,
+  .animate-hero-cta,
+  .animate-luxury-fade-up,
+  .animate-luxury-fade-in,
+  .animate-badge-pulse,
+  .skeleton-luxury {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

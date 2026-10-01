@@ -60,7 +60,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
             </span>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center text-white/60 hover:text-white border border-white/10 hover:border-white/30 transition-colors"
+              className="min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-white border border-white/10 hover:border-white/30 transition-colors active:scale-95 touch-manipulation"
               aria-label="Close"
             >
               ✕
@@ -191,7 +191,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
 
         {/* Footer Actions */}
         {wishlistedProducts.length > 0 && (
-          <div className="p-6 bg-[#121212] border-t border-white/10 space-y-2">
+          <div className="p-5 sm:p-6 bg-[#121212] border-t border-white/10 space-y-2 pb-safe">
             <button
               onClick={() => {
                 onClose();

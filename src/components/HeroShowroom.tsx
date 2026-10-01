@@ -10,84 +10,85 @@ interface HeroProps {
 
 export const HeroShowroom: React.FC<HeroProps> = ({ onExplore, onShopNow }) => {
   return (
-    <section className="relative min-h-[85svh] sm:min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      {/* Background Cinematic Editorial Photography with Mobile-Optimized Focal Crop */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <section className="relative min-h-[90svh] sm:min-h-[94vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      {/* Background Cinematic Editorial Photography with Controlled Focal Depth */}
+      <div className="absolute inset-0 z-0 overflow-hidden animate-hero-image">
         <img
           src={HERO_MODELS}
-          alt="N.K FABRICS Luxury Suiting and Traditional Haute Couture"
+          alt="N.K FABRICS Bespoke Suiting and Traditional Haute Couture"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-[center_16%] sm:object-[center_20%] brightness-[0.70] sm:brightness-[0.74] contrast-[1.08] scale-100 hover:scale-105 transition-transform duration-[2200ms] ease-out"
+          className="w-full h-full object-cover object-[center_12%] sm:object-[center_18%] brightness-[0.72] contrast-[1.06] scale-100 transition-transform duration-[2400ms] ease-out hover:scale-105"
         />
-        {/* Cinematic Scrims: Multi-layer vignetting for maximum contrast on mobile & desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/45 to-[#0C0C0C]/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C0C0C]/75 via-transparent to-[#0C0C0C]/75" />
+        {/* Soft Luxury Editorial Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/40 to-[#0C0C0C]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C0C0C]/70 via-transparent to-[#0C0C0C]/70" />
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 text-center flex flex-col items-center justify-center space-y-6 sm:space-y-8">
-        {/* Prominent N.K FABRICS Brand Monogram Insignia */}
-        <div className="flex flex-col items-center space-y-2.5 sm:space-y-3 opacity-95">
-          <div className="sm:hidden">
-            <MNMonogramMaster variant="champagne-gold" size={46} />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-24 text-center flex flex-col items-center justify-center space-y-6 sm:space-y-8">
+        {/* Brand Monogram Insignia & Maison Origin */}
+        <div className="flex flex-col items-center space-y-3 opacity-95 animate-hero-brand">
+          <MNMonogramMaster variant="champagne-gold" size={54} />
+          <div className="flex items-center gap-3 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.35em] text-[#C8A97E]">
+            <span>Savile Row Discipline</span>
+            <span aria-hidden="true" className="opacity-40">·</span>
+            <span>Heritage Silk Couture</span>
           </div>
-          <div className="hidden sm:block">
-            <MNMonogramMaster variant="champagne-gold" size={58} />
-          </div>
-          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C8A97E]/70 to-transparent" />
         </div>
 
-        {/* Hero Headline */}
-        <div className="space-y-3 sm:space-y-4 max-w-4xl">
-          <h1 className="font-serif-lux text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#FAF8F5] tracking-[0.06em] leading-[1.12] sm:leading-[1.05] uppercase drop-shadow-md">
-            N.K FABRICS — MADE FOR YOUR MOMENT
+        {/* Hero Editorial Display Headline */}
+        <div className="space-y-3 sm:space-y-4 max-w-4xl animate-hero-headline">
+          <div className="text-[11px] sm:text-xs font-sans-clean uppercase tracking-[0.3em] text-white/60 font-light">
+            The Haute Couture Collection
+          </div>
+          <h1 className="font-serif-lux text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF8F5] tracking-[0.05em] leading-[1.08] uppercase">
+            MADE FOR YOUR MOMENT
           </h1>
-
-          <p className="font-serif text-base sm:text-2xl md:text-3xl text-[#E6DFD5] tracking-wide font-light italic max-w-2xl mx-auto drop-shadow">
+          <p className="font-serif text-base sm:text-2xl md:text-3xl text-[#E6DFD5]/90 tracking-wide font-light italic max-w-2xl mx-auto">
             Refined clothing. Distinctive style. Timeless confidence.
           </p>
         </div>
 
-        {/* Core Pillars: Suiting, Waistcoats, Shirts, Traditional Kameez, Trousers */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 text-[10px] sm:text-xs font-sans-clean uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#C8A97E]/95 py-2 px-3 border-y border-white/10 max-w-3xl bg-black/30 backdrop-blur-xs">
+        {/* Clean Unboxed Pillars (Anti-slop: No static pills) */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 text-[10px] sm:text-xs font-sans-clean uppercase tracking-[0.2em] text-[#C8A97E] py-2.5 px-4 border-y border-white/10 max-w-3xl bg-black/30 backdrop-blur-xs animate-hero-text">
           <span>Bespoke 3-Piece Suits</span>
-          <span aria-hidden="true" className="opacity-40">·</span>
+          <span aria-hidden="true" className="opacity-30">·</span>
           <span>Tailored Waistcoats</span>
-          <span aria-hidden="true" className="opacity-40">·</span>
-          <span>Traditional Shalwar Kameez</span>
-          <span aria-hidden="true" className="opacity-40 hidden xs:inline">·</span>
+          <span aria-hidden="true" className="opacity-30">·</span>
+          <span>Ceremonial Kurtas</span>
+          <span aria-hidden="true" className="opacity-30 hidden xs:inline">·</span>
           <span className="hidden xs:inline">Sea Island Shirts</span>
-          <span aria-hidden="true" className="opacity-40 hidden sm:inline">·</span>
+          <span aria-hidden="true" className="opacity-30 hidden sm:inline">·</span>
           <span className="hidden sm:inline">Pleated Trousers</span>
         </div>
 
-        {/* Large Touch-Friendly Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-2 sm:pt-4 w-full sm:w-auto max-w-xs sm:max-w-none">
+        {/* Sophisticated Luxury CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-2 sm:pt-4 w-full sm:w-auto max-w-xs sm:max-w-none animate-hero-cta">
           <button
             onClick={onExplore}
-            className="w-full sm:w-auto min-h-[50px] px-8 sm:px-10 py-3.5 sm:py-4 text-xs font-sans-clean uppercase tracking-[0.25em] bg-[#FAF8F5] text-[#0C0C0C] font-semibold hover:bg-[#C8A97E] hover:text-black active:scale-[0.98] transition-all duration-200 shadow-2xl flex items-center justify-center"
+            className="w-full sm:w-auto min-h-[48px] sm:min-h-[52px] px-8 sm:px-10 py-3.5 sm:py-4 text-xs font-sans-clean uppercase tracking-[0.22em] bg-[#FAF8F5] text-[#0C0C0C] font-semibold hover:bg-[#C8A97E] active:scale-[0.98] transition-all duration-300 shadow-2xl flex items-center justify-center touch-manipulation"
           >
             EXPLORE COLLECTION
           </button>
 
           <button
             onClick={onShopNow}
-            className="w-full sm:w-auto min-h-[50px] px-8 sm:px-10 py-3.5 sm:py-4 text-xs font-sans-clean uppercase tracking-[0.25em] border border-[#C8A97E] text-[#FAF8F5] hover:bg-[#C8A97E]/15 active:scale-[0.98] transition-all duration-200 backdrop-blur-sm flex items-center justify-center"
+            className="w-full sm:w-auto min-h-[48px] sm:min-h-[52px] px-8 sm:px-10 py-3.5 sm:py-4 text-xs font-sans-clean uppercase tracking-[0.22em] border border-[#C8A97E]/70 text-[#FAF8F5] hover:bg-[#C8A97E]/10 hover:border-[#C8A97E] active:scale-[0.98] transition-all duration-300 backdrop-blur-xs flex items-center justify-center touch-manipulation"
           >
             SHOP NOW
           </button>
         </div>
 
-        {/* Quiet Editorial Tailoring Marker (shown on tablet and desktop to keep mobile above-the-fold clean) */}
-        <div className="hidden sm:block pt-6 text-[10px] font-mono text-white/50 uppercase tracking-[0.2em]">
-          Savile Row Drape · Super 150s Merino &amp; Pure Mulberry Raw Silk · Bespoke Atelier
+        {/* Atelier Footnote */}
+        <div className="hidden sm:block pt-4 text-[10px] font-mono text-white/40 uppercase tracking-[0.2em]">
+          Full-Canvas Floating Horsehair · Super 150s Merino Wool · Raw Mulberry Silk
         </div>
       </div>
 
-      {/* Downward Scroll Indicator (hidden on tiny screens to avoid viewport clutter) */}
-      <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex-col items-center space-y-2 opacity-60 hover:opacity-100 transition-opacity">
-        <span className="text-[9px] font-mono uppercase tracking-widest text-[#C8A97E]">The Collection</span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-[#C8A97E] to-transparent animate-pulse" />
+      {/* Subtle Downward Scroll Indicator */}
+      <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex-col items-center space-y-2 opacity-50 hover:opacity-100 transition-opacity">
+        <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">The Collection</span>
+        <div className="w-[1px] h-6 bg-gradient-to-b from-[#C8A97E] to-transparent animate-pulse" />
       </div>
     </section>
   );

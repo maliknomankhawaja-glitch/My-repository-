@@ -29,17 +29,17 @@ export const SuitCollectionSection: React.FC<SuitSectionProps> = ({ onSelectSuit
   });
 
   return (
-    <section id="suit-collection" className="py-24 px-6 max-w-7xl mx-auto space-y-16">
+    <section id="suit-collection" className="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 max-w-7xl mx-auto space-y-10 sm:space-y-16">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8 gap-6">
-        <div className="space-y-3 max-w-2xl">
-          <div className="inline-block text-[11px] font-sans-clean uppercase tracking-[0.35em] text-[#C8A97E]">
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6 sm:pb-8 gap-4 sm:gap-6">
+        <div className="space-y-2 sm:space-y-3 max-w-2xl">
+          <div className="inline-block text-[10px] sm:text-[11px] font-sans-clean uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#C8A97E]">
             Maison Suiting Atelier
           </div>
-          <h2 className="font-serif-lux text-3xl sm:text-5xl text-[#FAF8F5] tracking-wide">
+          <h2 className="font-serif-lux text-2xl sm:text-4xl md:text-5xl text-[#FAF8F5] tracking-wide">
             THE N.K FABRICS SUIT COLLECTION
           </h2>
-          <p className="text-sm font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed">
             Full-canvas bespoke suits, tailored waistcoats, and matched trousers. Cut from Super 150s Merino wool and cashmere weaves. Zero blazers — strictly complete, unified sartorial architecture.
           </p>
         </div>
@@ -56,15 +56,15 @@ export const SuitCollectionSection: React.FC<SuitSectionProps> = ({ onSelectSuit
       </div>
 
       {/* Filter Bar: Color Tones and Silhouette Cuts */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-[#141414] border border-white/10 text-xs font-sans-clean">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-3.5 sm:p-4 bg-[#141414] border border-white/10 text-xs font-sans-clean">
         {/* Colors */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           <span className="text-white/40 uppercase tracking-wider text-[10px] font-mono mr-1">Tones:</span>
           {COLOR_OPTIONS.map((c) => (
             <button
               key={c}
               onClick={() => setSelectedColor(c)}
-              className={`px-3 py-1.5 transition-all text-xs ${
+              className={`min-h-[34px] px-2.5 sm:px-3 py-1.5 transition-all text-xs touch-manipulation active:scale-95 ${
                 selectedColor === c
                   ? 'bg-[#C8A97E] text-black font-semibold'
                   : 'bg-white/5 text-white/70 hover:bg-white/10'
@@ -76,13 +76,13 @@ export const SuitCollectionSection: React.FC<SuitSectionProps> = ({ onSelectSuit
         </div>
 
         {/* Cuts */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap pt-2 sm:pt-0 border-t sm:border-t-0 border-white/5">
           <span className="text-white/40 uppercase tracking-wider text-[10px] font-mono mr-1">Silhouette:</span>
           {CUT_OPTIONS.map((cut) => (
             <button
               key={cut}
               onClick={() => setSelectedCut(cut)}
-              className={`px-3 py-1.5 transition-all text-xs ${
+              className={`min-h-[34px] px-2.5 sm:px-3 py-1.5 transition-all text-xs touch-manipulation active:scale-95 ${
                 selectedCut === cut
                   ? 'bg-white text-black font-semibold'
                   : 'bg-white/5 text-white/70 hover:bg-white/10'
@@ -95,7 +95,7 @@ export const SuitCollectionSection: React.FC<SuitSectionProps> = ({ onSelectSuit
       </div>
 
       {/* Suits Showcase Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
         {filteredSuits.map((suit) => (
           <div
             key={suit.id}
@@ -103,37 +103,39 @@ export const SuitCollectionSection: React.FC<SuitSectionProps> = ({ onSelectSuit
             className="group bg-[#121212] border border-white/10 overflow-hidden cursor-pointer flex flex-col justify-between transition-all duration-500 hover:border-[#C8A97E]/80 shadow-2xl hover:-translate-y-1"
           >
             {/* Suit Image Frame with Zoom */}
-            <div className="relative h-[480px] overflow-hidden bg-[#0A0A0A]">
+            <div className="relative h-[340px] xs:h-[400px] sm:h-[460px] md:h-[480px] overflow-hidden bg-[#0A0A0A]">
               <img
                 src={suit.image}
-                alt={suit.name}
+                alt={`${suit.name} - ${suit.cut} hand-tailored from ${suit.fabric}`}
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top brightness-[0.88] contrast-[1.05] transition-transform duration-1000 group-hover:scale-108"
               />
 
-              {/* Color swatch pill on image */}
-              <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 border border-white/10 text-[10px] font-mono uppercase tracking-wider text-white">
-                <span className="w-2.5 h-2.5 rounded-full border border-white/30" style={{ backgroundColor: suit.colorHex }} />
-                <span>{suit.colorName}</span>
+              {/* Color swatch & unboxed price */}
+              <div className="absolute top-3.5 left-3.5 right-3.5 sm:top-4 sm:left-4 sm:right-4 flex items-center justify-between pointer-events-none z-10">
+                <div className="flex items-center gap-2 bg-black/40 backdrop-blur-xs px-2 py-1 text-[10px] font-mono uppercase tracking-wider text-white/90">
+                  <span className="w-2 h-2 rounded-full border border-white/40" style={{ backgroundColor: suit.colorHex }} />
+                  <span>{suit.colorName}</span>
+                </div>
+                <div className="text-[11px] sm:text-xs font-mono font-medium text-[#FAF8F5] bg-black/50 backdrop-blur-xs px-2 py-1 border border-white/10">
+                  {suit.price}
+                </div>
               </div>
 
-              {/* Price badge top right */}
-              <div className="absolute top-4 right-4 bg-[#C8A97E] text-black px-3 py-1 text-[11px] font-mono font-semibold">
-                {suit.price}
-              </div>
-
-              {/* Subtle hover overlay badge */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
-                <span className="px-5 py-2.5 bg-[#FAF8F5] text-black text-xs font-sans-clean uppercase tracking-[0.2em] font-semibold shadow-2xl">
+              {/* Subtle hover overlay button */}
+              <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                <span className="px-6 py-3 bg-[#FAF8F5] text-black text-xs font-sans-clean uppercase tracking-[0.2em] font-semibold shadow-2xl">
                   Inspect Sartorial Details
                 </span>
               </div>
             </div>
 
             {/* Suit Details Card Body */}
-            <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-              <div className="space-y-2">
-                <h3 className="font-serif-lux text-2xl text-[#FAF8F5] group-hover:text-[#C8A97E] transition-colors">
+            <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 flex-1 flex flex-col justify-between">
+              <div className="space-y-1.5 sm:space-y-2">
+                <h3 className="font-serif-lux text-xl sm:text-2xl text-[#FAF8F5] group-hover:text-[#C8A97E] transition-colors leading-tight">
                   {suit.name}
                 </h3>
                 <p className="text-xs font-sans-clean text-[#D8D4CC]/75 font-light leading-relaxed line-clamp-2">

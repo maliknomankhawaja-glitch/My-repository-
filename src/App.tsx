@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MNMonogramMaster,
 } from './components/MNLogos.tsx';
@@ -22,12 +22,16 @@ import { WishlistPage } from './components/WishlistPage.tsx';
 import { CheckoutPage, OrderRecord } from './components/CheckoutPage.tsx';
 import { OrderConfirmationPage } from './components/OrderConfirmationPage.tsx';
 import { AboutPage } from './components/AboutPage.tsx';
+import { NotFoundPage } from './components/NotFoundPage.tsx';
 import { PremiumHeader } from './components/PremiumHeader.tsx';
 import { PremiumFooter } from './components/PremiumFooter.tsx';
 import { SearchOverlay } from './components/SearchOverlay.tsx';
 import { AccountModal } from './components/AccountModal.tsx';
 import { ConciergeInfoModal } from './components/ConciergeInfoModal.tsx';
 import { SizeGuideModal } from './components/SizeGuideModal.tsx';
+
+// SEO & Metadata Manager
+import { updatePageSeo } from './utils/seoMetadata.ts';
 
 // Brand Identity Components
 import { PhysicalMockups } from './components/PhysicalMockups.tsx';
@@ -37,7 +41,7 @@ import { TypographySection } from './components/TypographySection.tsx';
 import { AssetExportStudio } from './components/AssetExportStudio.tsx';
 
 export default function App() {
-  const [activeView, setActiveView] = useState<'showroom' | 'shop' | 'brand-system' | 'pdp' | 'cart' | 'wishlist' | 'checkout' | 'confirmation' | 'about'>('showroom');
+  const [activeView, setActiveView] = useState<'showroom' | 'shop' | 'brand-system' | 'pdp' | 'cart' | 'wishlist' | 'checkout' | 'confirmation' | 'about' | '404'>('showroom');
   const [selectedProduct, setSelectedProduct] = useState<GarmentProduct | null>(null);
   const [quickViewProduct, setQuickViewProduct] = useState<ShopProduct | null>(null);
   const [pdpProduct, setPdpProduct] = useState<ShopProduct>(ALL_PRODUCTS[0]);
@@ -72,6 +76,105 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Dynamic SEO and Social Metadata Management
+  useEffect(() => {
+    switch (activeView) {
+      case 'showroom':
+        updatePageSeo({
+          title: 'N.K FABRICS — Luxury Fashion House & Bespoke Tailoring',
+          description: 'Discover N.K FABRICS: Full-canvas bespoke three-piece suits, tailored waistcoats, and traditional Pakistani haute couture.',
+          canonicalPath: '/',
+        });
+        break;
+      case 'shop':
+        let catTitle = 'The Sartorial Collection | N.K FABRICS Luxury House';
+        let catDesc = 'Browse the complete N.K FABRICS wardrobe: bespoke suiting, ceremonial Pakistani couture, and tailored essentials.';
+        if (shopCategoryFilter === 'suits') {
+          catTitle = 'Bespoke Suiting & Waistcoats | N.K FABRICS';
+          catDesc = 'Full-canvas three-piece suits and tailored waistcoats in Super 150s Merino wool and cashmere.';
+        } else if (shopCategoryFilter === 'traditional' || shopCategoryFilter === 'shalwar-kameez' || shopCategoryFilter === 'kurtas') {
+          catTitle = 'Traditional Pakistani Ceremonial Silk & Kurtas | N.K FABRICS';
+          catDesc = 'Pure raw mulberry silk and Giza 87 Egyptian cotton traditional Shalwar Kameez and tailored Kurtas.';
+        } else if (shopCategoryFilter === 'formal-shirts') {
+          catTitle = 'Formal Sea Island & Giza Cotton Shirting | N.K FABRICS';
+          catDesc = 'Swiss poplin and twill shirting with spread collars and mother-of-pearl buttons.';
+        } else if (shopCategoryFilter === 'trousers') {
+          catTitle = 'Tailored Pleated Trousers | N.K FABRICS';
+          catDesc = 'High-rise forward-pleated wool trousers with side tab buckle adjusters and natural break.';
+        }
+        updatePageSeo({
+          title: catTitle,
+          description: catDesc,
+          canonicalPath: '/shop',
+        });
+        break;
+      case 'pdp':
+        updatePageSeo({
+          title: `${pdpProduct.name} | N.K FABRICS Sartorial Atelier`,
+          description: `${pdpProduct.tagline}. Hand-tailored from ${pdpProduct.fabric} (${pdpProduct.fabricOrigin}).`,
+          canonicalPath: `/shop/product/${pdpProduct.id}`,
+          product: pdpProduct,
+          breadcrumbs: [
+            { name: 'Home', url: 'https://nkfabrics.com/' },
+            { name: 'Shop', url: 'https://nkfabrics.com/shop' },
+            { name: pdpProduct.name, url: `https://nkfabrics.com/shop/product/${pdpProduct.id}` },
+          ],
+        });
+        break;
+      case 'cart':
+        updatePageSeo({
+          title: 'Your Private Wardrobe Bag | N.K FABRICS',
+          description: 'Review your chosen bespoke commissions, tailored ensembles, and archival wardrobe selections.',
+          canonicalPath: '/cart',
+        });
+        break;
+      case 'wishlist':
+        updatePageSeo({
+          title: 'Saved Curated Wardrobe | N.K FABRICS',
+          description: 'Your saved bespoke suits, traditional silk apparel, and tailored sartorial pieces.',
+          canonicalPath: '/wishlist',
+        });
+        break;
+      case 'checkout':
+        updatePageSeo({
+          title: 'Valet Concierge Checkout | N.K FABRICS',
+          description: 'Encrypted concierge checkout for bespoke suiting and luxury textile commissions.',
+          canonicalPath: '/checkout',
+        });
+        break;
+      case 'confirmation':
+        updatePageSeo({
+          title: 'Order Commission Confirmed | N.K FABRICS',
+          description: 'Your bespoke tailoring commission has been confirmed and placed with the atelier.',
+          canonicalPath: '/order-confirmed',
+        });
+        break;
+      case 'about':
+        updatePageSeo({
+          title: 'The Maison Heritage & Savile Row Drape | N.K FABRICS',
+          description: 'The philosophy and craftsmanship of N.K FABRICS: Savile Row tailoring meets Pakistani textile heritage.',
+          canonicalPath: '/about',
+        });
+        break;
+      case 'brand-system':
+        updatePageSeo({
+          title: 'Brand Identity Manual & Vector System | N.K FABRICS',
+          description: 'The sovereign monogram, typography scale, palette standards, and vector export files powering N.K FABRICS.',
+          canonicalPath: '/brand-system',
+        });
+        break;
+      case '404':
+        updatePageSeo({
+          title: 'Page Not Found (404) | N.K FABRICS',
+          description: 'Looks like this piece belongs somewhere else.',
+          canonicalPath: '/404',
+        });
+        break;
+      default:
+        break;
+    }
+  }, [activeView, shopCategoryFilter, pdpProduct]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -361,6 +464,20 @@ export default function App() {
           >
             Brand Manual &amp; Vector System
           </button>
+          <span>·</span>
+          <button
+            onClick={() => {
+              setActiveView('404');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className={`uppercase tracking-wider transition-colors ${
+              activeView === '404'
+                ? 'text-[#C8A97E] font-medium border-b border-[#C8A97E]'
+                : 'hover:text-white text-white/50'
+            }`}
+          >
+            404 Archive
+          </button>
         </div>
 
         <div className="hidden lg:block text-[10px] font-mono text-white/40 uppercase shrink-0">
@@ -370,7 +487,7 @@ export default function App() {
 
       {/* VIEW 0: THE N.K FABRICS LUXURY PRODUCT DETAIL PAGE */}
       {activeView === 'pdp' && (
-        <main>
+        <main key="pdp" className="animate-luxury-fade-up">
           <ProductDetailPage
             product={pdpProduct}
             onBackToShop={() => {
@@ -391,7 +508,7 @@ export default function App() {
 
       {/* VIEW 1: THE N.K FABRICS LUXURY SHOP PAGE */}
       {activeView === 'shop' && (
-        <main>
+        <main key="shop" className="animate-luxury-fade-up">
           <ShopPage
             initialCategory={shopCategoryFilter}
             initialColor={shopColorFilter}
@@ -406,7 +523,7 @@ export default function App() {
 
       {/* VIEW 4: THE FULL DEDICATED SHOPPING CART PAGE */}
       {activeView === 'cart' && (
-        <main>
+        <main key="cart" className="animate-luxury-fade-up">
           <CartPage
             items={cartItems}
             savedForLaterItems={savedForLaterItems}
@@ -434,7 +551,7 @@ export default function App() {
 
       {/* VIEW 6: THE PREMIUM CONCIERGE CHECKOUT PAGE */}
       {activeView === 'checkout' && (
-        <main>
+        <main key="checkout" className="animate-luxury-fade-up">
           <CheckoutPage
             items={cartItems}
             subtotal={cartSubtotal}
@@ -455,7 +572,7 @@ export default function App() {
 
       {/* VIEW 7: THE LUXURY ORDER CONFIRMATION PAGE */}
       {activeView === 'confirmation' && confirmedOrder && (
-        <main>
+        <main key="confirmation" className="animate-luxury-fade-up">
           <OrderConfirmationPage
             order={confirmedOrder}
             onContinueShopping={() => {
@@ -468,7 +585,7 @@ export default function App() {
 
       {/* VIEW 5: THE FULL DEDICATED WISHLIST PAGE */}
       {activeView === 'wishlist' && (
-        <main>
+        <main key="wishlist" className="animate-luxury-fade-up">
           <WishlistPage
             wishlistIds={wishlistIds}
             allProducts={ALL_PRODUCTS}
@@ -486,7 +603,7 @@ export default function App() {
 
       {/* VIEW 8: THE N.K FABRICS BRAND STORY & ABOUT PAGE */}
       {activeView === 'about' && (
-        <main>
+        <main key="about" className="animate-luxury-fade-up">
           <AboutPage
             onExploreCollection={() => {
               setActiveView('shop');
@@ -510,7 +627,7 @@ export default function App() {
 
       {/* VIEW 2: THE EDITORIAL FASHION SHOWROOM */}
       {activeView === 'showroom' && (
-        <main className="space-y-4">
+        <main key="showroom" className="space-y-4 animate-luxury-fade-up">
           <div id="hero">
             <HeroShowroom
               onExplore={() => {
@@ -585,7 +702,7 @@ export default function App() {
 
       {/* VIEW 3: THE BRAND IDENTITY MANUAL & VECTOR SYSTEM */}
       {activeView === 'brand-system' && (
-        <main className="max-w-7xl mx-auto px-6 py-16 space-y-24">
+        <main key="brand-system" className="max-w-7xl mx-auto px-6 py-16 space-y-24 animate-luxury-fade-up">
           <div className="space-y-4 border-b border-white/10 pb-8">
             <div className="inline-block text-[11px] font-sans-clean uppercase tracking-[0.3em] text-[#C8A97E]">
               Brand Manual &amp; Vector System
@@ -619,6 +736,22 @@ export default function App() {
           <section className="space-y-8">
             <AssetExportStudio />
           </section>
+        </main>
+      )}
+
+      {/* VIEW 9: 404 PAGE NOT FOUND */}
+      {activeView === '404' && (
+        <main key="404" className="animate-luxury-fade-up">
+          <NotFoundPage
+            onBackHome={() => {
+              setActiveView('showroom');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onExploreCollection={() => {
+              setActiveView('shop');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
         </main>
       )}
 

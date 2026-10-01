@@ -87,11 +87,11 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
 
         <button
           onClick={onClose}
-          className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 hover:text-white border border-white/15 px-3 py-1.5 transition-colors"
+          className="min-h-[44px] min-w-[44px] flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 hover:text-white border border-white/15 px-3 py-2 transition-colors active:scale-95 touch-manipulation"
           aria-label="Close Search (ESC)"
         >
-          <span>ESC</span>
-          <span>✕</span>
+          <span className="hidden sm:inline">ESC</span>
+          <span className="text-base sm:text-xs">✕</span>
         </button>
       </div>
 

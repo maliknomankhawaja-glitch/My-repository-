@@ -71,7 +71,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </span>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center text-white/60 hover:text-white border border-white/10 hover:border-white/30 transition-colors"
+              className="min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-white border border-white/10 hover:border-white/30 transition-colors active:scale-95 touch-manipulation"
               aria-label="Close"
             >
               ✕
@@ -140,7 +140,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             items.map((item) => (
               <div
                 key={item.id}
-                className="group relative flex gap-4 p-4 bg-[#141414] border border-white/10 hover:border-white/20 transition-all duration-200"
+                className="group relative flex gap-4 p-4 bg-[#141414] border border-white/10 hover:border-white/20 transition-all duration-300 animate-in fade-in slide-in-from-right-2"
               >
                 {/* Product Thumbnail */}
                 <div className="w-20 h-28 bg-black shrink-0 overflow-hidden border border-white/10">
@@ -161,7 +161,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       </h4>
                       <button
                         onClick={() => onRemoveItem(item.id)}
-                        className="text-white/40 hover:text-red-400 text-sm transition-colors shrink-0 p-0.5"
+                        className="text-white/40 hover:text-red-400 text-sm transition-colors shrink-0 p-1.5 min-w-[32px] min-h-[32px] flex items-center justify-center active:scale-90 touch-manipulation"
                         title="Remove item"
                         aria-label="Remove item"
                       >
@@ -186,17 +186,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     <div className="flex items-center border border-white/15 bg-black/40 text-xs font-mono">
                       <button
                         onClick={() => onUpdateQuantity(item.id, -1)}
-                        className="w-7 h-7 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors active:bg-white/10 touch-manipulation"
                         aria-label="Decrease quantity"
                       >
                         −
                       </button>
-                      <span className="w-6 text-center text-white font-medium">
+                      <span key={item.quantity} className="w-7 text-center text-white font-medium select-none animate-badge-pulse">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => onUpdateQuantity(item.id, 1)}
-                        className="w-7 h-7 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors active:bg-white/10 touch-manipulation"
                         aria-label="Increase quantity"
                       >
                         +
@@ -207,14 +207,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     <div className="flex items-center gap-3 text-[11px] font-sans-clean">
                       <button
                         onClick={() => onSaveForLater(item)}
-                        className="text-white/60 hover:text-[#C8A97E] transition-colors underline-offset-2 hover:underline"
+                        className="text-white/60 hover:text-[#C8A97E] transition-colors underline-offset-2 hover:underline min-h-[32px] flex items-center touch-manipulation"
                       >
                         Save for Later
                       </button>
                       <span className="text-white/20">|</span>
                       <button
                         onClick={() => onRemoveItem(item.id)}
-                        className="text-white/40 hover:text-red-400 transition-colors"
+                        className="text-white/40 hover:text-red-400 transition-colors min-h-[32px] flex items-center touch-manipulation"
                       >
                         Remove
                       </button>
@@ -228,7 +228,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
         {/* Footer Actions */}
         {items.length > 0 && (
-          <div className="p-6 bg-[#121212] border-t border-white/10 space-y-4">
+          <div className="p-5 sm:p-6 bg-[#121212] border-t border-white/10 space-y-4 pb-safe">
             {/* Packaging Assurance */}
             <div className="p-3 bg-black/60 border border-[#C8A97E]/30 flex items-center gap-3 text-[11px] font-sans-clean text-white/70">
               <span className="text-[#C8A97E]">🎁</span>

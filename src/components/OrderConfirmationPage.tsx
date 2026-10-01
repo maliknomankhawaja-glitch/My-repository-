@@ -44,20 +44,20 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-black py-12 md:py-20 px-6">
-      <div className="max-w-4xl mx-auto space-y-12">
+    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-black py-8 sm:py-16 md:py-20 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
         {/* REFINED N.K MONOGRAM ANIMATION / VISUAL HEADER */}
-        <div className="text-center space-y-6">
-          <div className="relative inline-block p-7 border border-[#C8A97E]/40 bg-[#141414] shadow-2xl mx-auto animate-in fade-in duration-700">
+        <div className="text-center space-y-4 sm:space-y-6">
+          <div className="relative inline-block p-5 sm:p-7 border border-[#C8A97E]/40 bg-[#141414] shadow-2xl mx-auto animate-in fade-in duration-700">
             <div className="absolute -inset-1.5 border border-[#C8A97E]/15 pointer-events-none animate-pulse" />
-            <MNCompactSeal variant="champagne-gold" size={88} />
+            <MNCompactSeal variant="champagne-gold" size={76} />
           </div>
 
-          <div className="space-y-3">
-            <div className="text-[11px] font-mono uppercase tracking-[0.35em] text-[#C8A97E]">
+          <div className="space-y-2 sm:space-y-3">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#C8A97E]">
               Atelier Commission Manifest
             </div>
-            <h1 className="font-serif-lux text-4xl sm:text-6xl text-[#FAF8F5] tracking-wide">
+            <h1 className="font-serif-lux text-3xl sm:text-5xl md:text-6xl text-[#FAF8F5] tracking-wide">
               ORDER CONFIRMED
             </h1>
             <p className="text-sm sm:text-base font-serif-lux italic text-[#D8D4CC]/85 max-w-lg mx-auto">
@@ -69,7 +69,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
           </div>
 
           {/* Order Identity Bar */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-6 px-6 py-3 bg-[#141414] border border-white/10 text-xs font-mono">
+          <div className="flex flex-col sm:inline-flex sm:flex-row items-center justify-center gap-2 sm:gap-6 px-4 sm:px-6 py-3 bg-[#141414] border border-white/10 text-xs font-mono text-center sm:text-left">
             <div>
               <span className="text-white/40 uppercase mr-2">Commission No:</span>
               <strong className="text-[#C8A97E]">{order.orderNumber}</strong>
@@ -88,20 +88,20 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
         </div>
 
         {/* 8. ORDER STATUS COMPONENT */}
-        <section className="p-8 bg-[#121212] border border-white/10 shadow-2xl space-y-6">
+        <section className="p-4 sm:p-8 bg-[#121212] border border-white/10 shadow-2xl space-y-6">
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <h2 className="font-serif-lux text-xl text-[#FAF8F5]">
+            <h2 className="font-serif-lux text-lg sm:text-xl text-[#FAF8F5]">
               COMMISSION STATUS
             </h2>
-            <span className="text-xs font-mono text-[#C8A97E] uppercase">
+            <span className="text-[11px] sm:text-xs font-mono text-[#C8A97E] uppercase">
               Current Stage: Order Confirmed
             </span>
           </div>
 
           {/* Stepper Progress Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-6 pt-2">
             {STATUS_STAGES.map((stage, idx) => (
-              <div key={stage.id} className="relative space-y-2">
+              <div key={stage.id} className="relative space-y-1.5 sm:space-y-2">
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-bold transition-colors ${
@@ -129,9 +129,9 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
         </section>
 
         {/* ORDER DETAILS BREAKDOWN (ITEMS & DELIVERY) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* LEFT: ORDERED PRODUCTS MANIFEST (7 COLUMNS) */}
-          <section className="md:col-span-7 bg-[#141414] border border-white/10 p-8 space-y-6">
+          <section className="md:col-span-7 bg-[#141414] border border-white/10 p-4 sm:p-8 space-y-6">
             <div className="flex justify-between items-center border-b border-white/10 pb-4">
               <h2 className="font-serif-lux text-xl text-[#FAF8F5]">
                 ORDERED CREATIONS
@@ -203,7 +203,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
           {/* RIGHT: DELIVERY & PAYMENT DOSSIER (5 COLUMNS) */}
           <section className="md:col-span-5 space-y-6">
             {/* Delivery Destination Card */}
-            <div className="p-8 bg-[#141414] border border-white/10 space-y-4">
+            <div className="p-4 sm:p-8 bg-[#141414] border border-white/10 space-y-4">
               <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">
                 Fulfillment Target
               </div>
@@ -233,7 +233,7 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
             </div>
 
             {/* Payment Verification Card */}
-            <div className="p-8 bg-[#141414] border border-white/10 space-y-4">
+            <div className="p-4 sm:p-8 bg-[#141414] border border-white/10 space-y-4">
               <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">
                 Payment Dossier
               </div>

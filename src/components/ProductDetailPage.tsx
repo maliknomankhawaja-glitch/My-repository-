@@ -66,6 +66,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const [isZoomModalOpen, setIsZoomModalOpen] = useState<boolean>(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>('description');
   const [toastNotification, setToastNotification] = useState<string | null>(null);
+  const [isAdded, setIsAdded] = useState<boolean>(false);
 
   // Touch swipe detection for mobile gallery
   const touchStartXRef = useRef<number | null>(null);
@@ -154,11 +155,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   ];
 
   const handleAddSuitToBag = () => {
+    setIsAdded(true);
     for (let i = 0; i < quantity; i++) {
       onAddToBag(currentProduct, selectedSize, selectedColor);
     }
     setToastNotification(`Added ${currentProduct.name} (${selectedSize} · ${selectedColor}) to Private Bag`);
-    setTimeout(() => setToastNotification(null), 2800);
+    setTimeout(() => {
+      setIsAdded(false);
+      setToastNotification(null);
+    }, 2400);
   };
 
   const handleBuyNow = () => {
@@ -174,7 +179,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean pb-24 lg:pb-0">
+    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean pb-32 sm:pb-24 lg:pb-12">
       {/* Toast Notice */}
       {toastNotification && (
         <div className="fixed top-24 right-6 z-50 bg-[#C8A97E] text-black px-6 py-3.5 shadow-2xl text-xs font-mono font-medium flex items-center gap-2 border border-black/20 animate-in fade-in slide-in-from-top-4">
@@ -212,10 +217,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               onTouchEnd={handleTouchEnd}
             >
               <img
+                key={activeImageIndex}
                 src={GALLERY_ANGLES[activeImageIndex].image}
                 alt={GALLERY_ANGLES[activeImageIndex].label}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-top brightness-[0.92] contrast-[1.05] transition-all duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-top brightness-[0.92] contrast-[1.05] transition-all duration-700 group-hover:scale-105 animate-luxury-fade-in"
               />
 
               {/* Gradient scrim */}
@@ -290,6 +296,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <img
                     src={angle.image}
                     alt={angle.label}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top"
                   />
@@ -429,9 +437,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {/* ADD TO BAG */}
                 <button
                   onClick={handleAddSuitToBag}
-                  className="flex-1 py-3.5 px-6 text-xs font-sans-clean uppercase tracking-[0.25em] bg-[#FAF8F5] text-black font-semibold hover:bg-[#C8A97E] transition-all shadow-xl text-center"
+                  className={`flex-1 py-3.5 px-6 text-xs font-sans-clean uppercase tracking-[0.25em] font-semibold transition-all duration-300 shadow-xl text-center active:scale-[0.98] ${
+                    isAdded
+                      ? 'bg-[#C8A97E] text-black ring-2 ring-[#FAF8F5]'
+                      : 'bg-[#FAF8F5] text-black hover:bg-[#C8A97E]'
+                  }`}
                 >
-                  ADD TO BAG
+                  {isAdded ? 'COMMISSIONED ✓' : 'ADD TO BAG'}
                 </button>
 
                 {/* Wishlist Button */}
@@ -1060,7 +1072,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       </section>
 
       {/* 8. RECENTLY VIEWED PRODUCTS TRACK */}
-      <section className="py-16 px-6 max-w-7xl mx-auto space-y-8">
+      <section className="pt-12 sm:pt-16 pb-24 sm:pb-16 px-4 sm:px-6 max-w-7xl mx-auto space-y-8">
         <div className="border-b border-white/10 pb-4">
           <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40">
             Recently Viewed
@@ -1078,6 +1090,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <img
                 src={recent.primaryImage}
                 alt={recent.name}
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="w-14 h-18 object-cover object-top shrink-0 border border-white/10"
               />
@@ -1091,24 +1105,30 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       </section>
 
       {/* 9. MOBILE STICKY BOTTOM ACTION BAR */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-[#121212]/95 backdrop-blur-md border-t border-white/15 p-4 sm:hidden flex items-center justify-between gap-4">
-        <div>
-          <div className="text-[10px] font-mono text-white/50 uppercase">{currentProduct.name}</div>
-          <div className="font-mono text-base font-bold text-[#FAF8F5]">{currentProduct.formattedPrice}</div>
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-[#121212]/98 backdrop-blur-xl border-t border-white/15 px-4 py-3 pb-safe sm:hidden flex items-center justify-between gap-3 shadow-2xl">
+        <div className="min-w-0 flex-1">
+          <div className="text-[10px] font-mono text-white/50 uppercase truncate">{currentProduct.name}</div>
+          <div className="font-mono text-base font-bold text-[#FAF8F5] leading-tight">{currentProduct.formattedPrice}</div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setIsSizeGuideOpen(true)}
-            className="px-2.5 py-2.5 border border-white/20 text-xs font-mono text-white/70"
+            className="min-h-[44px] px-3 py-2 border border-white/20 text-xs font-mono text-white/80 active:bg-white/10 active:scale-95 transition-all touch-manipulation flex items-center gap-1"
+            aria-label="Select size"
           >
-            {selectedSize} ▾
+            <span>{selectedSize}</span>
+            <span className="text-[9px] text-[#C8A97E]">▾</span>
           </button>
           <button
             onClick={handleAddSuitToBag}
-            className="px-6 py-2.5 text-xs font-sans-clean uppercase tracking-[0.2em] bg-[#FAF8F5] text-black font-semibold shadow-xl"
+            className={`min-h-[44px] px-5 py-2.5 text-xs font-sans-clean uppercase tracking-[0.2em] font-semibold shadow-xl active:scale-[0.98] transition-all duration-300 touch-manipulation flex items-center justify-center ${
+              isAdded
+                ? 'bg-[#C8A97E] text-black'
+                : 'bg-[#FAF8F5] text-black active:bg-[#C8A97E]'
+            }`}
           >
-            Add to Bag
+            {isAdded ? 'COMMISSIONED ✓' : 'Add to Bag'}
           </button>
         </div>
       </div>

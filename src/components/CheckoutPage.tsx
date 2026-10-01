@@ -199,29 +199,29 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
     <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-black">
       {/* DISTRACTION-FREE LUXURY HEADER */}
       <header className="border-b border-white/10 bg-[#0E0E0E] sticky top-0 z-30">
-        <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-18 flex items-center justify-between">
           {/* Brand Emblem */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={onContinueShopping}
-              className="font-serif-lux text-2xl tracking-[0.2em] text-[#FAF8F5] hover:text-[#C8A97E] transition-colors"
+              className="font-serif-lux text-xl sm:text-2xl tracking-[0.18em] sm:tracking-[0.2em] text-[#FAF8F5] hover:text-[#C8A97E] transition-colors"
             >
               N.K FABRICS
             </button>
-            <span className="text-[9px] uppercase tracking-[0.25em] text-[#C8A97E]/80 border-l border-white/15 pl-3">
+            <span className="text-[8.5px] sm:text-[9px] uppercase tracking-[0.22em] sm:tracking-[0.25em] text-[#C8A97E]/80 border-l border-white/15 pl-2.5 sm:pl-3">
               Valet Concierge Checkout
             </span>
           </div>
 
           {/* Secure Transmission Assurance */}
-          <div className="flex items-center gap-4 text-xs font-sans-clean">
+          <div className="flex items-center gap-3 sm:gap-4 text-xs font-sans-clean">
             <span className="hidden sm:inline-flex items-center gap-1.5 text-white/50 text-[11px]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>TLS 256-Bit Encrypted Protocol</span>
             </span>
             <button
               onClick={onReturnToBag}
-              className="text-xs uppercase tracking-wider text-[#C8A97E] hover:underline flex items-center gap-1"
+              className="text-xs uppercase tracking-wider text-[#C8A97E] hover:underline flex items-center gap-1 min-h-[44px]"
             >
               <span>←</span>
               <span>Return to Bag</span>
@@ -231,13 +231,13 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
       </header>
 
       {/* MAIN CHECKOUT WORKSPACE */}
-      <main className="max-w-7xl mx-auto px-6 py-10 md:py-14">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-14">
         {/* Title Lockup */}
-        <div className="border-b border-white/10 pb-6 mb-10">
+        <div className="border-b border-white/10 pb-4 sm:pb-6 mb-8 sm:mb-10">
           <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#C8A97E]">
             Maison Atelier Checkout
           </div>
-          <h1 className="font-serif-lux text-3xl sm:text-5xl text-[#FAF8F5] tracking-wide mt-1">
+          <h1 className="font-serif-lux text-2xl sm:text-5xl text-[#FAF8F5] tracking-wide mt-1">
             CHECKOUT
           </h1>
         </div>
@@ -251,24 +251,24 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
         )}
 
         <form onSubmit={handlePlaceOrder} noValidate>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             {/* LEFT COLUMN: CUSTOMER, DELIVERY & PAYMENT FORMS (7 COLUMNS) */}
-            <div className="lg:col-span-7 space-y-12">
+            <div className="lg:col-span-7 space-y-8 sm:space-y-12">
               {/* SECTION 1: CUSTOMER INFORMATION */}
-              <section className="space-y-6">
+              <section className="space-y-5 sm:space-y-6">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[#C8A97E] text-black text-[10px] font-mono font-bold flex items-center justify-center">
                       1
                     </span>
-                    <h2 className="font-serif-lux text-xl text-[#FAF8F5] tracking-wide">
+                    <h2 className="font-serif-lux text-lg sm:text-xl text-[#FAF8F5] tracking-wide">
                       Customer Information
                     </h2>
                   </div>
                   <span className="text-[10px] font-mono text-white/40 uppercase">Required</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div className="sm:col-span-2 space-y-1.5">
                     <label className="block text-[11px] font-sans-clean uppercase tracking-wider text-white/70">
                       Full Name *
@@ -278,7 +278,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="e.g. Julian Montgomery-Sterling"
-                      className={`w-full bg-[#121212] border px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
+                      className={`w-full bg-[#121212] border px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
                         errors.fullName ? 'border-red-500' : 'border-white/15 focus:border-[#C8A97E]'
                       }`}
                     />
@@ -296,7 +296,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@domain.com"
-                      className={`w-full bg-[#121212] border px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
+                      className={`w-full bg-[#121212] border px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
                         errors.email ? 'border-red-500' : 'border-white/15 focus:border-[#C8A97E]'
                       }`}
                     />
@@ -314,7 +314,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+44 20 7946 0912"
-                      className={`w-full bg-[#121212] border px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
+                      className={`w-full bg-[#121212] border px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
                         errors.phone ? 'border-red-500' : 'border-white/15 focus:border-[#C8A97E]'
                       }`}
                     />
@@ -326,13 +326,13 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
               </section>
 
               {/* SECTION 2: DELIVERY INFORMATION */}
-              <section className="space-y-6">
+              <section className="space-y-5 sm:space-y-6">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[#C8A97E] text-black text-[10px] font-mono font-bold flex items-center justify-center">
                       2
                     </span>
-                    <h2 className="font-serif-lux text-xl text-[#FAF8F5] tracking-wide">
+                    <h2 className="font-serif-lux text-lg sm:text-xl text-[#FAF8F5] tracking-wide">
                       Delivery Address &amp; Courier Details
                     </h2>
                   </div>
@@ -341,7 +341,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div className="sm:col-span-2 space-y-1.5">
                     <label className="block text-[11px] font-sans-clean uppercase tracking-wider text-white/70">
                       Country / Territory *
@@ -349,7 +349,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                     <select
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
-                      className="w-full bg-[#121212] border border-white/15 px-4 py-3 text-xs text-white focus:outline-none focus:border-[#C8A97E] transition-colors"
+                      className="w-full bg-[#121212] border border-white/15 px-4 py-3 text-base sm:text-xs text-white focus:outline-none focus:border-[#C8A97E] transition-colors"
                     >
                       {COUNTRIES.map((c) => (
                         <option key={c} value={c} className="bg-[#121212] text-white">
@@ -368,7 +368,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                       placeholder="e.g. 14 Savile Row, Penthouse Suite"
-                      className={`w-full bg-[#121212] border px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
+                      className={`w-full bg-[#121212] border px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
                         errors.address ? 'border-red-500' : 'border-white/15 focus:border-[#C8A97E]'
                       }`}
                     />
@@ -386,7 +386,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                       placeholder="e.g. London"
-                      className={`w-full bg-[#121212] border px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
+                      className={`w-full bg-[#121212] border px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
                         errors.city ? 'border-red-500' : 'border-white/15 focus:border-[#C8A97E]'
                       }`}
                     />
@@ -404,7 +404,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={postalCode}
                       onChange={(e) => setPostalCode(e.target.value)}
                       placeholder="e.g. W1S 3JN"
-                      className={`w-full bg-[#121212] border px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
+                      className={`w-full bg-[#121212] border px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none transition-colors ${
                         errors.postalCode ? 'border-red-500' : 'border-white/15 focus:border-[#C8A97E]'
                       }`}
                     />
@@ -422,12 +422,12 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       value={instructions}
                       onChange={(e) => setInstructions(e.target.value)}
                       placeholder="e.g. Ring private concierge bell or leave with building reception"
-                      className="w-full bg-[#121212] border border-white/15 px-4 py-3 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#C8A97E]"
+                      className="w-full bg-[#121212] border border-white/15 px-4 py-3 text-base sm:text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#C8A97E]"
                     />
                   </div>
                 </div>
 
-                <div className="p-4 bg-[#141414] border border-white/5 flex items-center justify-between text-xs text-white/70">
+                <div className="p-3.5 sm:p-4 bg-[#141414] border border-white/5 flex items-center justify-between text-xs text-white/70">
                   <div className="flex items-center gap-2">
                     <span className="text-[#C8A97E]">✓</span>
                     <span>Complimentary Insured Worldwide Shipping</span>
@@ -437,7 +437,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
               </section>
 
               {/* SECTION 3: PAYMENT METHOD */}
-              <section className="space-y-6">
+              <section className="space-y-5 sm:space-y-6">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[#C8A97E] text-black text-[10px] font-mono font-bold flex items-center justify-center">
@@ -498,7 +498,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                             value={cardNumber}
                             onChange={(e) => setCardNumber(e.target.value)}
                             placeholder="4242 •••• •••• 9821"
-                            className={`w-full bg-[#0A0A0A] border px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none ${
+                            className={`w-full bg-[#0A0A0A] border px-3.5 py-2.5 text-base sm:text-xs font-mono text-white focus:outline-none ${
                               errors.cardNumber ? 'border-red-500' : 'border-white/20 focus:border-[#C8A97E]'
                             }`}
                           />
@@ -507,7 +507,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                           )}
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="space-y-1">
                             <label className="block text-[10px] font-mono uppercase text-white/60">
                               Name on Card
@@ -517,7 +517,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                               value={cardName}
                               onChange={(e) => setCardName(e.target.value)}
                               placeholder="LORD STERLING"
-                              className="w-full bg-[#0A0A0A] border border-white/20 px-3.5 py-2.5 text-xs font-mono uppercase text-white focus:outline-none focus:border-[#C8A97E]"
+                              className="w-full bg-[#0A0A0A] border border-white/20 px-3.5 py-2.5 text-base sm:text-xs font-mono uppercase text-white focus:outline-none focus:border-[#C8A97E]"
                             />
                           </div>
 
@@ -531,7 +531,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                                 value={cardExpiry}
                                 onChange={(e) => setCardExpiry(e.target.value)}
                                 placeholder="MM/YY"
-                                className="w-full bg-[#0A0A0A] border border-white/20 px-3 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-[#C8A97E]"
+                                className="w-full bg-[#0A0A0A] border border-white/20 px-3 py-2.5 text-base sm:text-xs font-mono text-white focus:outline-none focus:border-[#C8A97E]"
                               />
                             </div>
                             <div className="space-y-1">
@@ -544,7 +544,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                                 value={cardCvv}
                                 onChange={(e) => setCardCvv(e.target.value)}
                                 placeholder="•••"
-                                className="w-full bg-[#0A0A0A] border border-white/20 px-3 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-[#C8A97E]"
+                                className="w-full bg-[#0A0A0A] border border-white/20 px-3 py-2.5 text-base sm:text-xs font-mono text-white focus:outline-none focus:border-[#C8A97E]"
                               />
                             </div>
                           </div>
@@ -622,7 +622,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
 
             {/* RIGHT COLUMN: 5. ORDER SUMMARY & 6. PLACE ORDER BUTTON (5 COLUMNS) */}
             <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
-              <div className="p-8 bg-[#141414] border border-white/15 shadow-2xl space-y-6">
+              <div className="p-4 sm:p-8 bg-[#141414] border border-white/15 shadow-2xl space-y-6">
                 <div className="border-b border-white/10 pb-4 flex items-center justify-between">
                   <div>
                     <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8A97E]">

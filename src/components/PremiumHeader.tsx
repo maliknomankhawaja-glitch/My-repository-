@@ -332,7 +332,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
                 Wishlist
               </span>
               {wishlistCount > 0 && (
-                <span className="absolute top-1 right-0.5 sm:static font-mono text-[9px] bg-[#C8A97E] text-black font-semibold rounded-full w-4 h-4 flex items-center justify-center -ml-0.5 animate-in zoom-in-50 duration-200">
+                <span key={wishlistCount} className="absolute top-1 right-0.5 sm:static font-mono text-[9px] bg-[#C8A97E] text-black font-semibold rounded-full w-4 h-4 flex items-center justify-center -ml-0.5 animate-badge-pulse">
                   {wishlistCount}
                 </span>
               )}
@@ -361,7 +361,7 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
               <span className="hidden xs:inline text-[10px] font-mono text-white/80 group-hover:text-[#C8A97E] uppercase tracking-wider">
                 Bag
               </span>
-              <span className="font-mono text-[10px] text-[#C8A97E] font-bold">
+              <span key={cartCount} className="font-mono text-[10px] text-[#C8A97E] font-bold animate-badge-pulse">
                 ({cartCount})
               </span>
             </button>
@@ -726,285 +726,299 @@ export const PremiumHeader: React.FC<PremiumHeaderProps> = ({
         )}
       </header>
 
-      {/* 4. EXPANDABLE MOBILE MENU DRAWER */}
+      {/* 4. EXPANDABLE MOBILE MENU DRAWER WITH BACKDROP & SMOOTH ANIMATION */}
       {isMobileMenuOpen && (
-        <div className={`fixed inset-x-0 bottom-0 ${isScrolled ? 'top-16' : 'top-20'} z-50 bg-[#0C0C0C]/98 backdrop-blur-2xl overflow-y-auto px-5 py-6 pb-safe flex flex-col justify-between animate-in fade-in slide-in-from-top-3 duration-250`}>
-          <div className="space-y-6">
-            {/* Mobile Header Brand & Close Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <div className="flex items-center gap-2.5">
-                <MNMonogramMaster variant="champagne-gold" size={26} />
-                <span className="font-serif-lux text-base text-[#FAF8F5] tracking-[0.18em]">
-                  N.K FABRICS
-                </span>
-              </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-1.5 py-1 px-2.5 border border-white/15 text-[10px] font-mono uppercase tracking-widest text-[#C8A97E] hover:text-white hover:border-[#C8A97E] active:scale-95 transition-all"
-                aria-label="Close Menu"
-              >
-                <span>✕</span>
-                <span>Close</span>
-              </button>
-            </div>
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300 animate-in fade-in"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close Mobile Menu"
+          />
 
-            {/* Quick action bar: Search, Wishlist, Bag, Account */}
-            <div className="grid grid-cols-2 gap-2.5 pb-2 text-xs font-mono">
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onOpenSearch();
-                }}
-                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
-              >
-                <span>🔍 Search</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateWishlist();
-                }}
-                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
-              >
-                <span>♡ Wishlist ({wishlistCount})</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateCart();
-                }}
-                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
-              >
-                <span>🛍 Bag ({cartCount})</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onOpenAccount();
-                }}
-                className="py-3 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] transition-colors"
-              >
-                <span>👤 Concierge</span>
-              </button>
-            </div>
-
-            {/* Navigation links & accordions */}
-            <div className="space-y-1 divide-y divide-white/5 pt-1">
-              {/* New Arrivals */}
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateShop('new-arrivals');
-                }}
-                className="w-full py-4 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] active:text-[#C8A97E] flex items-center justify-between"
-              >
-                <span>New Arrivals</span>
-                <span className="text-[10px] font-mono text-[#C8A97E] uppercase tracking-wider">New</span>
-              </button>
-
-              {/* Suits Accordion */}
-              <div>
-                <button
-                  onClick={() => toggleMobileAccordion('suits')}
-                  className="w-full py-4 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
-                >
-                  <span>Suits</span>
-                  <span className="text-sm font-mono text-[#C8A97E] w-6 h-6 flex items-center justify-center">
-                    {mobileExpandedSection === 'suits' ? '−' : '+'}
-                  </span>
-                </button>
-                {mobileExpandedSection === 'suits' && (
-                  <div className="pl-4 pb-3 space-y-2.5 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('suits');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Signature Suits
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('suits', 'Deep Black');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Black Suits
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('suits', 'Midnight Navy');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Navy Suits
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('suits', 'Charcoal');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Charcoal Suits
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('waistcoats');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Tailored Waistcoats
-                    </button>
+          {/* Drawer container */}
+          <div className="relative ml-auto w-full max-w-sm sm:max-w-md h-full bg-[#0C0C0C] border-l border-white/10 overflow-y-auto px-5 py-5 pb-safe flex flex-col justify-between shadow-2xl animate-in slide-in-from-right duration-300 ease-out z-10">
+            <div className="space-y-5">
+              {/* Mobile Header Brand & Close Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2.5">
+                  <MNMonogramMaster variant="champagne-gold" size={28} />
+                  <div className="flex flex-col">
+                    <span className="font-serif-lux text-base text-[#FAF8F5] tracking-[0.18em] font-semibold leading-none">
+                      N.K FABRICS
+                    </span>
+                    <span className="text-[7.5px] font-mono uppercase tracking-[0.25em] text-[#C8A97E] mt-1">
+                      Haute Couture &amp; Textiles
+                    </span>
                   </div>
-                )}
-              </div>
-
-              {/* Formal Accordion */}
-              <div>
+                </div>
                 <button
-                  onClick={() => toggleMobileAccordion('formal')}
-                  className="w-full py-4 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center border border-white/15 text-xs font-mono uppercase tracking-widest text-[#C8A97E] hover:text-white hover:border-[#C8A97E] active:scale-95 transition-all touch-manipulation"
+                  aria-label="Close Menu"
                 >
-                  <span>Formal Shirting &amp; Trousers</span>
-                  <span className="text-sm font-mono text-[#C8A97E] w-6 h-6 flex items-center justify-center">
-                    {mobileExpandedSection === 'formal' ? '−' : '+'}
-                  </span>
+                  ✕
                 </button>
-                {mobileExpandedSection === 'formal' && (
-                  <div className="pl-4 pb-3 space-y-2.5 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('formal-shirts');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Formal Shirts (Sea Island &amp; Giza 45)
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('trousers');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Pleated Wool Trousers
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('suits');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Evening Gala Wear
-                    </button>
-                  </div>
-                )}
               </div>
 
-              {/* Traditional Accordion */}
-              <div>
+              {/* Quick action bar: Search, Wishlist, Bag, Account */}
+              <div className="grid grid-cols-2 gap-2 pb-1 text-xs font-mono">
                 <button
-                  onClick={() => toggleMobileAccordion('traditional')}
-                  className="w-full py-4 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenSearch();
+                  }}
+                  className="min-h-[44px] py-2.5 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] active:scale-[0.98] transition-all touch-manipulation"
                 >
-                  <span>Traditional Pakistani Attire</span>
-                  <span className="text-sm font-mono text-[#C8A97E] w-6 h-6 flex items-center justify-center">
-                    {mobileExpandedSection === 'traditional' ? '−' : '+'}
-                  </span>
+                  <span>🔍 Search</span>
                 </button>
-                {mobileExpandedSection === 'traditional' && (
-                  <div className="pl-4 pb-3 space-y-2.5 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('shalwar-kameez');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Shalwar Kameez (Raw Mulberry Silk)
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('kurtas');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Kurtas (Handcrafted Egyptian Cotton)
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('waistcoats');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Ceremonial Waistcoats
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('shalwar-kameez');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Eid Collection
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        onNavigateShop('shalwar-kameez');
-                      }}
-                      className="block py-1 hover:text-[#C8A97E]"
-                    >
-                      Wedding Couture
-                    </button>
-                  </div>
-                )}
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onNavigateWishlist();
+                  }}
+                  className="min-h-[44px] py-2.5 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] active:scale-[0.98] transition-all touch-manipulation"
+                >
+                  <span>♡ Wishlist ({wishlistCount})</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onNavigateCart();
+                  }}
+                  className="min-h-[44px] py-2.5 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] active:scale-[0.98] transition-all touch-manipulation"
+                >
+                  <span>🛍 Bag ({cartCount})</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenAccount();
+                  }}
+                  className="min-h-[44px] py-2.5 px-3 bg-[#141414] hover:bg-[#1A1A1A] border border-white/10 flex items-center justify-center gap-2 text-white/90 active:border-[#C8A97E] active:scale-[0.98] transition-all touch-manipulation"
+                >
+                  <span>👤 Concierge</span>
+                </button>
               </div>
 
-              {/* Accessories */}
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateShop('accessories');
-                }}
-                className="w-full py-4 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E]"
-              >
-                Accessories &amp; Leather
-              </button>
+              {/* Navigation links & accordions */}
+              <div className="space-y-1 divide-y divide-white/5 pt-1">
+                {/* New Arrivals */}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onNavigateShop('new-arrivals');
+                  }}
+                  className="w-full min-h-[48px] py-3.5 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] active:text-[#C8A97E] flex items-center justify-between touch-manipulation"
+                >
+                  <span>New Arrivals</span>
+                  <span className="text-[10px] font-mono text-[#C8A97E] uppercase tracking-wider px-2 py-0.5 bg-[#C8A97E]/10 border border-[#C8A97E]/30">New</span>
+                </button>
 
-              {/* About N.K FABRICS */}
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onNavigateAbout();
-                }}
-                className="w-full py-4 text-left font-serif-lux text-lg text-[#C8A97E] flex items-center justify-between"
-              >
-                <span>About N.K FABRICS</span>
-                <span>→</span>
-              </button>
-            </div>
-          </div>
+                {/* Suits Accordion */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileAccordion('suits')}
+                    className="w-full min-h-[48px] py-3.5 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] touch-manipulation"
+                  >
+                    <span>Suits</span>
+                    <span className="text-sm font-mono text-[#C8A97E] w-7 h-7 flex items-center justify-center border border-white/10">
+                      {mobileExpandedSection === 'suits' ? '−' : '+'}
+                    </span>
+                  </button>
+                  {mobileExpandedSection === 'suits' && (
+                    <div className="pl-3 pb-3 space-y-2 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('suits');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Signature Suits (All)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('suits', 'Deep Black');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Black Suits
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('suits', 'Midnight Navy');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Navy Suits
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('suits', 'Charcoal');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Charcoal Suits
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('waistcoats');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E]"
+                      >
+                        Tailored Waistcoats
+                      </button>
+                    </div>
+                  )}
+                </div>
 
-          {/* Bottom mobile info with safe-area spacing */}
-          <div className="pt-6 border-t border-white/10 text-center space-y-2">
-            <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-              Complimentary Insured Courier Worldwide · 14-Day Returns
+                {/* Formal Accordion */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileAccordion('formal')}
+                    className="w-full min-h-[48px] py-3.5 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] touch-manipulation"
+                  >
+                    <span>Formal Shirting &amp; Trousers</span>
+                    <span className="text-sm font-mono text-[#C8A97E] w-7 h-7 flex items-center justify-center border border-white/10">
+                      {mobileExpandedSection === 'formal' ? '−' : '+'}
+                    </span>
+                  </button>
+                  {mobileExpandedSection === 'formal' && (
+                    <div className="pl-3 pb-3 space-y-2 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('formal-shirts');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Formal Shirts (Sea Island &amp; Giza 45)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('trousers');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Pleated Wool Trousers
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('suits');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E]"
+                      >
+                        Evening Gala Wear
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Traditional Accordion */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileAccordion('traditional')}
+                    className="w-full min-h-[48px] py-3.5 flex justify-between items-center text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] touch-manipulation"
+                  >
+                    <span>Traditional Pakistani Attire</span>
+                    <span className="text-sm font-mono text-[#C8A97E] w-7 h-7 flex items-center justify-center border border-white/10">
+                      {mobileExpandedSection === 'traditional' ? '−' : '+'}
+                    </span>
+                  </button>
+                  {mobileExpandedSection === 'traditional' && (
+                    <div className="pl-3 pb-3 space-y-2 text-sm font-sans-clean text-white/70 animate-in fade-in duration-200">
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('shalwar-kameez');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Shalwar Kameez (Raw Mulberry Silk)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('kurtas');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Kurtas (Handcrafted Egyptian Cotton)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('waistcoats');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Ceremonial Waistcoats
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('shalwar-kameez');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E] border-b border-white/5"
+                      >
+                        Eid Collection
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          onNavigateShop('shalwar-kameez');
+                        }}
+                        className="block w-full text-left py-2 hover:text-[#C8A97E]"
+                      >
+                        Wedding Couture
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Accessories */}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onNavigateShop('accessories');
+                  }}
+                  className="w-full min-h-[48px] py-3.5 text-left font-serif-lux text-lg text-white hover:text-[#C8A97E] touch-manipulation"
+                >
+                  Accessories &amp; Leather
+                </button>
+
+                {/* About N.K FABRICS */}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onNavigateAbout();
+                  }}
+                  className="w-full min-h-[48px] py-3.5 text-left font-serif-lux text-lg text-[#C8A97E] flex items-center justify-between touch-manipulation"
+                >
+                  <span>About N.K FABRICS</span>
+                  <span>→</span>
+                </button>
+              </div>
             </div>
-            <div className="text-xs font-mono text-[#C8A97E]">
-              concierge@nkfabrics.com · London &amp; Lahore Ateliers
+
+            {/* Bottom mobile info with safe-area spacing */}
+            <div className="pt-5 border-t border-white/10 text-center space-y-1.5 pb-safe">
+              <div className="text-[9.5px] font-mono text-white/50 uppercase tracking-widest">
+                Complimentary Insured Courier Worldwide · 14-Day Returns
+              </div>
+              <div className="text-xs font-mono text-[#C8A97E]">
+                concierge@nkfabrics.com · London &amp; Lahore Ateliers
+              </div>
             </div>
           </div>
         </div>

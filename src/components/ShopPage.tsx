@@ -354,17 +354,14 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                   {/* Gradient Scrim */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
 
-                  {/* Top Badges: Category/New Arrival & Wishlist */}
-                  <div className="absolute top-2 left-2 right-2 sm:top-3.5 sm:left-3.5 sm:right-3.5 flex justify-between items-start z-10 pointer-events-none">
-                    <div className="flex flex-col gap-1">
+                  {/* Top Status & Wishlist Trigger */}
+                  <div className="absolute top-2.5 left-2.5 right-2.5 sm:top-3.5 sm:left-3.5 sm:right-3.5 flex justify-between items-start z-10 pointer-events-none">
+                    <div className="pointer-events-none">
                       {product.isNewArrival && (
-                        <span className="bg-[#C8A97E] text-black text-[8px] sm:text-[9px] font-mono uppercase tracking-wider px-1.5 sm:px-2 py-0.5 font-semibold">
-                          New
+                        <span className="text-[8.5px] sm:text-[9.5px] font-mono uppercase tracking-[0.25em] text-[#C8A97E] drop-shadow-sm">
+                          New Arrival
                         </span>
                       )}
-                      <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-wider text-white/70 bg-black/60 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 border border-white/10 hidden xs:inline-block">
-                        {product.collection}
-                      </span>
                     </div>
 
                     {/* Wishlist Heart Button */}
@@ -373,25 +370,27 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                         e.stopPropagation();
                         onToggleWishlist(product.id);
                       }}
-                      className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all pointer-events-auto active:scale-90 ${
+                      className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center backdrop-blur-md border transition-all duration-300 pointer-events-auto active:scale-90 ${
                         isWishlisted
                           ? 'bg-[#C8A97E] text-black border-[#C8A97E]'
-                          : 'bg-black/60 text-white/80 border-white/20 hover:text-white hover:border-white/40'
+                          : 'bg-black/50 text-white/80 border-white/15 hover:border-[#C8A97E]/70 hover:text-white'
                       }`}
-                      aria-label="Add to wishlist"
+                      aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
                     >
-                      <span className="text-xs sm:text-sm">{isWishlisted ? '♥' : '♡'}</span>
+                      <span className={`text-xs sm:text-sm transition-transform duration-200 ${isWishlisted ? 'scale-110' : ''}`}>
+                        {isWishlisted ? '♥' : '♡'}
+                      </span>
                     </button>
                   </div>
 
                   {/* Hover Quick Action Overlay (Desktop) */}
-                  <div className="hidden sm:flex absolute bottom-4 left-4 right-4 items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="hidden sm:flex absolute bottom-4 left-4 right-4 items-center gap-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out z-10">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         onQuickView(product);
                       }}
-                      className="flex-1 py-3 bg-[#FAF8F5] text-black text-[11px] font-sans-clean uppercase tracking-[0.2em] font-semibold hover:bg-[#C8A97E] transition-colors shadow-2xl text-center"
+                      className="flex-1 py-3 bg-[#FAF8F5] text-black text-[11px] font-sans-clean uppercase tracking-[0.2em] font-semibold hover:bg-[#C8A97E] active:scale-[0.98] transition-all shadow-2xl text-center"
                     >
                       Quick View
                     </button>
@@ -400,7 +399,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                         e.stopPropagation();
                         onAddToBag(product, product.sizes[0] || '40R', product.colors[0]?.name || 'Standard');
                       }}
-                      className="px-4 py-3 bg-black/80 border border-white/20 text-[#FAF8F5] text-[11px] font-sans-clean uppercase tracking-wider hover:border-[#C8A97E] hover:text-[#C8A97E] transition-colors"
+                      className="px-4 py-3 bg-black/85 border border-white/20 text-[#FAF8F5] text-[11px] font-sans-clean uppercase tracking-wider hover:border-[#C8A97E] hover:text-[#C8A97E] active:scale-[0.98] transition-all"
                       title="Quick Add to Bag"
                     >
                       + Bag
@@ -411,19 +410,23 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                 {/* Product Card Body */}
                 <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
                   <div className="space-y-1">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 sm:gap-2">
+                    <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-[0.25em] text-white/40">
+                      {product.collection}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-2">
                       <h3
                         onClick={() => onOpenFullDetail(product)}
-                        className="font-serif-lux text-xs sm:text-lg text-[#FAF8F5] group-hover:text-[#C8A97E] transition-colors cursor-pointer leading-snug line-clamp-1 sm:line-clamp-2"
+                        className="font-serif-lux text-sm sm:text-lg text-[#FAF8F5] group-hover:text-[#C8A97E] transition-colors cursor-pointer leading-snug line-clamp-1 sm:line-clamp-2"
                       >
                         {product.name}
                       </h3>
-                      <div className="font-mono text-xs sm:text-base text-[#FAF8F5] font-semibold shrink-0">
+                      <div className="font-mono text-xs sm:text-sm text-[#C8A97E] font-medium shrink-0">
                         {product.formattedPrice}
                       </div>
                     </div>
 
-                    <p className="hidden sm:block text-xs font-sans-clean text-[#D8D4CC]/70 font-light leading-relaxed line-clamp-2">
+                    <p className="hidden sm:block text-xs font-sans-clean text-[#D8D4CC]/60 font-light leading-relaxed line-clamp-2">
                       {product.tagline}
                     </p>
                   </div>
@@ -450,16 +453,16 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                   </div>
 
                   {/* Mobile Quick Action Strip (Touch-friendly on small screens) */}
-                  <div className="sm:hidden pt-1 flex items-center gap-1.5">
+                  <div className="sm:hidden pt-2 flex items-center gap-2">
                     <button
                       onClick={() => onAddToBag(product, product.sizes[0] || '40R', product.colors[0]?.name || 'Standard')}
-                      className="flex-1 py-1.5 text-[10px] font-mono uppercase bg-white/10 hover:bg-[#C8A97E] hover:text-black border border-white/15 text-white active:scale-95 transition-all text-center"
+                      className="flex-1 min-h-[38px] py-2 text-[10.5px] font-mono uppercase bg-white/10 hover:bg-[#C8A97E] hover:text-black border border-white/15 text-white active:scale-95 transition-all text-center flex items-center justify-center touch-manipulation font-medium"
                     >
                       + Add to Bag
                     </button>
                     <button
                       onClick={() => onOpenFullDetail(product)}
-                      className="py-1.5 px-2 text-[10px] font-mono uppercase bg-transparent text-white/60 hover:text-white border border-white/10 active:scale-95 transition-all text-center"
+                      className="min-h-[38px] py-2 px-3 text-[10.5px] font-mono uppercase bg-transparent text-white/70 hover:text-white border border-white/15 active:scale-95 transition-all text-center flex items-center justify-center touch-manipulation"
                     >
                       View
                     </button>
