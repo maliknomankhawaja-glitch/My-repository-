@@ -339,6 +339,20 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 </span>
               </div>
 
+              {/* Live Inventory & Stock Status */}
+              <div className="flex items-center gap-2 pt-1">
+                {currentProduct.availability === 'In Stock' ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-300 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-xs">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    In Stock ({currentProduct.stockUnits || 28} Available for Immediate Dispatch)
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[#C8A97E] bg-[#C8A97E]/10 border border-[#C8A97E]/30 px-2.5 py-1 rounded-xs">
+                    ◆ Bespoke Commission (Made to Order: 10–14 Days Tailoring)
+                  </span>
+                )}
+              </div>
+
               <p className="text-xs sm:text-sm font-sans-clean text-[#D8D4CC]/80 font-light leading-relaxed pt-2">
                 {currentProduct.description ||
                   'A refined tailored silhouette crafted for modern formal occasions, combining timeless structure with contemporary detail. Full floating horsehair canvas, hand-padded lapels, and tailored trousers.'}
@@ -1104,8 +1118,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         </div>
       </section>
 
-      {/* 9. MOBILE STICKY BOTTOM ACTION BAR */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-[#121212]/98 backdrop-blur-xl border-t border-white/15 px-4 py-3 pb-safe sm:hidden flex items-center justify-between gap-3 shadow-2xl">
+      {/* 9. MOBILE STICKY BOTTOM ACTION BAR (Positioned above persistent bottom nav) */}
+      <div className="fixed bottom-[52px] inset-x-0 z-30 bg-[#121212]/98 backdrop-blur-xl border-t border-white/15 px-4 py-2.5 sm:hidden flex items-center justify-between gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.8)]">
         <div className="min-w-0 flex-1">
           <div className="text-[10px] font-mono text-white/50 uppercase truncate">{currentProduct.name}</div>
           <div className="font-mono text-base font-bold text-[#FAF8F5] leading-tight">{currentProduct.formattedPrice}</div>

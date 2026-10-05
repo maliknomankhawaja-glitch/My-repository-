@@ -105,12 +105,17 @@ export const SizeGuideModal: React.FC<SizeGuideProps> = ({ isOpen, onClose }) =>
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-3xl bg-[#111111] border border-[#C8A97E]/40 shadow-2xl p-6 sm:p-10 my-auto animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center max-sm:items-end justify-center p-0 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full max-w-3xl bg-[#111111] border border-[#C8A97E]/40 max-sm:border-x-0 max-sm:border-b-0 max-sm:rounded-t-3xl shadow-2xl p-6 sm:p-10 my-auto max-sm:my-0 max-sm:max-h-[92vh] overflow-y-auto animate-in fade-in zoom-in-95 max-sm:slide-in-from-bottom duration-200">
+        {/* Mobile Drag Handle */}
+        <div className="sm:hidden -mt-2 mb-4 flex justify-center">
+          <div className="w-12 h-1 bg-white/20 rounded-full" />
+        </div>
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 z-20 w-8 h-8 flex items-center justify-center text-white/60 hover:text-white border border-white/10 transition-colors"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 z-20 w-8 h-8 flex items-center justify-center text-white/60 hover:text-white border border-white/10 transition-colors rounded-full sm:rounded-none"
           aria-label="Close Size Guide"
         >
           ✕

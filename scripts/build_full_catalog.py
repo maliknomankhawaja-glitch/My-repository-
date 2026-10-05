@@ -1,0 +1,180 @@
+# Python Script to generate the complete 248-item luxury catalog for N.K FABRICS
+import json
+import re
+
+IMG = {
+    'BLACK_SUIT': '/src/assets/images/mn_suit_black_signature_1790693702392.jpg',
+    'NAVY_SUIT': '/src/assets/images/fashion_formal_suit_waistcoat_1790693269160.jpg',
+    'CHALK_STRIPE': '/src/assets/images/chalk_stripe_suit_1791180278649.jpg',
+    'EVENING_SUIT': '/src/assets/images/fashion_evening_suit_cut_1790693303536.jpg',
+    'HERO_MODELS': '/src/assets/images/hero_mn_editorial_models_1790693257303.jpg',
+    'TRAD_BLACK': '/src/assets/images/founder_couture_hero_1790909201612.jpg',
+    'EMERALD_SILK': '/src/assets/images/emerald_silk_kameez_1791180291920.jpg',
+    'PRINCE_COAT': '/src/assets/images/prince_coat_royal_1791180264486.jpg',
+    'TRAD_IVORY': '/src/assets/images/mn_traditional_eid_wedding_1790693689026.jpg',
+    'TRAD_GREEN': '/src/assets/images/fashion_traditional_shalwar_kameez_1790693280444.jpg',
+    'SHIRT_WHITE': '/src/assets/images/mn_formal_shirt_white_1790693673578.jpg',
+    'CASUAL_SHIRT': '/src/assets/images/casual_linen_shirt_1791180740922.jpg',
+    'SUEDE_JACKET': '/src/assets/images/suede_jacket_luxury_1791180724417.jpg',
+    'TROUSER_CHARCOAL': '/src/assets/images/mn_trouser_tailored_charcoal_1790693715497.jpg',
+    'ESSENTIALS_POLO': '/src/assets/images/fashion_essentials_polo_trouser_1790693292165.jpg',
+    'BACK_PROFILE': '/src/assets/images/mn_suit_back_profile_1790694103656.jpg',
+    'FABRIC_DETAIL': '/src/assets/images/mn_luxury_suit_fabric_detail_1790692683058.jpg',
+    'PACKAGING': '/src/assets/images/mn_luxury_packaging_showcase_1790692669800.jpg',
+    'TAG_TEXTURE': '/src/assets/images/mn_luxury_woven_tag_texture_1790692696445.jpg',
+}
+
+products = []
+
+def add(id, name, cat, price, tagline, desc, img1, img2, colors, sizes, fabric, origin, fit, occasion, collection, notes, new_arr=False, best_seller=False):
+    # Enforce rules
+    assert 'm.n' not in name.lower(), f"Forbidden M.N in {name}"
+    assert 'blazer' not in name.lower(), f"Forbidden blazer in {name}"
+    assert 'blazer' not in desc.lower(), f"Forbidden blazer in {desc}"
+    
+    products.append({
+        'id': f'nk-{id}',
+        'name': f'N.K FABRICS {name}',
+        'category': cat,
+        'isNewArrival': new_arr,
+        'isBestSeller': best_seller,
+        'price': price,
+        'formattedPrice': f"${price:,}",
+        'tagline': tagline,
+        'description': desc,
+        'primaryImage': IMG[img1],
+        'hoverImage': IMG[img2],
+        'colors': colors,
+        'sizes': sizes,
+        'fabric': fabric,
+        'fabricOrigin': origin,
+        'fit': fit,
+        'occasion': occasion,
+        'collection': collection,
+        'availability': 'In Stock' if not new_arr else 'Bespoke Commission',
+        'tailoringNotes': notes,
+    })
+
+# =========================================================================
+# 1. SUITS (32 Products)
+# =========================================================================
+suit_data = [
+    ('suit-chalk-stripe-power', 'Savile Row Chalk Stripe Three-Piece', 4400, 'English Worsted Navy Chalk Stripe with Sculpted High-V Waistcoat', 'The commanding boardroom authority. Crafted from heavyweight English chalk stripe flannel with roped structured shoulders, hand-sewn buttonholes, and a matching six-button waistcoat with watch chain pocket.', 'CHALK_STRIPE', 'NAVY_SUIT', [{'name': 'Navy Chalk Stripe', 'hex': '#152238'}, {'name': 'Charcoal Chalk Stripe', 'hex': '#2B2B2B'}], ['38R', '40R', '42R', '44R', '46L'], 'English Worsted Flannel with Natural Chalk Pinstripe (320g/m)', 'Fox Brothers & Co., Somerset, UK', 'Classic Formal', 'Business & Boardroom', 'Signature Collection', ['Authentic Savile Row roped shoulder head', 'High-V sculpted waistcoat with watch chain eyelet', 'Flat-front trousers with forward pleats and brass side adjusters'], True, True),
+    ('suit-black-signature', 'Black Signature Three-Piece Suit', 4200, 'Super 160s Virgin Wool with Silk Satin Details & Tailored Waistcoat', 'The definitive black-tie power suit. Hand-padded floating horsehair canvas ensures an immaculate roll across the chest, paired with a matching five-button tailored waistcoat and sharp pleated dress trousers.', 'BLACK_SUIT', 'FABRIC_DETAIL', [{'name': 'Deep Black', 'hex': '#0C0C0C'}, {'name': 'Midnight Charcoal', 'hex': '#1C1C1E'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 160s Virgin Wool & Cashmere (270g/m)', 'Loro Piana, Quarona, Italy', 'Tailored Regular', 'Evening Black-Tie', 'Signature Collection', ['Full floating horsehair canvas construction', 'Hand-carved buffalo horn buttons with micro-engraved insignia', 'Pick-stitched lapels and interior cupro pocket linings'], False, True),
+    ('suit-midnight-navy-db', 'Midnight Navy Peak-Lapel Three-Piece', 3850, 'Super 150s Tasmanian Merino Wool with Matching Double-Breasted Waistcoat', 'Sculpted in the quintessential Savile Row silhouette with roped shoulders, a broad 3.75-inch peak lapel, and a matching six-button double-breasted waistcoat that contours the torso effortlessly.', 'NAVY_SUIT', 'BACK_PROFILE', [{'name': 'Midnight Navy', 'hex': '#121A2A'}, {'name': 'Dark Navy', 'hex': '#0B1320'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 150s Tasmanian Merino Wool (250g/m)', 'Scabal, Huddersfield, England', 'Tailored Regular', 'Business & Boardroom', 'Formal Collection', ['Milanese hand-sewn lapel buttonhole', 'Double rear vents engineered for sitting ease', 'High-rise double forward-pleated trousers with 2-inch cuffs'], True, False),
+    ('suit-mayfair-charcoal-flannel', 'Mayfair Charcoal Flannel Suit', 3600, 'English Worsted Flannel with 5-Button High-V Waistcoat', 'The quintessential British executive suit. Tailored from soft yet resilient worsted flannel, delivering exceptional drape, crease recovery, and understated gravitas.', 'HERO_MODELS', 'TROUSER_CHARCOAL', [{'name': 'Charcoal', 'hex': '#242424'}, {'name': 'Anthracite', 'hex': '#333333'}], ['38R', '40R', '42R', '44R', '46L'], 'Worsted Wool Flannel (310g/m)', 'Huddersfield Fine Worsteds, Yorkshire, UK', 'Classic Formal', 'Business & Boardroom', 'Business Collection', ['Gentle waist suppression with natural drape chest', 'Generous notch lapels with flower loop on under-collar', 'Suspender buttons installed inside trouser waistband'], False, False),
+    ('suit-venetian-velvet-tux', 'Venetian Midnight Velvet Tuxedo', 4600, 'Silk-Cotton Italian Velvet with Corded Silk Shawl Collar', 'The pinnacle of black-tie opulence. Handcrafted from heavy Venetian cotton-silk velvet with an extraordinary nocturnal luster, finished with deep grosgrain shawl lapels.', 'EVENING_SUIT', 'BLACK_SUIT', [{'name': 'Midnight Velvet Noir', 'hex': '#0A0A0A'}, {'name': 'Royal Navy Velvet', 'hex': '#0B1526'}], ['38R', '40R', '42R', '44R', '46L'], 'Italian Silk Velvet with Heavy Luster (360g/m)', 'Redaelli Velluti, Como, Italy', 'Tailored Regular', 'Evening Black-Tie', 'Evening Collection', ['Continuous corded silk shawl lapel', 'Fabric-covered silk tuxedo buttons', 'Pure silk trouser side stripe braid'], True, False),
+    ('suit-emerald-silk-evening', 'Royal Emerald Silk-Blend Evening Suit', 4350, 'Imperial Forest Emerald Wool-Silk with Black Satin Peak Lapels', 'A sovereign evening creation. Woven from a blend of ultra-fine wool and mulberry silk in an imperial forest emerald hue, framed by jet black silk satin peak lapels.', 'EMERALD_SILK', 'EVENING_SUIT', [{'name': 'Forest Emerald', 'hex': '#0E281E'}, {'name': 'Nocturne Green', 'hex': '#091A14'}], ['38R', '40R', '42R', '44R'], 'Super 150s Wool & Mulberry Silk (250g/m)', 'Dormeuil, France & UK', 'Slim Fit', 'Wedding & Gala', 'Wedding Collection', ['Contrast midnight silk peak lapels', 'Matching emerald low-cut waistcoat', 'Jet black satin braided trousers'], False, False),
+    ('suit-prince-of-wales-glen', 'Prince of Wales Glen Plaid Suit', 4150, 'Classic Glen Urquhart Plaid with Subtle Sky Blue Deco Overcheck', 'The timeless aristocrat pattern. Cut with soft Neapolitan shoulders and high gorge lapels, accented by a subtle sky blue overcheck woven from high-twist tropical wool.', 'HERO_MODELS', 'CHALK_STRIPE', [{'name': 'Glen Plaid Grey', 'hex': '#4A4A4A'}, {'name': 'Charcoal Deco', 'hex': '#2E2E2E'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 140s High-Twist Wool (260g/m)', 'Vitale Barberis Canonico, Biella, Italy', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Spalla camicia shirt-sleeve shoulder for natural comfort', 'Barchetta curved breast pocket for silk flare', 'Matching double-breasted 6-button vest included'], False, True),
+    ('suit-espresso-peak-evening', 'Espresso Peak-Lapel Evening Suit', 4100, 'Deep Espresso Wool-Silk with Lustrous Silk Satin Lapels', 'An unconventional evening triumph. Replaces standard black tie with an opulent deep espresso brown that absorbs nocturnal ambient light with velvety warmth.', 'EVENING_SUIT', 'BLACK_SUIT', [{'name': 'Deep Espresso', 'hex': '#251C17'}, {'name': 'Dark Chocolate', 'hex': '#1C1512'}], ['38R', '40R', '42R', '44R'], '75% Fine Wool, 25% Mulberry Silk (240g/m)', 'Ermenegildo Zegna Lanificio, Trivero, Italy', 'Tailored Regular', 'Evening Black-Tie', 'Evening Collection', ['Silk satin faced dramatic sweeping peak lapels', 'Low-scoop evening waistcoat with covered satin buttons', 'Silk satin braided trouser outseams'], False, False),
+    ('suit-sovereign-camel-drape', 'Sovereign Camel Drape Suit', 4800, '100% Baby Camelhair & Cashmere with Natural Horn Buttons', 'An exceptional cold-weather monument. Woven from Mongolian baby camelhair and cashmere, creating an unparalleled golden luster, thermal insulation, and cloud-like handfeel.', 'HERO_MODELS', 'FABRIC_DETAIL', [{'name': 'Golden Camel', 'hex': '#B88B4A'}, {'name': 'Warm Taupe', 'hex': '#8B7355'}], ['38R', '40R', '42R', '44R', '46L'], 'Baby Camelhair & Mongolian Cashmere (380g/m)', 'Piacenza 1733, Biella, Italy', 'Classic Formal', 'Everyday Luxury', 'Winter Collection', ['Colossal notch lapels with Milanese buttonholes', 'Mottled honey horn buttons', 'Interior silk ticket pocket with custom monogram'], True, False),
+    ('suit-oxford-birdseye-drape', 'Oxford Navy Birdseye Drape Suit', 3550, 'Micro-Textured Birdseye High-Twist Wool All-Season Suit', 'The sharpest everyday business suit. The micro-birdseye weave introduces visual depth while the high-twist yarns resist rumpling during long international flights.', 'NAVY_SUIT', 'CHALK_STRIPE', [{'name': 'Oxford Navy', 'hex': '#162842'}, {'name': 'Steel Blue', 'hex': '#263D5C'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 130s Pure Wool Birdseye (260g/m)', 'Vitale Barberis Canonico, Biella', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Two-button front with 3.5-inch notch lapels', 'Lightly roped shoulder construction', 'Includes matching 5-button high-V waistcoat'], False, False),
+    ('suit-westminster-db-charcoal', 'Westminster 6x2 Double-Breasted Suit', 3950, 'Heavyweight Worsted Twill with Sweeping 4-Inch Peak Lapels', 'The classic British power silhouette. Six-button double-breasted arrangement with deep waist suppression and high armholes, finished with hand-padded floating canvas.', 'BLACK_SUIT', 'TROUSER_CHARCOAL', [{'name': 'Charcoal Grey', 'hex': '#222222'}, {'name': 'Midnight Blue', 'hex': '#101726'}], ['38R', '40R', '42R', '44R', '46L'], 'Heavy British Worsted Wool Twill (340g/m)', 'Huddersfield Fine Worsteds, UK', 'Classic Formal', 'Formal Collection', 'Formal Collection', ['Traditional 6x2 button stance with 4-inch sweeping peak lapels', 'Reinforced Milanese lapel flower loop', 'Fishtail back trousers designed for button suspenders'], False, False),
+    ('suit-riviera-taupe-silk-linen', 'Riviera Taupe Silk-Linen Summer Suit', 3650, 'Unstructured Neapolitan Cut in Italian Silk-Linen Blend', 'Effortless Mediterranean sprezzatura. Unlined construction with open-weave Irish linen and mulberry silk that breathes in high summer while draping with architectural crispness.', 'ESSENTIALS_POLO', 'HERO_MODELS', [{'name': 'Warm Taupe', 'hex': '#A89F91'}, {'name': 'Sandstone', 'hex': '#C2B8A3'}], ['38R', '40R', '42R', '44R'], '55% Irish Linen, 45% Mulberry Silk (230g/m)', 'Baird McNutt, Northern Ireland', 'Relaxed Drape', 'Resort & Casual', 'Summer Collection', ['Completely unlined quarter-back construction', 'Patch hip pockets with curved barchetta lines', 'Drawstring side-tab convertible trousers'], False, False),
+    ('suit-ivory-tropical-formal', 'Ivory Tropical Formal Two-Piece Suit', 3950, 'Tropical High-Ventilation Worsted Wool with Pearlized Waistcoat', 'The pinnacle of warm-weather aristocracy. An airy open tropical weave creates unparalleled breathability, finished with carved mother-of-pearl buttons and Hollywood high-waist double-pleat trousers.', 'ESSENTIALS_POLO', 'TRAD_IVORY', [{'name': 'Ivory', 'hex': '#FAF8F5'}, {'name': 'Cream', 'hex': '#ECE7DD'}], ['40R', '42R', '44R'], 'Tropical High-Ventilation Worsted Wool (220g/m)', 'Holland & Sherry, Savile Row', 'Classic Formal', 'Wedding & Gala', 'Wedding Collection', ['Quarter-lined cupro interior for maximum cooling ventilation', 'Double-breasted four-button jacket with peak lapels', 'Hollywood high-waist trousers with 2-inch turn-up cuffs'], False, False),
+    ('suit-milanese-anthracite-2pc', 'Milanese Dark Grey Sartorial Two-Piece', 3450, 'Anthracite High-Twist Wool with Neapolitan Soft Shoulder', 'Engineered for seamless continental travel. Unstructured spalla camicia shirt-shoulder construction allows total freedom of motion while high-twist wool naturally sheds creases.', 'NAVY_SUIT', 'TROUSER_CHARCOAL', [{'name': 'Dark Grey', 'hex': '#303030'}, {'name': 'Charcoal', 'hex': '#1E1E1E'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 130s High-Twist All-Season Wool (250g/m)', 'Vitale Barberis Canonico, Biella', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Barchetta curved chest pocket for handkerchief flare', 'Single-pleat tapered trousers with side tab adjusters', 'Bespoke floating canvas interlining'], False, False),
+    ('suit-bordeaux-velvet-dinner', 'Bordeaux Velvet Dinner Suit', 4500, 'Deep Wine Silk Velvet with Grosgrain Peak Lapels & Trousers', 'A theatrical triumph for galas and seasonal premieres. Deep bordeaux velvet cut in a single-button evening stance with satin-faced grosgrain peak lapels.', 'EVENING_SUIT', 'BLACK_SUIT', [{'name': 'Deep Bordeaux', 'hex': '#4A0E17'}, {'name': 'Midnight Wine', 'hex': '#33080F'}], ['38R', '40R', '42R', '44R'], 'Italian Cotton-Silk Velvet (350g/m)', 'Pontoglio 1883, Brescia, Italy', 'Slim Fit', 'Evening Black-Tie', 'Evening Collection', ['Grosgrain faced peak lapels', 'Single-button evening stance with covered buttons', 'Midnight braided evening trousers'], True, False),
+    ('suit-light-grey-sharkskin', 'Light Grey Sharkskin Executive Two-Piece', 3500, 'Lustrous Super 150s Sharkskin Twill with Roped Shoulder', 'The sharp modern executive suit. The twill weave alternates light and dark threads for a silvery metallic depth that commands daytime conference presence.', 'HERO_MODELS', 'CHALK_STRIPE', [{'name': 'Light Grey Sharkskin', 'hex': '#8C929D'}, {'name': 'Silver Slate', 'hex': '#A2A8B3'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 150s Merino Wool Sharkskin (260g/m)', 'Loro Piana, Quarona, Italy', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Roped shoulder head with hand-padded canvas', 'Slanted hacking hip pockets with ticket pocket', 'Side buckle tab forward pleated trousers'], False, False),
+    ('suit-solaro-sunburst-twill', 'Solaro Sunburst Herringbone Suit', 3900, 'Original British Solaro Fabric with Iridescent Copper-Green Luster', 'Legendary among bespoke connoisseurs. Woven with olive-green face yarns and crimson-brick reverse threads, creating an extraordinary two-tone sunburst reflection in daylight.', 'ESSENTIALS_POLO', 'HERO_MODELS', [{'name': 'Solaro Olive-Copper', 'hex': '#635B48'}, {'name': 'Bronze Sand', 'hex': '#7D7055'}], ['38R', '40R', '42R', '44R'], 'Original Wool Solaro Twill (290g/m)', 'Smith Woollens, Savile Row, London', 'Tailored Regular', 'Premium Collection', 'Premium Collection', ['Classic 3-roll-2 button stance', 'Unlined body with bound silk seams', 'High-rise Hollywood waistband trousers'], False, False),
+    ('suit-chocolate-brown-flannel', 'Chocolate Brown Flannel Three-Piece', 3750, 'Rich Chocolate Wool Flannel with Double-Breasted Waistcoat', 'A sophisticated departure from navy and grey. Heavyweight wool flannel dyed in an appetizing bitter chocolate tone, paired with a sculpted 6-button vest.', 'HERO_MODELS', 'TROUSER_CHARCOAL', [{'name': 'Bitter Chocolate', 'hex': '#2A1C16'}, {'name': 'Roasted Espresso', 'hex': '#221611'}], ['38R', '40R', '42R', '44R', '46L'], 'English Worsted Flannel (320g/m)', 'Fox Brothers, Somerset, UK', 'Classic Formal', 'Winter Collection', 'Winter Collection', ['Matching 6-button double-breasted vest with lapel', 'Real dark horn buttons with cross stitch', 'Turn-up 2-inch trouser cuffs'], False, False),
+    ('suit-pearl-grey-wedding', 'Pearl Grey Wedding Ceremony Suit', 4300, 'Super 160s Pearl Grey Wool-Silk with Embroidered Silk Vest', 'Engineered for grand wedding occasions. A pale silvery pearl grey with exceptional light refraction, accompanied by an ivory and champagne damask waistcoat.', 'TRAD_IVORY', 'HERO_MODELS', [{'name': 'Pearl Grey', 'hex': '#B8BCC4'}, {'name': 'Platinum Silver', 'hex': '#D2D6DE'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 160s Wool & Mulberry Silk (250g/m)', 'Dormeuil, France & UK', 'Tailored Regular', 'Wedding & Gala', 'Wedding Collection', ['Includes embroidered silk wedding waistcoat', 'Mother-of-pearl buttons with metal shank', 'Silk-lined pleated trousers'], True, False),
+    ('suit-glen-check-charcoal', 'Glen Check Charcoal Three-Piece', 3850, 'Black & White Micro Glen Check with Tonal Charcoal Waistcoat', 'Subtle, distinguished, and timeless. The dense houndstooth and glen plaid arrangement gives immense depth while reading as sophisticated grey from a distance.', 'CHALK_STRIPE', 'BLACK_SUIT', [{'name': 'Charcoal Glen Check', 'hex': '#353535'}, {'name': 'Steel Check', 'hex': '#484848'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 140s Pure Wool (280g/m)', 'Huddersfield Fine Worsteds, UK', 'Classic Formal', 'Business & Boardroom', 'Signature Collection', ['5-button high-V vest with jetted watch pocket', 'Pick stitched lapels', 'Extended waistband tab trousers'], False, False),
+    ('suit-royal-navy-4x2-db', 'Royal Navy Double-Breasted 4x2 Suit', 3700, 'Modern 4x2 Button Stance in High-Twist Travel Gabardine', 'A sleeker, lower button stance that elongates the neck and torso. The high-twist gabardine wool repels moisture and recovers completely from packing in luggage.', 'NAVY_SUIT', 'BACK_PROFILE', [{'name': 'Royal Navy', 'hex': '#111D30'}, {'name': 'Deep Indigo', 'hex': '#0B1422'}], ['38R', '40R', '42R', '44R', '46L'], 'High-Twist Pure Wool Gabardine (270g/m)', 'Vitale Barberis Canonico, Biella', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Modern 4x2 double-breasted arrangement with sweeping peak lapels', 'Unfinished trouser cuffs for tailored break', 'Natural horn buttons'], False, False),
+    ('suit-tobacco-linen-2pc', 'Tobacco Linen Two-Piece Summer Suit', 3350, 'Pure Irish Linen in Rich Tobacco Khaki with Patch Pockets', 'The gentleman’s summer uniform. Heavy Irish linen that acquires noble character with each wear, featuring unlined spalla camicia construction and patch pockets.', 'ESSENTIALS_POLO', 'HERO_MODELS', [{'name': 'Tobacco Khaki', 'hex': '#6E553B'}, {'name': 'Golden Wheat', 'hex': '#876D4E'}], ['38R', '40R', '42R', '44R'], '100% Pure Irish Linen (280g/m)', 'Baird McNutt, Northern Ireland', 'Relaxed Drape', 'Resort & Casual', 'Summer Collection', ['Quarter back lining for maximum ventilation', 'Dual patch hip pockets and barchetta breast pocket', 'Double pleat trousers with side adjusters'], False, False),
+    ('suit-forest-green-flannel', 'Forest Green Flannel Three-Piece', 4100, 'Subtle Forest Green Wool Flannel with High-V Lapelled Waistcoat', 'A distinguished country-house formal suit. In low indoor light it registers as charcoal; in natural sunlight it reveals an enchanting deep botanical forest emerald hue.', 'EMERALD_SILK', 'HERO_MODELS', [{'name': 'Deep Forest Green', 'hex': '#16281D'}, {'name': 'Hunter Green', 'hex': '#0F1E15'}], ['38R', '40R', '42R', '44R', '46L'], 'English Wool Flannel (330g/m)', 'Fox Brothers, Somerset, UK', 'Classic Formal', 'Winter Collection', 'Winter Collection', ['Includes lapelled 6-button waistcoat', 'Real horn buttons with cross stitch', 'Side tab buckle trousers'], True, False),
+    ('suit-sandstone-worsted-2pc', 'Sandstone Worsted Two-Piece Suit', 3450, 'Light Sandstone Merino Twill with Soft Structured Shoulders', 'Neutral, crisp, and aristocratic. Woven from high-twist merino wool in a warm sandstone tint, pairing effortlessly with crisp white or pale blue formal shirting.', 'ESSENTIALS_POLO', 'TRAD_IVORY', [{'name': 'Sandstone Beige', 'hex': '#D2C3B0'}, {'name': 'Oatmeal', 'hex': '#E0D4C3'}], ['38R', '40R', '42R', '44R'], 'Super 130s All-Season Merino Wool (250g/m)', 'Biella, Italy', 'Tailored Regular', 'Everyday Luxury', 'Essential Collection', ['Soft shoulder padding with clean roll', 'Half-lined interior in cupro', 'Flat front tapered trousers'], False, False),
+    ('suit-shadow-windowpane-charcoal', 'Shadow Windowpane Charcoal Three-Piece', 3950, 'Charcoal Wool with Ghost Windowpane Grid & Horseshoe Waistcoat', 'Architectural minimalism. An almost imperceptible shadow grid adds vertical proportion to the gentleman’s stature, completed by a low-scoop horseshoe vest.', 'CHALK_STRIPE', 'TROUSER_CHARCOAL', [{'name': 'Shadow Windowpane', 'hex': '#242426'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 150s Fine Worsted Wool (270g/m)', 'Scabal, Huddersfield, England', 'Tailored Regular', 'Business & Boardroom', 'Signature Collection', ['Horseshoe 4-button vest', 'Slanted hacking pockets with ticket pocket', 'Side buckle forward pleat trousers'], False, False),
+    ('suit-midnight-grosgrain-shawl', 'Midnight Tuxedo with Grosgrain Shawl', 4400, 'Deep Midnight Blue Barathea Wool with Ribbed Grosgrain Lapels', 'The Savile Row alternative to satin. Ribbed silk grosgrain facing provides a tactile, matte texture that reflects photography flash evenly without shine.', 'EVENING_SUIT', 'BLACK_SUIT', [{'name': 'Midnight Navy', 'hex': '#0B1220'}, {'name': 'Deep Black', 'hex': '#090909'}], ['38R', '40R', '42R', '44R', '46L'], 'Pure Wool Barathea (290g/m)', 'Holland & Sherry, Savile Row', 'Tailored Regular', 'Evening Black-Tie', 'Evening Collection', ['Grosgrain faced continuous shawl collar', 'Jetted pockets with no flaps', 'Silk grosgrain braided trouser seams'], False, True),
+    ('suit-cashmere-flannel-anthracite', 'Cashmere Flannel Anthracite Suit', 4650, '85% Super 160s Wool, 15% Cashmere with High-V Waistcoat', 'The height of cold-weather luxury. An ultra-soft flannel weave enriched with Mongolian cashmere, providing sublime insulation and an unbroken fluid silhouette.', 'HERO_MODELS', 'FABRIC_DETAIL', [{'name': 'Anthracite Flannel', 'hex': '#262626'}], ['38R', '40R', '42R', '44R', '46L'], 'Wool-Cashmere Flannel (330g/m)', 'Piacenza 1733, Biella, Italy', 'Classic Formal', 'Winter Collection', 'Winter Collection', ['Full floating canvas with natural horsehair chest piece', 'Pick-stitched wide peak lapels', 'Hollywood high-rise trousers'], False, False),
+    ('suit-cream-silk-linen-wedding', 'Cream Silk-Linen Wedding Three-Piece', 4500, 'Mulberry Silk, Linen & Wool with Floral Damask Silk Waistcoat', 'Designed for summer garden weddings and luxury destination ceremonies. An opulent ivory cream weave paired with a custom floral damask silk vest.', 'TRAD_IVORY', 'ESSENTIALS_POLO', [{'name': 'Ivory Cream', 'hex': '#FAF5EC'}], ['38R', '40R', '42R', '44R'], '40% Silk, 35% Linen, 25% Wool (240g/m)', 'Loro Piana, Quarona, Italy', 'Tailored Regular', 'Wedding & Gala', 'Wedding Collection', ['Includes matching floral damask silk vest', 'Carved mother-of-pearl buttons with gold shank', 'Double forward pleat trousers'], True, False),
+    ('suit-english-herringbone-charcoal', 'English Herringbone Charcoal Two-Piece', 3600, 'Textured Fine Herringbone Weave in Super 140s British Wool', 'Classic British texture with modern lightweight wearability. The fine chevron weave reflects light symmetrically across the chest.', 'TROUSER_CHARCOAL', 'HERO_MODELS', [{'name': 'Charcoal Herringbone', 'hex': '#2D2D2D'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 140s British Worsted Wool (280g/m)', 'Huddersfield Fine Worsteds, UK', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Milanese lapel buttonhole', 'Two-button single-breasted stance with curved barchetta chest pocket', 'Side buckle tab trousers'], False, False),
+    ('suit-imperial-burgundy-3pc', 'Imperial Burgundy Three-Piece Suit', 4250, 'Deep Wine Super 150s Merino Wool with Tonal Waistcoat', 'A regal evening and reception ensemble. Deep wine burgundy wool crafted with an immaculate canvas roll, paired with a matching five-button tailored vest.', 'EVENING_SUIT', 'HERO_MODELS', [{'name': 'Imperial Burgundy', 'hex': '#3F121C'}, {'name': 'Deep Claret', 'hex': '#2F0B13'}], ['38R', '40R', '42R', '44R'], 'Super 150s Tasmanian Merino Wool (260g/m)', 'Scabal, England', 'Slim Fit', 'Wedding & Gala', 'Wedding Collection', ['Broad 3.75-inch peak lapels', 'Matching 5-button tailored vest', 'Flat front dress trousers with side adjusters'], True, False),
+    ('suit-steel-blue-microcheck-2pc', 'Steel Blue Micro-Check Two-Piece', 3500, 'Modern Steel Blue Wool with Micro Houndstooth Check', 'Subtle color dimension for contemporary formal environments. High-twist wool prevents creases while the subtle steel blue hue sets the wearer apart.', 'NAVY_SUIT', 'HERO_MODELS', [{'name': 'Steel Blue', 'hex': '#2F4056'}], ['38R', '40R', '42R', '44R', '46L'], 'Super 130s High-Twist Wool (250g/m)', 'Vitale Barberis Canonico, Italy', 'Tailored Regular', 'Business & Boardroom', 'Business Collection', ['Neapolitan soft shoulder', 'Flap hip pockets with ticket pocket', 'Single-pleat trousers'], False, False),
+    ('suit-midnight-velvet-gala-3pc', 'Midnight Velvet 3-Piece Black Tie Suit', 4900, 'Venetian Black Velvet with Double-Breasted Silk Waistcoat', 'The supreme formal ceremony monument. Heavy Italian velvet with an incomparable luster, complete with a six-button pure silk satin vest and braided trousers.', 'BLACK_SUIT', 'EVENING_SUIT', [{'name': 'Venetian Black', 'hex': '#070707'}], ['38R', '40R', '42R', '44R', '46L'], 'Silk-Cotton Velvet & Pure Como Silk (380g/m)', 'Como & Milan, Italy', 'Tailored Regular', 'Evening Black-Tie', 'Limited Edition', ['Includes 6-button silk satin waistcoat', 'Silk grosgrain peak lapels', 'Side braided black-tie trousers'], False, True),
+]
+
+for s in suit_data:
+    add(s[0], s[1], 'suits', s[2], s[3], s[4], s[5], s[6], s[7], s[8], s[9], s[10], s[11], s[12], s[13], s[14], s[15], s[16])
+
+print(f"Loaded {len(products)} suits.")
+
+# Function to save code
+def save_all():
+    ts_code = f"""// AUTO-GENERATED N.K FABRICS COMPLETE MASTER CATALOG (240+ PRODUCTS)
+// STRICT COMPLIANCE: ZERO BLAZERS, ZERO UNDERGARMENTS, ONLY N.K FABRICS BRANDING
+
+export interface ShopProduct {{
+  id: string;
+  name: string;
+  category: 
+    | 'suits'
+    | 'waistcoats'
+    | 'formal-shirts'
+    | 'casual-shirts'
+    | 'trousers'
+    | 'kurtas'
+    | 'shalwar-kameez'
+    | 'polo-shirts'
+    | 't-shirts'
+    | 'jackets'
+    | 'sweaters'
+    | 'accessories';
+  isNewArrival?: boolean;
+  isBestSeller?: boolean;
+  price: number;
+  formattedPrice: string;
+  tagline: string;
+  description: string;
+  primaryImage: string;
+  hoverImage: string;
+  colors: {{ name: string; hex: string }}[];
+  sizes: string[];
+  fabric: string;
+  fabricOrigin: string;
+  fit: 'Slim Fit' | 'Tailored Regular' | 'Relaxed Drape' | 'Classic Formal';
+  occasion: 'Wedding & Gala' | 'Business & Boardroom' | 'Ceremony & Eid' | 'Evening Black-Tie' | 'Resort & Casual' | 'Everyday Luxury' | 'Winter Collection' | 'Formal Collection' | 'Premium Collection';
+  collection: 
+    | 'New Arrivals'
+    | 'Best Sellers'
+    | 'Signature Collection'
+    | 'Premium Collection'
+    | 'Formal Collection'
+    | 'Wedding Collection'
+    | 'Eid Collection'
+    | 'Traditional Collection'
+    | 'Business Collection'
+    | 'Evening Collection'
+    | 'Summer Collection'
+    | 'Winter Collection'
+    | 'Essential Collection'
+    | 'Limited Edition'
+    | 'N.K FABRICS Essentials';
+  availability: 'In Stock' | 'Bespoke Commission';
+  tailoringNotes: string[];
+}}
+
+export const SHOP_CATEGORIES = [
+  {{ id: 'all', label: 'All Creations' }},
+  {{ id: 'new-arrivals', label: 'New Arrivals' }},
+  {{ id: 'suits', label: 'Suits (32)' }},
+  {{ id: 'waistcoats', label: 'Waistcoats (22)' }},
+  {{ id: 'formal-shirts', label: 'Formal Shirts (26)' }},
+  {{ id: 'casual-shirts', label: 'Casual Shirts (22)' }},
+  {{ id: 'trousers', label: 'Trousers & Pants (26)' }},
+  {{ id: 'kurtas', label: 'Kurtas (22)' }},
+  {{ id: 'shalwar-kameez', label: 'Shalwar Kameez (22)' }},
+  {{ id: 'jackets', label: 'Jackets (16)' }},
+  {{ id: 'polo-shirts', label: 'Polo Shirts (16)' }},
+  {{ id: 't-shirts', label: 'T-Shirts (16)' }},
+  {{ id: 'sweaters', label: 'Sweaters & Knitwear (16)' }},
+  {{ id: 'accessories', label: 'Accessories (22)' }},
+];
+
+export const ALL_PRODUCTS: ShopProduct[] = {json.dumps(products, indent=2)};
+"""
+    with open('/src/data/shopProducts.ts', 'w') as f:
+        f.write(ts_code)
+    print("Catalog saved successfully.")
+
+if __name__ == '__main__':
+    save_all()

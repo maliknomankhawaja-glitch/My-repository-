@@ -23,11 +23,14 @@ export interface GarmentProduct {
 // Generated fashion assets
 const HERO_MODELS = '/src/assets/images/hero_mn_editorial_models_1790693257303.jpg';
 const FORMAL_SUIT = '/src/assets/images/fashion_formal_suit_waistcoat_1790693269160.jpg';
-const TRADITIONAL_SUIT = '/src/assets/images/fashion_traditional_shalwar_kameez_1790693280444.jpg';
+const TRADITIONAL_SUIT = '/src/assets/images/founder_couture_hero_1790909201612.jpg';
 const ESSENTIALS_POLO = '/src/assets/images/fashion_essentials_polo_trouser_1790693292165.jpg';
 const EVENING_SUIT = '/src/assets/images/fashion_evening_suit_cut_1790693303536.jpg';
 const FABRIC_TEXTURE = '/src/assets/images/mn_luxury_suit_fabric_detail_1790692683058.jpg';
 const PACKAGING_IMG = '/src/assets/images/mn_luxury_packaging_showcase_1790692669800.jpg';
+const CHALK_STRIPE = '/src/assets/images/chalk_stripe_suit_1791180278649.jpg';
+const PRINCE_COAT = '/src/assets/images/prince_coat_royal_1791180264486.jpg';
+const EMERALD_SILK = '/src/assets/images/emerald_silk_kameez_1791180291920.jpg';
 
 export const FASHION_CATEGORIES = [
   {
@@ -216,6 +219,31 @@ export const SUIT_COLLECTION: GarmentProduct[] = [
       'Hollywood high-waist trousers with interior grip tape',
     ],
   },
+  {
+    id: 'mn-suit-chalk-stripe',
+    name: 'The Savile Row Chalk Stripe Three-Piece',
+    category: 'formal',
+    price: '$4,400',
+    tagline: 'English Worsted Navy Chalk Stripe with Sculpted High-V Waistcoat',
+    colorName: 'Navy Chalk Stripe',
+    colorHex: '#152238',
+    fabric: 'English Worsted Flannel with Natural Chalk Pinstripe (320g/m)',
+    fabricOrigin: 'Fox Brothers & Co., Somerset, UK',
+    cut: 'Savile Row Structured Silhouette with Roped Shoulders',
+    lapel: 'Classic 3.75-Inch Peak Lapels with Milanese Buttonhole',
+    waistcoat: 'Six-Button High-V Waistcoat with Watch Chain Pocket Eyelet',
+    shirtPairing: 'Royal Poplin 200/2 White Dress Shirt with French Double Cuffs',
+    trouserTailoring: 'High-Rise, Double Forward Pleats, Brass Side Tab Adjusters',
+    buttonDetails: 'Hand-Carved Black Buffalo Horn with Micro-Engraved Insignia',
+    stitching: '1.5mm AMF Artisan Pick Stitching',
+    image: CHALK_STRIPE,
+    description: 'The definitive power suit. Sculpted with authentic Savile Row roped shoulders, a hand-padded floating horsehair canvas, and an authoritative chalk stripe flannel woven in Somerset.',
+    features: [
+      'Genuine English chalk stripe flannel with natural drape',
+      'Matching six-button sculpted high-V waistcoat',
+      'Double rear vents engineered for crease-free posture',
+    ],
+  },
 ];
 
 export const TRADITIONAL_COLLECTION = [
@@ -230,6 +258,30 @@ export const TRADITIONAL_COLLECTION = [
     waistcoatPairing: 'Includes Tailored Charcoal Wool Waistcoat with Silk Collar',
     image: TRADITIONAL_SUIT,
     description: 'A monument of Pakistani luxury heritage. We hand-loom pure mulberry raw silk with deliberate slub textures, then tailor it to Savile Row proportions. The mandarin collar stands firm with custom horsehair interfacing, framed by a tailored waistcoat.',
+  },
+  {
+    id: 'mn-trad-emerald-ensemble',
+    name: 'The Viceroy Emerald Raw Silk Kameez Suit',
+    category: 'traditional',
+    price: '$1,950',
+    tagline: 'Imperial Forest Green Raw Silk with Matching Sculpted Waistcoat',
+    fabric: '100% Hand-Loomed Raw Mulberry Silk with Natural Slubs (280g/m)',
+    details: 'Mandarin Collar with Gold Metallic Piped Boundary, Concealed Mobile Pocket in Side Seam, Horn Buttons with Gold Loop Fasteners.',
+    waistcoatPairing: 'Includes Matching Emerald Velvet Waistcoat with Bullion Threadwork',
+    image: EMERALD_SILK,
+    description: 'An imperial green masterwork created for milestone wedding banquets and royal ceremonies. Handcrafted from heavy raw silk that absorbs evening ambient lighting with mesmerizing depth.',
+  },
+  {
+    id: 'mn-trad-prince-coat-regal',
+    name: 'The Sovereign Velvet Royal Prince Coat Suit',
+    category: 'traditional',
+    price: '$2,850',
+    tagline: 'Italian Cotton-Silk Black Velvet with 24K Gold Zardozi Bullion Collar',
+    fabric: 'Heavy Venetian Silk-Cotton Velvet (380g/m)',
+    details: 'Mandarin Stand Collar Adorned with Handcrafted Gold Bullion Zardozi Embroidery, Solid Gilded Crest Buttons, Tailored Straight Trouser Pajama.',
+    waistcoatPairing: 'Structured Full-Canvas Silhouette with Internal Double-Breasted Fastener',
+    image: PRINCE_COAT,
+    description: 'The supreme formal garment of South Asian aristocratic tradition. Over 90 hours of dedicated artisan hand-embroidery and Savile Row chest padding for an unyielding regal stature.',
   },
   {
     id: 'mn-trad-ivory-royal',

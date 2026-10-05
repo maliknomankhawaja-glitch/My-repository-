@@ -30,7 +30,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
   const wishlistedProducts = allProducts.filter((p) => wishlistIds.includes(p.id));
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/85 backdrop-blur-md transition-all duration-300">
+    <div className="fixed inset-0 z-50 flex justify-end max-sm:items-end bg-black/85 backdrop-blur-md transition-all duration-300">
       {/* Backdrop */}
       <div
         className="absolute inset-0 cursor-pointer"
@@ -38,10 +38,15 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
         aria-label="Close Wishlist"
       />
 
-      {/* Drawer Container */}
-      <div className="relative w-full max-w-md bg-[#0F0F0F] border-l border-white/10 shadow-2xl h-full flex flex-col justify-between z-10 animate-in slide-in-from-right duration-300 ease-out">
+      {/* Drawer Container (Side drawer on desktop, bottom sheet on mobile) */}
+      <div className="relative w-full max-w-md bg-[#0F0F0F] border-l max-sm:border-l-0 max-sm:border-t max-sm:border-[#C8A97E]/40 max-sm:rounded-t-3xl shadow-2xl h-full max-sm:max-h-[92vh] flex flex-col justify-between z-10 animate-in slide-in-from-right max-sm:slide-in-from-bottom duration-300 ease-out">
+        {/* Mobile Drag Indicator */}
+        <div className="sm:hidden pt-2 flex justify-center bg-[#121212] rounded-t-3xl">
+          <div className="w-12 h-1 bg-white/20 rounded-full" />
+        </div>
+
         {/* Header */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between bg-[#121212]">
+        <div className="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-[#121212]">
           <div className="flex items-center gap-3">
             <MNMonogramMaster variant="champagne-gold" size={26} />
             <div>

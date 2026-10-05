@@ -29,12 +29,17 @@ export const QuickViewModal: React.FC<QuickViewProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-[#111111] border border-[#C8A97E]/40 shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-300">
+    <div className="fixed inset-0 z-50 flex items-center max-sm:items-end justify-center p-0 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full max-w-4xl bg-[#111111] border border-[#C8A97E]/40 max-sm:border-x-0 max-sm:border-b-0 max-sm:rounded-t-3xl shadow-2xl overflow-hidden my-auto max-sm:my-0 max-sm:max-h-[92vh] animate-in fade-in zoom-in-95 max-sm:slide-in-from-bottom duration-300">
+        {/* Mobile Drag Indicator */}
+        <div className="sm:hidden pt-2 flex justify-center bg-[#111111] rounded-t-3xl">
+          <div className="w-12 h-1 bg-white/20 rounded-full" />
+        </div>
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 z-20 w-9 h-9 flex items-center justify-center text-white/60 hover:text-white bg-black/60 border border-white/10 transition-colors"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 z-20 w-9 h-9 flex items-center justify-center text-white/60 hover:text-white bg-black/60 border border-white/10 transition-colors rounded-full sm:rounded-none"
           aria-label="Close Quick View"
         >
           ✕
@@ -105,8 +110,20 @@ export const QuickViewModal: React.FC<QuickViewProps> = ({
                 <h3 className="font-serif-lux text-2xl sm:text-3xl text-[#FAF8F5] mt-1">
                   {product.name}
                 </h3>
-                <div className="text-xl font-mono text-[#FAF8F5] mt-2 font-semibold">
-                  {product.formattedPrice}
+                <div className="flex items-center justify-between mt-2">
+                  <div className="text-xl font-mono text-[#FAF8F5] font-semibold">
+                    {product.formattedPrice}
+                  </div>
+                  {product.availability === 'In Stock' ? (
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-300 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      In Stock ({product.stockUnits || 24} units)
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#C8A97E] bg-[#C8A97E]/10 border border-[#C8A97E]/30 px-2 py-0.5 rounded-xs">
+                      ◆ Bespoke Commission
+                    </span>
+                  )}
                 </div>
               </div>
 

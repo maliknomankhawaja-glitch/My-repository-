@@ -40,6 +40,11 @@ import { ColorPaletteSection } from './components/ColorPaletteSection.tsx';
 import { TypographySection } from './components/TypographySection.tsx';
 import { AssetExportStudio } from './components/AssetExportStudio.tsx';
 
+// Mobile-First Architecture Components
+import { MobileBottomNav } from './components/MobileBottomNav.tsx';
+import { MobileStoriesReel } from './components/MobileStoriesReel.tsx';
+import { MobileCategoryPills } from './components/MobileCategoryPills.tsx';
+
 export default function App() {
   const [activeView, setActiveView] = useState<'showroom' | 'shop' | 'brand-system' | 'pdp' | 'cart' | 'wishlist' | 'checkout' | 'confirmation' | 'about' | '404'>('showroom');
   const [selectedProduct, setSelectedProduct] = useState<GarmentProduct | null>(null);
@@ -285,7 +290,7 @@ export default function App() {
   const totalCartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-[#0C0C0C]">
+    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F1EA] font-sans-clean selection:bg-[#C8A97E] selection:text-[#0C0C0C] max-lg:pb-24">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-24 right-6 z-50 bg-[#C8A97E] text-black px-5 py-3 shadow-2xl text-xs font-mono font-medium flex items-center gap-2 border border-black/20 animate-in fade-in slide-in-from-top-4 duration-200">
@@ -327,8 +332,8 @@ export default function App() {
         activeView={activeView}
       />
 
-      {/* VIEW SWITCHER SUB-BAR */}
-      <div className="bg-[#121212] border-b border-white/5 px-3.5 sm:px-6 py-2 flex items-center justify-between text-[11px] font-sans-clean overflow-x-auto scrollbar-none">
+      {/* VIEW SWITCHER SUB-BAR (Hidden on mobile for sleek app ergonomics) */}
+      <div className="hidden sm:flex bg-[#121212] border-b border-white/5 px-3.5 sm:px-6 py-2 items-center justify-between text-[11px] font-sans-clean overflow-x-auto scrollbar-none">
         <div className="flex items-center gap-4 text-white/50 shrink-0">
           <span>Experience:</span>
           <button
@@ -509,6 +514,10 @@ export default function App() {
       {/* VIEW 1: THE N.K FABRICS LUXURY SHOP PAGE */}
       {activeView === 'shop' && (
         <main key="shop" className="animate-luxury-fade-up">
+          <MobileCategoryPills
+            activeCategory={shopCategoryFilter}
+            onSelectCategory={(cat) => setShopCategoryFilter(cat)}
+          />
           <ShopPage
             initialCategory={shopCategoryFilter}
             initialColor={shopColorFilter}
@@ -628,6 +637,15 @@ export default function App() {
       {/* VIEW 2: THE EDITORIAL FASHION SHOWROOM */}
       {activeView === 'showroom' && (
         <main key="showroom" className="space-y-4 animate-luxury-fade-up">
+          {/* Mobile Stories & Heritage Highlights Reel */}
+          <MobileStoriesReel
+            onSelectCategory={(cat) => {
+              setShopCategoryFilter(cat);
+              setActiveView('shop');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+
           <div id="hero">
             <HeroShowroom
               onExplore={() => {
@@ -904,6 +922,33 @@ export default function App() {
         isOpen={isConciergeInfoOpen}
         onClose={() => setIsConciergeInfoOpen(false)}
         initialTopic={conciergeTopic}
+      />
+
+      {/* 8. PERSISTENT MOBILE LUXURY APP BOTTOM NAVIGATION BAR */}
+      <MobileBottomNav
+        activeView={activeView}
+        onNavigateHome={() => {
+          setActiveView('showroom');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateShop={() => {
+          setActiveView('shop');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenSearch={() => {
+          setIsSearchOpen(true);
+        }}
+        onOpenWishlist={() => {
+          setIsWishlistOpen(true);
+        }}
+        onOpenCart={() => {
+          setIsCartOpen(true);
+        }}
+        onOpenAccount={() => {
+          setIsAccountOpen(true);
+        }}
+        cartCount={totalCartCount}
+        wishlistCount={wishlistIds.length}
       />
     </div>
   );
